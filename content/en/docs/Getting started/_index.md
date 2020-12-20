@@ -1,35 +1,23 @@
 ---
 title: "Getting Started"
 linkTitle: "Getting Started"
-weight: 2
+weight: 3
 description: >
-  What does your user need to know to try your project?
+  Let's get start monitoring your WebRTC applications!
 ---
-
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
-
-Information in this section helps your user try your project themselves.
-
-* What do your users need to do to start using your project? This could include downloading/installation instructions, including any prerequisites or system requirements.
-
-* Introductory “Hello World” example, if appropriate. More complex tutorials should live in the Tutorials section.
-
-Consider using the headings below for your getting started page. You can delete any that are not applicable to your project.
-
 ## Prerequisites
 
-Are there any system requirements for using your project? What languages are supported (if any)? Do users need to already have any software or tools installed?
+**[Kafka](https://apache.org/kafka)** is used to forward reports from the WebRTC-Observer. 
+The [Reports](TODO-Link-to-Reports) are being forwarded to Kafka for processing to be consumed by the exporter (e.g. Kafka connectors).
 
-## Installation
+## Install WebRTC-Observer 
 
-Where can your user find your project code? How can they install it (binaries, installable package, build from source)? Are there multiple options/versions they can install and how should they choose the right one for them?
+### Helm
 
-## Setup
+### Docker
 
-Is there any initial setup users need to do after installation to try your project?
+## Integrate WebExtrApp
 
-## Try it out!
+### Jitsi
 
-Can your users test their installation, for example by running a command or deploying a Hello World example?
+### TokBox

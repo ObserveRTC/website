@@ -1,38 +1,44 @@
 ---
 title: "Overview"
 linkTitle: "Overview"
-weight: 1
+weight: 2
 description: >
-  Here's where your user finds out if your project is for them.
+  ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications for real-time communication.
 ---
+{{< imgproc webrtc-schema Fit "640x480" >}}
+A schematical overview of using our integration and observer to 
+monitor WebRTC applications. There are two components communicate to each other: 
+WebExtrApp, and the Observer. WebExtrApp uses the PeerConnectionSample schema to 
+report statistical measurements to the Observer. The Observer component making 
+Report schemas based on the samples it receives from the WebExtrApp and the observation 
+it makes by analyzing the streams.
+{{< /imgproc >}}
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+### Components
+**WebExtrApp** is a development toolkit for WebRTC Monitoring integrations.
+The core concept is to extract measurements related to every peer 
+connection a webrtc call has, unify the extracted measurements 
+and send it as a sample (PeerConnectionSample) for the WebRTC-Observer.
 
+**WebRTC-Observer** is a microservice developed to accept samples 
+from WebExtrApp client integrations, monitor your WebRTC calls 
+and it makes Reports (Report) out of it.
+The main purpose of this service is to make Reports about the Samples. 
+WebRTC-Observer is a simple microservice written by using 
+the [Micronaut](https://www.micronaut.io/) 
+framework. We use [Hazelcast](https://hazelcast.org) as a 
+distributed in-memory database in order to store information 
+related to the observed calls. The service creates Reports from 
+the observed PeerConnection, for which we use 
+[Kafka](https://kafka.apache.org/) to forward.
 
-The Overview is where your users find out about your project. Depending on the size of your docset, you can have a separate overview page (like this one) or put your overview contents in the Documentation landing page (like in the Docsy User Guide). 
+### Schemas
 
-Try answering these questions for your user in this page:
+**PeerConnectionSample** describes and holds every measurement 
+a peer connection may have to describe the state. All integration 
+of WebExtrApp reports the same unified PeerConnectionSample schema 
+to the observer. 
 
-## What is it?
-
-Introduce your project, including what it does or lets you do, why you would use it, and its primary goal (and how it achieves it). This should be similar to your README description, though you can go into a little more detail here if you want.
-
-## Why do I want it?
-
-Help your user know if your project will help them. Useful information can include: 
-
-* **What is it good for?**: What types of problems does your project solve? What are the benefits of using it?
-
-* **What is it not good for?**: For example, point out situations that might intuitively seem suited for your project, but aren't for some reason. Also mention known limitations, scaling issues, or anything else that might let your users know if the project is not for them.
-
-* **What is it *not yet* good for?**: Highlight any useful features that are coming soon.
-
-## Where should I go next?
-
-Give your users next steps from the Overview. For example:
-
-* [Getting Started](/docs/getting-started/): Get started with $project
-* [Examples](/docs/examples/): Check out some example code!
-
+**Report** is an observation the WebRTC-Observer reports based on 
+the received sample. There are different types of report it can 
+make and forward to a kafka broker.
