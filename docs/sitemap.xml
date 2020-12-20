@@ -9,42 +9,42 @@
   
   <url>
     <loc>/docs/references/peer-connection-sample/</loc>
-    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/reports/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/overview/</loc>
-    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/getting-started/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/tutorials/tokbox-integration/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/tutorials/webrtc-observer-docker/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/tutorials/webrtc-observer-helm/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/tutorials/jitsi-integration/</loc>
-    <lastmod>2017-01-05T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
@@ -59,7 +59,7 @@
   
   <url>
     <loc>/docs/</loc>
-    <lastmod>2019-07-03T16:05:26+01:00</lastmod>
+    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
   </url>
   
   <url>
@@ -69,22 +69,17 @@
   
   <url>
     <loc>/docs/contribution-guidelines/</loc>
-    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/2020/12/12/webextrapp/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/2020/12/12/webrtc-observer/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2018-10-05T12:27:38-04:00</lastmod>
+    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
   </url>
   
   <url>
@@ -98,12 +93,18 @@
   </url>
   
   <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/search/</loc>
     <lastmod>2018-09-04T11:36:40+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/webrtc-evaluator-reference/</loc>
+    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
 </urlset>
