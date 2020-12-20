@@ -3,12 +3,8 @@ title: "Contribution Guidelines"
 linkTitle: "Contribution Guidelines"
 weight: 100
 description: >
-  How to contribute to the docs
+  How to contribute in ObserveRTC
 ---
-
-{{% pageinfo %}}
-These basic sample guidelines to contribute to ObserveRTC.
-{{% /pageinfo %}}
 
 ## Developing Services
 

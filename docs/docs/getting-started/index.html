@@ -222,96 +222,6 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Core Tasks</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasks">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksbeds" href="/docs/tasks/beds/">Bed and Chair Metrics</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksporridge" href="/docs/tasks/porridge/">Porridge Assessment</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstaskstask" href="/docs/tasks/task/">Another Task</a>
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/ponycopters/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Working with Ponycopters</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasksponycopters">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksponycoptersconfiguring-ponycopters" href="/docs/tasks/ponycopters/configuring-ponycopters/">Configuring Ponycopters</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksponycopterslaunching-ponycopters" href="/docs/tasks/ponycopters/launching-ponycopters/">Launching Ponycopters</a>
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
     <a  href="/docs/tutorials/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tutorials</a>
   </li>
   <ul>
@@ -323,7 +233,7 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialsmulti-bear" href="/docs/tutorials/multi-bear/">Multi-Bear Domicile Setup</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialstokbox-integration" href="/docs/tutorials/tokbox-integration/">WebExtrApp TokBox Integration</a>
         
       
       
@@ -331,7 +241,23 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialstutorial2" href="/docs/tutorials/tutorial2/">Another Tutorial</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebrtc-observer-docker" href="/docs/tutorials/webrtc-observer-docker/">WebRTC-Observer Docker Deployments</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebrtc-observer-helm" href="/docs/tutorials/webrtc-observer-helm/">WebRTC-Observer Helm Deployment</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialsjitsi-integration" href="/docs/tutorials/jitsi-integration/">Another Tutorial</a>
         
       
       
@@ -372,7 +298,15 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencesparameter-reference" href="/docs/references/parameter-reference/">Parameter Reference</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencesreports" href="/docs/references/reports/">Reports Schema</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceswebrtc-evaluator-reference" href="/docs/references/webrtc-evaluator-reference/">WebRTC-Observer Evaluators</a>
         
       
       
@@ -462,18 +396,9 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#install-webrtc-observer">Install WebRTC-Observer</a>
-      <ul>
-        <li><a href="#helm">Helm</a></li>
-        <li><a href="#docker">Docker</a></li>
-      </ul>
-    </li>
-    <li><a href="#integrate-webextrapp">Integrate WebExtrApp</a>
-      <ul>
-        <li><a href="#jitsi">Jitsi</a></li>
-        <li><a href="#tokbox">TokBox</a></li>
-      </ul>
-    </li>
+    <li><a href="#install--run-webrtc-observer">Install &amp; Run WebRTC-Observer</a></li>
+    <li><a href="#install--run-webextrapp">Install &amp; Run WebExtrApp</a></li>
+    <li><a href="#process-reports">Process Reports</a></li>
   </ul>
 </nav>
 
@@ -516,12 +441,64 @@
 	<h2 id="prerequisites">Prerequisites</h2>
 <p><strong><a href="https://apache.org/kafka">Kafka</a></strong> is used to forward reports from the WebRTC-Observer.
 The <a href="TODO-Link-to-Reports">Reports</a> are being forwarded to Kafka for processing to be consumed by the exporter (e.g. Kafka connectors).</p>
-<h2 id="install-webrtc-observer">Install WebRTC-Observer</h2>
-<h3 id="helm">Helm</h3>
-<h3 id="docker">Docker</h3>
-<h2 id="integrate-webextrapp">Integrate WebExtrApp</h2>
-<h3 id="jitsi">Jitsi</h3>
-<h3 id="tokbox">TokBox</h3>
+<h2 id="install--run-webrtc-observer">Install &amp; Run WebRTC-Observer</h2>
+<p>In this quickstart we use <a href="https://docker.io">Docker</a> to demonstrate a
+simple local deployment of the service. For kubernetes deployment<br>
+please check out our <a href="/docs/tutorials/webrtc-observer-helm/">tutorial</a> for it.</p>
+<ol>
+<li>Clone the docker targeted deployment repository:</li>
+</ol>
+<pre><code>git clone https://github.com/ObserveRTC/docker-webrtc-observer
+</code></pre><p>This will clone the necessary files to your local machine
+in order to run the observer in a container.</p>
+<ol start="2">
+<li>Run the docker image</li>
+</ol>
+<pre><code>cd docker-webrtc-observer
+docker-compose up
+</code></pre><p>This will run the container locally,
+opening the port <code>7080</code> to receive samples from integrations.</p>
+<h2 id="install--run-webextrapp">Install &amp; Run WebExtrApp</h2>
+<p>To tryout webrtc locally</p>
+<p>Currently we support <a href="https://jitsi.org">Jitsi</a>, and <a href="https://www.vonage.com/communications-apis/video/">TokBox</a> integrations.
+The integration is described in the appropriate tutorials,
+here, for simplicity we use a local webrtc call</p>
+<ol>
+<li>Clone and install the core library</li>
+</ol>
+<pre><code>git clone https://github.com/ObserveRTC/webextrapp
+cd webextrapp 
+npm install -g typescript
+npm ci 
+npm run build-library-dev 
+</code></pre><ol start="2">
+<li>Configure the local development integration to point to your server</li>
+</ol>
+<p>Navigate yourself to</p>
+<pre><code>cd __test__/example-demo/js/
+nano integrations.js
+</code></pre><p>And check if the <code>wsServerURL</code> points to <code>localhost:7080</code>.
+The rest of the URL is explained in our tutorials</p>
+<ol start="3">
+<li>Run the local server by <code>npm run start-server</code></li>
+<li>Go to <code>localhost:9090</code>, and start a call.</li>
+</ol>
+<h2 id="process-reports">Process Reports</h2>
+<p>Once you initiated a flow from your local integrations
+to the Observer, you can observe Reports by consuming a kafka topics.
+By default Observer forward reports to the <code>reports</code> topic, so you
+can check the occurrences with <code>kafkacat</code>.</p>
+<pre><code>kafkacat -b localhost:9092 -t reports -C
+</code></pre><p>Once the report has appeared you can process or save it by using your
+favored stream processors, which can read kafka (i.e.: Kafka Connectors).</p>
+
+
+<div class="pageinfo pageinfo-primary">
+<p>Note: If you want to run a specific version of the WebRTC-Observer,
+please checkout the proper release tags llisted in <a href="https://github.com/ObserveRTC/docker-webrtc-observer/releases">here</a></p>
+
+</div>
+
 
         <div class="section-index">
     
@@ -530,14 +507,6 @@ The <a href="TODO-Link-to-Reports">Reports</a> are being forwarded to Kafka for 
     
     
     <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
         
             
         

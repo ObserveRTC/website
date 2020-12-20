@@ -195,7 +195,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-e2d3067f4d925eb37135a13ed88d2428">Core Tasks</a></li>
+<li>4: <a href="#pg-8dbd4e302cd86a4d0f71f71ce3b300de">Tutorials</a></li>
 
 
     
@@ -210,7 +210,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.1: <a href="#pg-525d55e5e5eaf1ca7138046ef31cd022">Bed and Chair Metrics</a></li>
+<li>4.1: <a href="#pg-7d64aa58faaa0eaf2c26d4f81cca8a78">WebExtrApp TokBox Integration</a></li>
 
 
     
@@ -218,7 +218,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.2: <a href="#pg-8b9ed72c94082e62654acbe5544809a4">Porridge Assessment</a></li>
+<li>4.2: <a href="#pg-eab2c4a019bc86daf8647b103493e9b2">WebRTC-Observer Docker Deployments</a></li>
 
 
     
@@ -226,7 +226,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3: <a href="#pg-2acd4be46aab21e87082be97de87c74d">Another Task</a></li>
+<li>4.3: <a href="#pg-72ade4fbea8cb557127b2cf4be946772">WebRTC-Observer Helm Deployment</a></li>
 
 
     
@@ -234,7 +234,19 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.4: <a href="#pg-013e157738e63d8c3f90b39d559e8c8d">Working with Ponycopters</a></li>
+<li>4.4: <a href="#pg-a94a3b6f1d977ec6af8365c079e94342">Another Tutorial</a></li>
+
+
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-7833d2da09956a79f9601ff906282516">Reference</a></li>
 
 
     
@@ -249,7 +261,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.4.1: <a href="#pg-ab480eb0e8e417eb7cd925a592e0cbcc">Configuring Ponycopters</a></li>
+<li>5.1: <a href="#pg-5dd46e981cb724b5ace4deb653ee8a57">Peer Connection Sample Schema</a></li>
 
 
     
@@ -257,38 +269,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.4.2: <a href="#pg-3662f29ce4d0c9029454f98cd85d98ca">Launching Ponycopters</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>5: <a href="#pg-8dbd4e302cd86a4d0f71f71ce3b300de">Tutorials</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>5.1: <a href="#pg-06285b237e6e217b13f8d9c941a9de18">Multi-Bear Domicile Setup</a></li>
+<li>5.2: <a href="#pg-30b0e23cd373de5650de0282ba18d659">Reports Schema</a></li>
 
 
     
@@ -296,7 +277,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5.2: <a href="#pg-c86b0cbc9ee1f95a6facb6bff0282978">Another Tutorial</a></li>
+<li>5.3: <a href="#pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">WebRTC-Observer Evaluators Configurations</a></li>
 
 
     
@@ -308,42 +289,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-7833d2da09956a79f9601ff906282516">Reference</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>6.1: <a href="#pg-5dd46e981cb724b5ace4deb653ee8a57">Peer Connection Sample Schema</a></li>
-
-
-    
-  
-    
-    
-	
-<li>6.2: <a href="#pg-65dbbef900cb1cb48acec7daf61625ef">Parameter Reference</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>7: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
+<li>6: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
 
 
     
@@ -455,7 +401,7 @@ it makes by analyzing the streams.
 </div>
 <p>Monitoring RTC applications is separated into two parts: Sampling, and Analyzing.
 Sampling a WebRTC Calls we collect information from client side provided
-by the browser or integrated video platforms (see different integrations)</p>
+by the browser or integrated video platforms</p>
 <h3 id="components">Components</h3>
 <p><strong>WebExtrApp</strong> is a development toolkit for WebRTC Monitoring integrations.
 The core concept is to extract measurements related to every peer
@@ -512,12 +458,64 @@ make and forward to a kafka broker.</p>
 	<h2 id="prerequisites">Prerequisites</h2>
 <p><strong><a href="https://apache.org/kafka">Kafka</a></strong> is used to forward reports from the WebRTC-Observer.
 The <a href="TODO-Link-to-Reports">Reports</a> are being forwarded to Kafka for processing to be consumed by the exporter (e.g. Kafka connectors).</p>
-<h2 id="install-webrtc-observer">Install WebRTC-Observer</h2>
-<h3 id="helm">Helm</h3>
-<h3 id="docker">Docker</h3>
-<h2 id="integrate-webextrapp">Integrate WebExtrApp</h2>
-<h3 id="jitsi">Jitsi</h3>
-<h3 id="tokbox">TokBox</h3>
+<h2 id="install--run-webrtc-observer">Install &amp; Run WebRTC-Observer</h2>
+<p>In this quickstart we use <a href="https://docker.io">Docker</a> to demonstrate a
+simple local deployment of the service. For kubernetes deployment<br>
+please check out our <a href="/docs/tutorials/webrtc-observer-helm/">tutorial</a> for it.</p>
+<ol>
+<li>Clone the docker targeted deployment repository:</li>
+</ol>
+<pre><code>git clone https://github.com/ObserveRTC/docker-webrtc-observer
+</code></pre><p>This will clone the necessary files to your local machine
+in order to run the observer in a container.</p>
+<ol start="2">
+<li>Run the docker image</li>
+</ol>
+<pre><code>cd docker-webrtc-observer
+docker-compose up
+</code></pre><p>This will run the container locally,
+opening the port <code>7080</code> to receive samples from integrations.</p>
+<h2 id="install--run-webextrapp">Install &amp; Run WebExtrApp</h2>
+<p>To tryout webrtc locally</p>
+<p>Currently we support <a href="https://jitsi.org">Jitsi</a>, and <a href="https://www.vonage.com/communications-apis/video/">TokBox</a> integrations.
+The integration is described in the appropriate tutorials,
+here, for simplicity we use a local webrtc call</p>
+<ol>
+<li>Clone and install the core library</li>
+</ol>
+<pre><code>git clone https://github.com/ObserveRTC/webextrapp
+cd webextrapp 
+npm install -g typescript
+npm ci 
+npm run build-library-dev 
+</code></pre><ol start="2">
+<li>Configure the local development integration to point to your server</li>
+</ol>
+<p>Navigate yourself to</p>
+<pre><code>cd __test__/example-demo/js/
+nano integrations.js
+</code></pre><p>And check if the <code>wsServerURL</code> points to <code>localhost:7080</code>.
+The rest of the URL is explained in our tutorials</p>
+<ol start="3">
+<li>Run the local server by <code>npm run start-server</code></li>
+<li>Go to <code>localhost:9090</code>, and start a call.</li>
+</ol>
+<h2 id="process-reports">Process Reports</h2>
+<p>Once you initiated a flow from your local integrations
+to the Observer, you can observe Reports by consuming a kafka topics.
+By default Observer forward reports to the <code>reports</code> topic, so you
+can check the occurrences with <code>kafkacat</code>.</p>
+<pre><code>kafkacat -b localhost:9092 -t reports -C
+</code></pre><p>Once the report has appeared you can process or save it by using your
+favored stream processors, which can read kafka (i.e.: Kafka Connectors).</p>
+
+
+<div class="pageinfo pageinfo-primary">
+<p>Note: If you want to run a specific version of the WebRTC-Observer,
+please checkout the proper release tags llisted in <a href="https://github.com/ObserveRTC/docker-webrtc-observer/releases">here</a></p>
+
+</div>
+
 
 </div>
 
@@ -545,1674 +543,7 @@ The <a href="TODO-Link-to-Reports">Reports</a> are being forwarded to Kafka for 
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e2d3067f4d925eb37135a13ed88d2428">4 - Core Tasks</h1>
-    
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page that shows you how to use this template site.</p>
-
-</div>
-
-<p>Think about your project’s features and use cases. Use these to choose your core tasks. Each granular use case (enable x, configure y) should have a corresponding tasks page or tasks page section. Users should be able to quickly refer to your core tasks when they need to find out how to do one specific thing, rather than having to look for the instructions in a bigger tutorial or example. Think of your tasks pages as a cookbook with different procedures your users can combine to create something more substantial.</p>
-<p>You can give each task a page, or you can group related tasks together in a page, such as tasks related to a particular feature. As well as grouping related tasks in single pages, you can also group task pages in nested folders with an index page as an overview, as seen in this example site. Or if you have a small docset like the <a href="https://docsy.dev/docs/">Docsy User Guide</a> with no Tutorials or Concepts pages, consider adding your feature-specific pages at the top level of your docs rather than in a Tasks section.</p>
-<p>Each task should give the user</p>
-<ul>
-<li>The prerequisites for this task, if any (this can be specified at the top of a multi-task page if they&rsquo;re the same for all the page&rsquo;s tasks. &ldquo;All these tasks assume that you understand&hellip;.and that you have already&hellip;.&quot;).</li>
-<li>What this task accomplishes.</li>
-<li>Instructions for the task. If it involves editing a file, running a command, or writing code, provide code-formatted example snippets to show the user what to do! If there are multiple steps, provide them as a numbered list.</li>
-<li>If appropriate, links to related concept, tutorial, or example pages.</li>
-</ul>
-
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-525d55e5e5eaf1ca7138046ef31cd022">4.1 - Bed and Chair Metrics</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-8b9ed72c94082e62654acbe5544809a4">4.2 - Porridge Assessment</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-2acd4be46aab21e87082be97de87c74d">4.3 - Another Task</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-013e157738e63d8c3f90b39d559e8c8d">4.4 - Working with Ponycopters</h1>
-    <div class="lead">A short lead description about this section page. Text here can also be <strong>bold</strong> or <em>italic</em> and can even be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>This is the section landing page.</p>
-
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-ab480eb0e8e417eb7cd925a592e0cbcc">4.4.1 - Configuring Ponycopters</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-3662f29ce4d0c9029454f98cd85d98ca">4.4.2 - Launching Ponycopters</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-
-    
-	
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-8dbd4e302cd86a4d0f71f71ce3b300de">5 - Tutorials</h1>
+	<h1 id="pg-8dbd4e302cd86a4d0f71f71ce3b300de">4 - Tutorials</h1>
     <div class="lead">Show your user how to work through some end to end examples.</div>
 	
 
@@ -2245,309 +576,89 @@ bar := &quot;foo&quot;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-06285b237e6e217b13f8d9c941a9de18">5.1 - Multi-Bear Domicile Setup</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
+	<h1 id="pg-7d64aa58faaa0eaf2c26d4f81cca8a78">4.1 - WebExtrApp TokBox Integration</h1>
+    <div class="lead">Detailed Tokbox integration of WebRTCExtrApp</div>
+	<p>Please clone the <a href="https://github.com/ObserveRTC/integrations">integrations</a> repository for this tutorial.</p>
+<p>Currently we do not have a method for configuring <code>observer.js</code> outside of a custom build.
+You will need to build the package yourself.</p>
+<h3 id="build-the-package-yourself">Build the package yourself</h3>
+<p>Follow the steps below to build the package from scratch.</p>
+<h4 id="install-dependencies">Install dependencies</h4>
 <ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
+<li>Make sure we have type script installed in the system
 <ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
+<li><code>npm install -g typescript</code></li>
 </ul>
 </li>
-<li>TMNT
+<li>Install package dependencies
 <ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
+<li><code>npm ci</code></li>
 </ul>
 </li>
 </ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
+<h3 id="build-library-with-proper-configuration-parameter">Build library with proper configuration parameter</h3>
+<ul>
+<li>Goto <a href="library.config/index.json">index.json</a> file.</li>
+<li>Change <code>libraryName</code> to <code>TokBox</code></li>
+<li>Change <code>poolingIntervalMs</code> to suitable interval if needed. Recommended <code>1000</code></li>
+<li>Change the <code>wsServer</code> options accordingly
+<ul>
+<li><code>URL</code> - WebSocket server URL</li>
+<li><code>ServiceUUID</code> - An uniqueue UUID that you are going to use for your service</li>
+<li><code>MediaUnitID</code> - Media unit ID name</li>
+<li><code>StatsVersion</code> - v20200114 ( preferred to use latest version always)</li>
+</ul>
+</li>
+<li>Build library. It will create a compiled JavaScript library that we will be able to use with TokBox in <code>dist</code> folder
+<ul>
+<li>Production version
+<ul>
+<li><code>npm run build-library-prod</code></li>
+</ul>
+</li>
+<li>Developer version
+<ul>
+<li><code>npm run build-library-dev</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="add-to-your-opentok-web-app">Add to your OpenTok web app</h3>
+<ol>
+<li>Define server endpoint in global( window ) scope</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">URL</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;wss://webrtc-observer.org/&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">ServiceUUID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">MediaUnitID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Prod_server1&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">StatsVersion</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;20200114&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">observerWsEndPoint</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">URL</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">ServiceUUID</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;/&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">MediaUnitID</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;/v&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">StatsVersion</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;/json&#34;</span><span style="color:#000;font-weight:bold">;</span>
+</code></pre></div><ol start="2">
+<li>Include core library before including <code>opentok.js</code> file in your html page</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">script</span> <span style="color:#000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://observertc.github.io/webextrapp/dist/observer.js&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;&lt;</span><span style="color:#a40000">/script&gt; </span>
+</code></pre></div><ol start="3">
+<li>There are two ways to include the integration library</li>
+</ol>
+<ul>
+<li>
+<p>Build it by yourself, and include the currently build tokbox integration library after adding <code>observer.js</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">script</span> <span style="color:#000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/your/server/cdn/tokbox.integration.js&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;&lt;</span><span style="color:#a40000">/script&gt;</span>
+</code></pre></div></li>
+<li>
+<p>Or you can also use the prebuilt library from this link. It has both minified and non minified version</p>
+<ul>
+<li>Non minified version
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://observertc.github.io/integrations/dist/tokbox.integration.js&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</code></pre></div></li>
+<li>Minified version
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://observertc.github.io/integrations/dist/tokbox.integration.min.js&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p>An example can be found in <a href="https://github.com/ObserveRTC/integrations/blob/main/__test__/tokbox/index.html#L3">TokBox demo folder</a>.</p>
 
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
 </div>
 
 
@@ -2562,309 +673,131 @@ bar := &quot;foo&quot;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c86b0cbc9ee1f95a6facb6bff0282978">5.2 - Another Tutorial</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
+	<h1 id="pg-eab2c4a019bc86daf8647b103493e9b2">4.2 - WebRTC-Observer Docker Deployments</h1>
+    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
 	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
 </div>
 
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-72ade4fbea8cb557127b2cf4be946772">4.3 - WebRTC-Observer Helm Deployment</h1>
+    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a94a3b6f1d977ec6af8365c079e94342">4.4 - Another Tutorial</h1>
+    <div class="lead">A detailed description of the jitsi integration for WebExtrApp</div>
+	<p>Please clone the <a href="https://github.com/ObserveRTC/integrations">integrations</a> repository for this tutorial.</p>
+<h4 id="build-library-with-proper-configuration-parameter--optional-">Build library with proper configuration parameter ( optional )</h4>
 <ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
+<li>
+<p>Goto <a href="library.config/index.json">index.json</a> file.</p>
+</li>
+<li>
+<p>Change <code>libraryName</code> to <code>Jitsi</code></p>
+</li>
+<li>
+<p>Change <code>poolingIntervalMs</code> to suitable interval if needed. Recommended <code>1000</code></p>
+</li>
+<li>
+<p>Change the <code>wsServer</code> options accordingly ( <em><strong>not mandatory since we can use jitsimeet <code>config.js</code> to pass configuration</strong></em>)</p>
 <ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
+<li><code>URL</code> - WebSocket server URL</li>
+<li><code>ServiceUUID</code> - An uniqueue UUID that you are going to use for your service</li>
+<li><code>MediaUnitID</code> - Media unit ID name</li>
+<li><code>StatsVersion</code> - v20200114 ( preferred to use latest version always)</li>
 </ul>
 </li>
-<li>TMNT
+<li>
+<p>Build library. It will create a compiled JavaScript library that we will be able to use with JitsiMeet in <code>dist</code> folder</p>
 <ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
+<li>
+<p>Production version</p>
+<ul>
+<li><code>npm run build-library-prod</code></li>
+</ul>
+</li>
+<li>
+<p>Developer version</p>
+<ul>
+<li><code>npm run build-library-dev</code></li>
 </ul>
 </li>
 </ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
+</li>
+</ul>
+<h4 id="use-the-library-in-jitsi-project">Use the library in Jitsi project</h4>
+<p>For existing installations and typical deployments you can simply add a few lines to the end of the <code>meet-[your-domain]-config.js</code> configuration file.
+This is usually located under <code>/etc/jitsi/meet</code> in the Debian installation.</p>
+<h4 id="edit-configjs-in-your-already-installed-jitsi-meet">Edit config.js in your already installed jitsi-meet</h4>
+<p>Goto your <code>config.js</code> file from jitsi-meet <code>config</code> folder.</p>
+<pre><code class="language-$xslt" data-lang="$xslt">nano /etc/jitsi/meet/meet.my.domain-config.js
+</code></pre><p>And add these two implementation specific variable at the very end of the file.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">analytics</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">observerPoolingIntervalInMs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1000</span>
+<span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">observerWsEndpoint</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;wss://websocket_server_url/service_uuid/media_unit_id/stats_version/json&#34;</span>
+</code></pre></div><p>Make sure to specify your <code>service_uuid</code> and a unique string for <code>media_unit_id</code> to indentify this specific Jitsi Meet instance .</p>
+<h4 id="docker-builds">Docker builds</h4>
+<p>Do the following if you are building from Docker.</p>
+<p>You will need to pass the integration specific configuration using <code>config.js</code> before building the container. Goto your jitsi-meet <code>settings-config.js</code>and add the following:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8f5902;font-style:italic">// observer rtc related config
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">{{</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Env</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">POOLING_INTERVAL_IN_MS</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">analytics</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">observerPoolingIntervalInMs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;{{ .Env.OBSERVER_POOLING_INTERVAL_IN_MS }}&#39;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">{{</span> <span style="color:#000">end</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
 
 
-    This is an alert.
+<span style="color:#000;font-weight:bold">{{</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Env</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">OBSERVER_WS_ENDPOINT</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">observerWsEndpoint</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;{{ .Env.OBSERVER_WS_ENDPOINT }}&#39;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">{{</span> <span style="color:#000">end</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</code></pre></div><ul>
+<li>Now, if we build a new jitsi-meet container, these two environment variable will be present in <code>config.js</code> when jitsi-meet is loaded.</li>
+</ul>
+<h3 id="integrate-the-observerrtc-library-in-your-jitsi-meet-html">Integrate the observerRTC library in your Jitsi Meet HTML</h3>
+<p>To load the observerRTC library, we need to edit the Jitsi Meet webpage.</p>
+<p>Goto your JitsiMeet  <code>index.html</code> page:</p>
+<pre><code class="language-$xslt" data-lang="$xslt">nano /usr/share/jitsi-meet/index.html
+</code></pre><p>Add these two file after the line where <code>config.js</code> script is loaded:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">script</span> <span style="color:#000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://observertc.github.io/webextrapp/dist/observer.min.js&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;&lt;</span><span style="color:#a40000">/script&gt;</span>
+<span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">script</span> <span style="color:#000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://observertc.github.io/integrations/dist/jitsi.integration.min.js&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;&lt;</span><span style="color:#a40000">/script&gt;</span>
+</code></pre></div><p>This should look something like:</p>
+<pre><code class="language-$html" data-lang="$html">    &lt;!--... --&gt; 
+    &lt;!--#include virtual=&quot;static/settingsToolbarAdditionalContent.html&quot; --&gt;
 
-</div>
+    &lt;!-- Added manually as part of Observe RTC installation; using full, unminified versions --&gt;
+    &lt;script src=&quot;https://observertc.github.io/webextrapp/dist/observer.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://observertc.github.io/integrations/dist/jitsi.integration.js&quot;&gt;&lt;/script&gt;
 
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!--#include virtual=&quot;body.html&quot; --&gt;
+    &lt;div id=&quot;react&quot;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 
+</code></pre><p>Reload the Jitsi Meet page from browser to apply changes. Jitsi Meet now integrated.</p>
 
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
-<p>Add some sections here to see how the ToC looks like. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-<h3 id="this-document">This Document</h3>
-<p>Inguina genus: Anaphen post: lingua violente voce suae meus aetate diversi. Orbis unam nec flammaeque status deam Silenum erat et a ferrea. Excitus rigidum ait: vestro et Herculis convicia: nitidae deseruit coniuge Proteaque adiciam <em>eripitur</em>? Sitim noceat signa <em>probat quidem</em>. Sua longis <em>fugatis</em> quidem genae.</p>
-<h3 id="pixel-count">Pixel Count</h3>
-<p>Tilde photo booth wayfarers cliche lomo intelligentsia man braid kombucha vaporware farm-to-table mixtape portland. PBR&amp;B pickled cornhole ugh try-hard ethical subway tile. Fixie paleo intelligentsia pabst. Ennui waistcoat vinyl gochujang. Poutine salvia authentic affogato, chambray lumbersexual shabby chic.</p>
-<h3 id="contact-info">Contact Info</h3>
-<p>Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 wolf moon blue bottle raw denim normcore poutine pork belly.</p>
-<h3 id="external-links">External Links</h3>
-<p>Stumptown PBR&amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.</p>
-<pre><code>This is the final element on the page and there should be no margin below this.
-</code></pre>
 </div>
 
 
@@ -2883,7 +816,7 @@ bar := &quot;foo&quot;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7833d2da09956a79f9601ff906282516">6 - Reference</h1>
+	<h1 id="pg-7833d2da09956a79f9601ff906282516">5 - Reference</h1>
     <div class="lead">Low level reference docs for your project.</div>
 	
 
@@ -2917,8 +850,8 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-5dd46e981cb724b5ace4deb653ee8a57">6.1 - Peer Connection Sample Schema</h1>
-    <div class="lead">Reference for the schema for the Peer Connection Sample</div>
+	<h1 id="pg-5dd46e981cb724b5ace4deb653ee8a57">5.1 - Peer Connection Sample Schema</h1>
+    <div class="lead">Describe the Peer Connection Sample schema</div>
 	
 <div id="ohpen_swagger_ui"></div>
 <script>
@@ -2957,298 +890,26 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-65dbbef900cb1cb48acec7daf61625ef">6.2 - Parameter Reference</h1>
-    <div class="lead">A short lead description about this content page. It can be <strong>bold</strong> or <em>italic</em> and can be split over multiple paragraphs.</div>
+	<h1 id="pg-30b0e23cd373de5650de0282ba18d659">5.2 - Reports Schema</h1>
+    <div class="lead">Describe the Report schema</div>
 	
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page. Replace it with your own content.</p>
-
-</div>
-
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://gohugo.io">Links</a> should be blue with no underlines (unless hovered over).</p>
-<p>There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.</p>
-<p>90&rsquo;s four loko seitan photo booth gochujang freegan tumeric listicle fam ugh humblebrag. Bespoke leggings gastropub, biodiesel brunch pug fashion axe meh swag art party neutra deep v chia. Enamel pin fanny pack knausgaard tofu, artisan cronut hammock meditation occupy master cleanse chartreuse lumbersexual. Kombucha kogi viral truffaut synth distillery single-origin coffee ugh slow-carb marfa selfies. Pitchfork schlitz semiotics fanny pack, ugh artisan vegan vaporware hexagon. Polaroid fixie post-ironic venmo wolf ramps <strong>kale chips</strong>.</p>
-<blockquote>
-<p>There should be no margin above this first sentence.</p>
-<p>Blockquotes should be a lighter gray with a border along the left side in the secondary color.</p>
-<p>There should be no margin below this final sentence.</p>
-</blockquote>
-<h2 id="first-header-2">First Header 2</h2>
-<p>This is a normal paragraph following a header. Knausgaard kale chips snackwave microdosing cronut copper mug swag synth bitters letterpress glossier <strong>craft beer</strong>. Mumblecore bushwick authentic gochujang vegan chambray meditation jean shorts irony. Viral farm-to-table kale chips, pork belly palo santo distillery activated charcoal aesthetic jianbing air plant woke lomo VHS organic. Tattooed locavore succulents heirloom, small batch sriracha echo park DIY af. Shaman you probably haven&rsquo;t heard of them copper mug, crucifix green juice vape <em>single-origin coffee</em> brunch actually. Mustache etsy vexillologist raclette authentic fam. Tousled beard humblebrag asymmetrical. I love turkey, I love my job, I love my friends, I love Chardonnay!</p>
-<p>Deae legum paulatimque terra, non vos mutata tacet: dic. Vocant docuique me plumas fila quin afuerunt copia haec o neque.</p>
-<p>On big screens, paragraphs and headings should not take up the full container width, but we want tables, code blocks and similar to take the full width.</p>
-<p>Scenester tumeric pickled, authentic crucifix post-ironic fam freegan VHS pork belly 8-bit yuccie PBR&amp;B. <strong>I love this life we live in</strong>.</p>
-<h2 id="second-header-2">Second Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-</blockquote>
-<h3 id="header-3">Header 3</h3>
-<pre><code>This is a code block following a header.
-</code></pre><p>Next level leggings before they sold out, PBR&amp;B church-key shaman echo park. Kale chips occupy godard whatever pop-up freegan pork belly selfies. Gastropub Belinda subway tile woke post-ironic seitan. Shabby chic man bun semiotics vape, chia messenger bag plaid cardigan.</p>
-<h4 id="header-4">Header 4</h4>
-<ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-</ul>
-<h5 id="header-5">Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6">Header 6</h6>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Follows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-<tr>
-<td>A table</td>
-<td>A header</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>There&rsquo;s a horizontal rule above and below this.</p>
-<hr>
-<p>Here is an unordered list:</p>
-<ul>
-<li>Liverpool F.C.</li>
-<li>Chelsea F.C.</li>
-<li>Manchester United F.C.</li>
-</ul>
-<p>And an ordered list:</p>
-<ol>
-<li>Michael Brecker</li>
-<li>Seamus Blake</li>
-<li>Branford Marsalis</li>
-</ol>
-<p>And an unordered task list:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> Create a Hugo theme</li>
-<li><input checked="" disabled="" type="checkbox"> Add task lists to it</li>
-<li><input disabled="" type="checkbox"> Take a vacation</li>
-</ul>
-<p>And a &ldquo;mixed&rdquo; task list:</p>
-<ul>
-<li><input disabled="" type="checkbox"> Pack bags</li>
-<li>?</li>
-<li><input disabled="" type="checkbox"> Travel!</li>
-</ul>
-<p>And a nested list:</p>
-<ul>
-<li>Jackson 5
-<ul>
-<li>Michael</li>
-<li>Tito</li>
-<li>Jackie</li>
-<li>Marlon</li>
-<li>Jermaine</li>
-</ul>
-</li>
-<li>TMNT
-<ul>
-<li>Leonardo</li>
-<li>Michelangelo</li>
-<li>Donatello</li>
-<li>Raphael</li>
-</ul>
-</li>
-</ul>
-<p>Definition lists can be used with Markdown syntax. Definition headers are bold.</p>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-<hr>
-<p>Tables should have bold headings and alternating shaded rows.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-</tr>
-</tbody>
-</table>
-<p>If a table is too wide, it should scroll horizontally.</p>
-<table>
-<thead>
-<tr>
-<th>Artist</th>
-<th>Album</th>
-<th>Year</th>
-<th>Label</th>
-<th>Awards</th>
-<th>Songs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Michael Jackson</td>
-<td>Thriller</td>
-<td>1982</td>
-<td>Epic Records</td>
-<td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-<td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-</tr>
-<tr>
-<td>Prince</td>
-<td>Purple Rain</td>
-<td>1984</td>
-<td>Warner Brothers Records</td>
-<td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-<td>Let&rsquo;s Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I&rsquo;m a Star, Purple Rain</td>
-</tr>
-<tr>
-<td>Beastie Boys</td>
-<td>License to Ill</td>
-<td>1986</td>
-<td>Mercury Records</td>
-<td>noawardsbutthistablecelliswide</td>
-<td>Rhymin &amp; Stealin, The New Style, She&rsquo;s Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Code snippets like <code>var foo = &quot;bar&quot;;</code> can be shown inline.</p>
-<p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-<p>Code can also be shown in a block element.</p>
-<pre><code>foo := &quot;bar&quot;;
-bar := &quot;foo&quot;;
-</code></pre><p>Code can also use syntax highlighting.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000">main</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#4e9a06">`var foo = &#34;bar&#34;;`</span>
-
-  <span style="color:#000">lexer</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;javascript&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">_</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">lexer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Tokenise</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">style</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">styles</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;github&#34;</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">formatter</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">New</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">WithLineNumbers</span><span style="color:#000;font-weight:bold">())</span>
-
-  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">buff</span> <span style="color:#000">bytes</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Buffer</span>
-  <span style="color:#000">formatter</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">style</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">iterator</span><span style="color:#000;font-weight:bold">)</span>
-
-  <span style="color:#000">fmt</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">buff</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">())</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><p>Inline code inside table cells should still be distinguishable.</p>
-<table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Javascript</td>
-<td><code>var foo = &quot;bar&quot;;</code></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><code>foo = &quot;bar&quot;{</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Small images should be shown at their actual size.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/240px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p>Large images should always scale down and fit in the content container.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg/1024px-Picea_abies_shoot_with_buds%2C_Sogndal%2C_Norway.jpg" alt=""></p>
-<p><em>The photo above of the Spruce Picea abies shoot with foliage buds: Bjørn Erik Pedersen, CC-BY-SA.</em></p>
-<h2 id="components">Components</h2>
-<h3 id="alerts">Alerts</h3>
-<p>
-
-<div class="alert alert-primary" role="alert">
-
-
-    This is an alert.
-
 </div>
 
 
 
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
+    
+	
+  
+    
+    
+	
+    
 
-    This is an alert with a title.
-
-</div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Note</h4>
-
-    This is an alert with a title and <strong>Markdown</strong>.
-
-</div>
-
-
-
-<div class="alert alert-success" role="alert">
-
-
-    This is a successful alert.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-
-
-    This is a warning.
-
-</div>
-
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    This is a warning with a title.
-
-</div>
-</p>
-<h2 id="another-heading">Another Heading</h2>
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">5.3 - WebRTC-Observer Evaluators Configurations</h1>
+    <div class="lead">Description of WebRTC-Observer Evaluator configurations</div>
+	<p>TODO: make a description of the configuration parameters for the evalutors parameters in the application yaml</p>
 
 </div>
 
@@ -3268,16 +929,9 @@ bar := &quot;foo&quot;;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">7 - Contribution Guidelines</h1>
-    <div class="lead">How to contribute to the docs</div>
-	
-
-<div class="pageinfo pageinfo-primary">
-<p>These basic sample guidelines to contribute to ObserveRTC.</p>
-
-</div>
-
-<h2 id="developing-services">Developing Services</h2>
+	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">6 - Contribution Guidelines</h1>
+    <div class="lead">How to contribute in ObserveRTC</div>
+	<h2 id="developing-services">Developing Services</h2>
 <p>Our services are open-source, hence you are
 very welcome to contribute any of it you wish to improve.
 You can follow the readme in the corresponding projects

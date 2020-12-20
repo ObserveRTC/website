@@ -16,7 +16,7 @@ it makes by analyzing the streams.
 
 Monitoring RTC applications is separated into two parts: Sampling, and Analyzing. 
 Sampling a WebRTC Calls we collect information from client side provided 
-by the browser or integrated video platforms (see different integrations)
+by the browser or integrated video platforms
 
 ### Components
 **WebExtrApp** is a development toolkit for WebRTC Monitoring integrations.

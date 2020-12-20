@@ -9,26 +9,17 @@
   
   <url>
     <loc>/docs/references/peer-connection-sample/</loc>
+    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tasks/beds/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/tasks/ponycopters/configuring-ponycopters/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
+    <loc>/docs/references/reports/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/overview/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/tasks/ponycopters/launching-ponycopters/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
+    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
   </url>
   
   <url>
@@ -37,28 +28,23 @@
   </url>
   
   <url>
-    <loc>/docs/tutorials/multi-bear/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
+    <loc>/docs/tutorials/tokbox-integration/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tasks/porridge/</loc>
-    <lastmod>2020-04-14T23:10:00+02:00</lastmod>
+    <loc>/docs/tutorials/webrtc-observer-docker/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tasks/task/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
+    <loc>/docs/tutorials/webrtc-observer-helm/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/tutorial2/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/tasks/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <loc>/docs/tutorials/jitsi-integration/</loc>
+    <lastmod>2017-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -83,7 +69,7 @@
   
   <url>
     <loc>/docs/contribution-guidelines/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <lastmod>2020-12-20T13:46:00+02:00</lastmod>
   </url>
   
   <url>
@@ -94,16 +80,6 @@
   <url>
     <loc>/blog/2020/12/12/webrtc-observer/</loc>
     <lastmod>2020-12-20T13:09:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/references/parameter-reference/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/tasks/ponycopters/</loc>
-    <lastmod>2020-07-14T11:38:09+02:00</lastmod>
   </url>
   
   <url>
@@ -124,6 +100,10 @@
   <url>
     <loc>/search/</loc>
     <lastmod>2018-09-04T11:36:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/references/webrtc-evaluator-reference/</loc>
   </url>
   
 </urlset>
