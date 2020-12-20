@@ -1,12 +1,29 @@
 ## ObserveRTC website
 
-### Edit the website
+### Edit the website Online
 
 1. Change the content you want to change through a pull request.
    
 2. If your pull request is approved then wait a bit until an administrator rebuilds the public directory
-   (For administrators: `hugo -d docs`)
+   (For administrators: `./update.sh`)
+   
 3. After the public directory is rebuild your changes are visible in the webpage.
+
+## Edit the website Offline:
+
+Prerequisite: 
+
+1. Install hugo (`brew hugo`)
+
+2. Clone the repository
+
+3. `hugo serve`
+
+4. Edit
+
+5. If you finished, create a PR contains your changes
+
+6. An administrator can run the `./update.sh`
 
 ### Running a container locally
 
