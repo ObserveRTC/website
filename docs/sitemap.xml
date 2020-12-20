@@ -83,6 +83,11 @@
   </url>
   
   <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/community/</loc>
     <lastmod>2018-10-05T14:41:45+01:00</lastmod>
   </url>
@@ -90,11 +95,6 @@
   <url>
     <loc>/</loc>
     <lastmod>2020-12-20T13:09:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
   </url>
   
   <url>
