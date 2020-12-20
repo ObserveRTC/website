@@ -74,16 +74,6 @@
 				
 				
 				
-				<a  class="nav-link" href="/blog/" ><span>Blog</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
 				<a  class="nav-link" href="/community/" ><span>Community</span></a>
 			</li>
 			
@@ -246,7 +236,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-7833d2da09956a79f9601ff906282516">Reference</a></li>
+<li>5: <a href="#pg-464c1dcce1bc05b5e6ccb4b4edf7967c">Releases</a></li>
 
 
     
@@ -261,7 +251,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5.1: <a href="#pg-5dd46e981cb724b5ace4deb653ee8a57">Peer Connection Sample Schema</a></li>
+<li>5.1: <a href="#pg-b8aaecd6471c3af39303c8886c4a927a">WebExtrApp</a></li>
 
 
     
@@ -269,15 +259,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5.2: <a href="#pg-30b0e23cd373de5650de0282ba18d659">Reports Schema</a></li>
-
-
-    
-  
-    
-    
-	
-<li>5.3: <a href="#pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">WebRTC-Observer Evaluators Configurations</a></li>
+<li>5.2: <a href="#pg-79cfbfb0e3b44bf29a3a8e99e6a78a98">WebRTC-Observer</a></li>
 
 
     
@@ -289,7 +271,50 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
+<li>6: <a href="#pg-7833d2da09956a79f9601ff906282516">Reference</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>6.1: <a href="#pg-5dd46e981cb724b5ace4deb653ee8a57">Peer Connection Sample Schema</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6.2: <a href="#pg-30b0e23cd373de5650de0282ba18d659">Reports Schema</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6.3: <a href="#pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">WebRTC-Observer Evaluators Configurations</a></li>
+
+
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
 
 
     
@@ -805,7 +830,91 @@ This is usually located under <code>/etc/jitsi/meet</code> in the Debian install
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7833d2da09956a79f9601ff906282516">5 - Reference</h1>
+	<h1 id="pg-464c1dcce1bc05b5e6ccb4b4edf7967c">5 - Releases</h1>
+    <div class="lead">Low level reference docs for your project.</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-b8aaecd6471c3af39303c8886c4a927a">5.1 - WebExtrApp</h1>
+    <div class="lead">New releases of WebExtrApp will be announced here</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-79cfbfb0e3b44bf29a3a8e99e6a78a98">5.2 - WebRTC-Observer</h1>
+    <div class="lead">New releases of WebRTC-Observer will be announced here</div>
+	<p>The actual version we are working on right now is <code>0.6</code>.
+The expected release day of this version is 2020-12.</p>
+<h2 id="version-06-alpha">Version 0.6-alpha</h2>
+<ul>
+<li>Uses Hazelcast instead of MySQL</li>
+<li>Added Prometheus management endpoint</li>
+<li>Added health- and error indicator for monitoring purposes</li>
+</ul>
+<h2 id="version-05">Version 0.5</h2>
+<p>Released in: 2020-10</p>
+<ul>
+<li>Applied a new schema for peer connection samples, and for reports</li>
+<li>Started using RXJava3 for internal processing</li>
+<li>Using only one topics in Kafka (the reports), instead a previously used 3.</li>
+</ul>
+<h2 id="version-03">Version 0.3</h2>
+<p>Released in : 2020-07</p>
+<ul>
+<li>The first version we started using to collect and analyze samples
+for WebRTC calls</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7833d2da09956a79f9601ff906282516">6 - Reference</h1>
     <div class="lead">Low level reference docs for your project.</div>
 	
 
@@ -839,7 +948,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-5dd46e981cb724b5ace4deb653ee8a57">5.1 - Peer Connection Sample Schema</h1>
+	<h1 id="pg-5dd46e981cb724b5ace4deb653ee8a57">6.1 - Peer Connection Sample Schema</h1>
     <div class="lead">Describe the Peer Connection Sample schema</div>
 	
 <div id="ohpen_swagger_ui"></div>
@@ -879,7 +988,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-30b0e23cd373de5650de0282ba18d659">5.2 - Reports Schema</h1>
+	<h1 id="pg-30b0e23cd373de5650de0282ba18d659">6.2 - Reports Schema</h1>
     <div class="lead">Describe the Report schema</div>
 	
 </div>
@@ -896,7 +1005,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">5.3 - WebRTC-Observer Evaluators Configurations</h1>
+	<h1 id="pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">6.3 - WebRTC-Observer Evaluators Configurations</h1>
     <div class="lead">Description of WebRTC-Observer Evaluator configurations</div>
 	<p>TODO: make a description of the configuration parameters for the evalutors parameters in the application yaml</p>
 
@@ -918,7 +1027,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">6 - Contribution Guidelines</h1>
+	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">7 - Contribution Guidelines</h1>
     <div class="lead">How to contribute in ObserveRTC</div>
 	<h2 id="developing-services">Developing Services</h2>
 <p>Our services are open-source, hence you are

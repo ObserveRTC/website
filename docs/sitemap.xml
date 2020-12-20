@@ -53,6 +53,11 @@
   </url>
   
   <url>
+    <loc>/docs/releases/</loc>
+    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/references/</loc>
     <lastmod>2020-12-20T13:09:55+02:00</lastmod>
   </url>
@@ -63,28 +68,18 @@
   </url>
   
   <url>
-    <loc>/blog/releases/</loc>
-    <lastmod>2018-09-04T11:36:40+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/docs/contribution-guidelines/</loc>
     <lastmod>2020-12-20T14:56:57+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2020/12/12/webextrapp/</loc>
-    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
+    <loc>/docs/releases/release-webextrapp/</loc>
+    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2020/12/12/webrtc-observer/</loc>
-    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2020-12-20T15:06:28+02:00</lastmod>
+    <loc>/docs/releases/release-webrtc-observer/</loc>
+    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
