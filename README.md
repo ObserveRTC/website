@@ -5,7 +5,7 @@
 1. Change the content you want to change through a pull request.
    
 2. If your pull request is approved then wait a bit until an administrator rebuilds the public directory
-   
+   (For administrators: `hugo -d docs`)
 3. After the public directory is rebuild your changes are visible in the webpage.
 
 ### Running a container locally
