@@ -4,7 +4,7 @@ linkTitle: "About"
 weight: 1
 Date: 2020-12-20
 description: >
-    About the project
+    About ObserveRTC
 ---
 
 Making analytical tools for Real Time Communication is fun!
@@ -16,9 +16,9 @@ Here is, how ObserveRTC comes into the picture.
 In ObserveRTC, we develop open-source tools for everyone 
 in order to make development for RTC fun and easy. 
 
-# Actual Projects
+## Actual Projects
 
-## WebRTC
+### WebRTC
 
 Web Real-time communication (WebRTC) 
 has been emerged over the last couple of years, and the 
