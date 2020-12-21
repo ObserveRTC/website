@@ -15,7 +15,15 @@ Prerequisite:
 
 1. Install hugo (`brew hugo`)
 
-2. Clone the repository
+2. Clone the repository and install prerequisite
+
+```shell
+  git clone --recurse-submodules --depth 2 https://github.com/ObserveRTC/website/
+  cd website
+  npm install
+```
+Note: The site uses docsy, and therefore we need to recursively pull the corresponding repositories too.
+More info: [https://themes.gohugo.io/docsy/](https://themes.gohugo.io/docsy/)
 
 3. `hugo serve`
 

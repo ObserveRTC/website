@@ -1,0 +1,1695 @@
+{
+  "definitions" : {
+    "record:org.observertc.webrtc.schemas.reports.Report" : {
+      "type" : "object",
+      "required" : [ "serviceUUID", "serviceName", "marker", "timestamp", "payload", "type" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "serviceUUID" : {
+          "type" : "string"
+        },
+        "serviceName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "marker" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "minimum" : -9223372036854775808,
+          "maximum" : 9223372036854775807
+        },
+        "payload" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.Track"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError"
+          }, {
+            "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport"
+          } ]
+        },
+        "type" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType"
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.InitiatedCall" : {
+      "type" : "object",
+      "required" : [ "callUUID", "callName" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "callUUID" : {
+          "type" : "string"
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.FinishedCall" : {
+      "type" : "object",
+      "required" : [ "callUUID", "callName" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "callUUID" : {
+          "type" : "string"
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callUUID", "callName", "userId", "browserId", "peerConnectionUUID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callUUID" : {
+          "type" : "string"
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callUUID", "callName", "userId", "browserId", "peerConnectionUUID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callUUID" : {
+          "type" : "string"
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.InboundRTP" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "bytesReceived", "codecId", "decoderImplementation", "estimatedPlayoutTimestamp", "fecPacketsDiscarded", "fecPacketsReceived", "firCount", "framesDecoded", "headerBytesReceived", "id", "isRemote", "jitter", "keyFramesDecoded", "lastPacketReceivedTimestamp", "mediaType", "nackCount", "packetsLost", "packetsReceived", "pliCount", "qpSum", "totalDecodeTime", "totalInterFrameDelay", "totalSquaredInterFrameDelay", "trackId", "transportId" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "ssrc" : {
+          "type" : "integer",
+          "minimum" : -9223372036854775808,
+          "maximum" : 9223372036854775807
+        },
+        "bytesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "codecId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "decoderImplementation" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "estimatedPlayoutTimestamp" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "fecPacketsDiscarded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "fecPacketsReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "firCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "framesDecoded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "headerBytesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "id" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "isRemote" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "jitter" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "keyFramesDecoded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "lastPacketReceivedTimestamp" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "mediaType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType"
+        },
+        "nackCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "packetsLost" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "packetsReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "pliCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "qpSum" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "totalDecodeTime" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "totalInterFrameDelay" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "totalSquaredInterFrameDelay" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "trackId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "transportId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.MediaType" : {
+      "enum" : [ "AUDIO", "VIDEO", "UNKNOWN", "NULL" ]
+    },
+    "record:org.observertc.webrtc.schemas.reports.OutboundRTP" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "bytesSent", "codecID", "encoderImplementation", "firCount", "framesEncoded", "headerBytesSent", "id", "isRemote", "keyFramesEncoded", "mediaSourceID", "mediaType", "nackCount", "packetsSent", "pliCount", "qpSum", "qualityLimitationReason", "qualityLimitationResolutionChanges", "remoteID", "retransmittedBytesSent", "retransmittedPacketsSent", "totalEncodedBytesTarget", "totalEncodeTime", "totalPacketSendDelay", "trackID", "transportID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "ssrc" : {
+          "type" : "integer",
+          "minimum" : -9223372036854775808,
+          "maximum" : 9223372036854775807
+        },
+        "bytesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "codecID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "encoderImplementation" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "firCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "framesEncoded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "headerBytesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "id" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "isRemote" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "keyFramesEncoded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "mediaSourceID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "mediaType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType"
+        },
+        "nackCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "packetsSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "pliCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "qpSum" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "qualityLimitationReason" : {
+          "default" : "unknown",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason"
+        },
+        "qualityLimitationResolutionChanges" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "remoteID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "retransmittedBytesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "retransmittedPacketsSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "totalEncodedBytesTarget" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "totalEncodeTime" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "totalPacketSendDelay" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "trackID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "transportID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason" : {
+      "enum" : [ "BANDWIDTH", "CPU", "NONE", "OTHER", "UNKNOWN", "NULL" ]
+    },
+    "record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "codecID", "id", "jitter", "localID", "mediaType", "packetsLost", "roundTripTime", "transportID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "ssrc" : {
+          "type" : "integer",
+          "minimum" : -9223372036854775808,
+          "maximum" : 9223372036854775807
+        },
+        "codecID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "id" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "jitter" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "localID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "mediaType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType"
+        },
+        "packetsLost" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "roundTripTime" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "transportID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.ICECandidatePair" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidatePairId", "availableOutgoingBitrate", "bytesReceived", "bytesSent", "consentRequestsSent", "currentRoundTripTime", "localCandidateID", "nominated", "priority", "remoteCandidateID", "requestsReceived", "requestsSent", "responsesReceived", "responsesSent", "state", "totalRoundTripTime", "transportID", "writable" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "candidatePairId" : {
+          "type" : "string"
+        },
+        "availableOutgoingBitrate" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "bytesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "bytesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "consentRequestsSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "currentRoundTripTime" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "localCandidateID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "nominated" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "priority" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "remoteCandidateID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "requestsReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "requestsSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "responsesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "responsesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "state" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.ICEState"
+        },
+        "totalRoundTripTime" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "transportID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "writable" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.ICEState" : {
+      "enum" : [ "FAILED", "FROZEN", "IN_PROGRESS", "SUCCEEDED", "WAITING", "UNKNOWN", "NULL" ]
+    },
+    "record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidateId", "candidateType", "deleted", "ipLSH", "isRemote", "port", "priority", "protocol", "transportID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "candidateId" : {
+          "type" : "string"
+        },
+        "candidateType" : {
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType"
+        },
+        "deleted" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "ipLSH" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "isRemote" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "port" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "priority" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "protocol" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol"
+        },
+        "transportID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.CandidateType" : {
+      "enum" : [ "HOST", "PRFLX", "RELAY", "SRFLX", "UNKNOWN", "NULL" ]
+    },
+    "enum:org.observertc.webrtc.schemas.reports.TransportProtocol" : {
+      "enum" : [ "UDP", "TCP", "UNKNOWN", "NULL" ]
+    },
+    "record:org.observertc.webrtc.schemas.reports.ICELocalCandidate" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidateId", "candidateType", "deleted", "ipLSH", "isRemote", "networkType", "port", "protocol", "priority", "transportID" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "candidateId" : {
+          "type" : "string"
+        },
+        "candidateType" : {
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType"
+        },
+        "deleted" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "ipLSH" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "isRemote" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "networkType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.NetworkType"
+        },
+        "port" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "protocol" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol"
+        },
+        "priority" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -9223372036854775808,
+            "maximum" : 9223372036854775807
+          } ]
+        },
+        "transportID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.NetworkType" : {
+      "enum" : [ "BLUETOOTH", "CELLULAR", "ETHERNET", "UNKNOWN", "VPN", "WIFI", "WIMAX", "NULL" ]
+    },
+    "record:org.observertc.webrtc.schemas.reports.Track" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "trackId", "concealedSamples", "concealmentEvents", "detached", "ended", "framesDecoded", "framesDropped", "framesSent", "framesReceived", "hugeFramesSent", "insertedSamplesForDeceleration", "jitterBufferDelay", "jitterBufferEmittedCount", "mediaSourceID", "mediaType", "remoteSource", "removedSamplesForAcceleration", "samplesDuration", "silentConcealedSamples", "totalSamplesReceived" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "trackId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "concealedSamples" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "concealmentEvents" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "detached" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "ended" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "framesDecoded" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "framesDropped" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "framesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "framesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "hugeFramesSent" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "insertedSamplesForDeceleration" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "jitterBufferDelay" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "jitterBufferEmittedCount" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "mediaSourceID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "mediaType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType"
+        },
+        "remoteSource" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "boolean"
+          } ]
+        },
+        "removedSamplesForAcceleration" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "samplesDuration" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "silentConcealedSamples" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        },
+        "totalSamplesReceived" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "integer",
+            "minimum" : -2147483648,
+            "maximum" : 2147483647
+          } ]
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.MediaSource" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "mediaSourceId", "audioLevel", "framesPerSecond", "height", "width", "mediaType", "totalAudioEnergy", "totalSamplesDuration", "trackId" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "mediaSourceId" : {
+          "type" : "string"
+        },
+        "audioLevel" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "framesPerSecond" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "height" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "width" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "mediaType" : {
+          "default" : "UNKNOWN",
+          "$ref" : "#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType"
+        },
+        "totalAudioEnergy" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "totalSamplesDuration" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "number"
+          } ]
+        },
+        "trackId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.UserMediaError" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "message" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "record:org.observertc.webrtc.schemas.reports.ExtensionReport" : {
+      "type" : "object",
+      "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "extensionType", "payload" ],
+      "additionalProperties" : false,
+      "properties" : {
+        "mediaUnitId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "callName" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "userId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "browserId" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "peerConnectionUUID" : {
+          "type" : "string"
+        },
+        "extensionType" : {
+          "default" : null,
+          "oneOf" : [ {
+            "type" : "null"
+          }, {
+            "type" : "string"
+          } ]
+        },
+        "payload" : {
+          "type" : "string"
+        }
+      }
+    },
+    "enum:org.observertc.webrtc.schemas.reports.ReportType" : {
+      "enum" : [ "UNKNOWN", "INITIATED_CALL", "FINISHED_CALL", "JOINED_PEER_CONNECTION", "DETACHED_PEER_CONNECTION", "INBOUND_RTP", "REMOTE_INBOUND_RTP", "OUTBOUND_RTP", "MEDIA_SOURCE", "TRACK", "ICE_CANDIDATE_PAIR", "ICE_REMOTE_CANDIDATE", "ICE_LOCAL_CANDIDATE", "USER_MEDIA_ERROR", "EXTENSION" ]
+    }
+  },
+  "$ref" : "#/definitions/record:org.observertc.webrtc.schemas.reports.Report"
+}

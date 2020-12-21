@@ -1,9 +1,25 @@
----
-title: "Peer Connection Sample Schema"
-type: swagger
-weight: 1
-description: Describe the Peer Connection Sample schema
----
+# Schema Provider for ObserveRTC
+This service is to provide descriptions for schemas microservices in ObserveRTC uses.
+
+## Version: 0.1
+
+**License:** [Apache 2.0](https://schemas.observertc.org)
+
+### /peerconnectionsamples/v20200114
+
+#### GET
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | getPcSample20200114 200 response |
+
+### Models
 
 #### PeerConnectionSampleV20200114.ICECandidatePair
 
@@ -270,6 +286,3 @@ The Peer Connection Sample provided by the WebExtrApp, version 20200114
 | extensions | [ object ] | Custom defined measurements attached to peer connection sample | No |
 | userMediaErrors | [ object ] | Custom defined measurements attached to peer connection sample | No |
 | marker | string | A custom defined string all report will be marked with. | No |
-
-
-[comment]: <> ({{< swaggerui src="/peer-connection-sample-openapi.yml" >}})
