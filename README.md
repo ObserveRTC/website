@@ -13,7 +13,7 @@
 
 Prerequisite: 
 
-1. Install hugo (`brew hugo`)
+1. Install hugo (`brew install hugo`)
 
 2. Clone the repository and install prerequisite
 
