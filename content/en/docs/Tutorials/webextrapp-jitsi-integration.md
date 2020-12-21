@@ -1,6 +1,6 @@
 ---
-title: "Another Tutorial"
-date: 2017-01-05
+title: "WebExtrApp Jitsi Integration"
+date: 2020-12-21
 weight: 5
 description: >
   A detailed description of the jitsi integration for WebExtrApp

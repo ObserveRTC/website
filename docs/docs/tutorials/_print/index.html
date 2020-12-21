@@ -131,7 +131,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-7d64aa58faaa0eaf2c26d4f81cca8a78">WebExtrApp TokBox Integration</a></li>
+<li>1: <a href="#pg-74d0b299e148c4afa7d7c5d74665d3df">WebExtrApp TokBox Integration</a></li>
 
 
     
@@ -139,7 +139,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-eab2c4a019bc86daf8647b103493e9b2">WebRTC-Observer Docker Deployments</a></li>
+<li>2: <a href="#pg-5f6dc4cb761d9ae1b5ed3e6f014abdc2">WebExtrApp Jitsi Integration</a></li>
 
 
     
@@ -147,7 +147,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-72ade4fbea8cb557127b2cf4be946772">WebRTC-Observer Helm Deployment</a></li>
+<li>3: <a href="#pg-eab2c4a019bc86daf8647b103493e9b2">WebRTC-Observer Docker Deployments</a></li>
 
 
     
@@ -155,7 +155,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-a94a3b6f1d977ec6af8365c079e94342">Another Tutorial</a></li>
+<li>4: <a href="#pg-72ade4fbea8cb557127b2cf4be946772">WebRTC-Observer Helm Deployment</a></li>
 
 
     
@@ -166,14 +166,6 @@ This the multi-page printable view of this section.
 
 <div class="content">
       
-
-<div class="pageinfo pageinfo-primary">
-<p>This is a placeholder page that shows you how to use this template site.</p>
-
-</div>
-
-<p>Tutorials are <strong>complete worked examples</strong> made up of <strong>multiple tasks</strong> that guide the user through a relatively simple but realistic scenario: building an application that uses some of your project’s features, for example. If you have already created some Examples for your project you can base Tutorials on them. This section is <strong>optional</strong>. However, remember that although you may not need this section at first, having tutorials can be useful to help your users engage with your example code, especially if there are aspects that need more explanation than you can easily provide in code comments.</p>
-
 </div>
 </div>
 
@@ -192,9 +184,9 @@ This the multi-page printable view of this section.
 	
     
 
-<div class="td-content" style="page-break-before: always">
+<div class="td-content" style="">
     
-	<h1 id="pg-7d64aa58faaa0eaf2c26d4f81cca8a78">1 - WebExtrApp TokBox Integration</h1>
+	<h1 id="pg-74d0b299e148c4afa7d7c5d74665d3df">1 - WebExtrApp TokBox Integration</h1>
     <div class="lead">Detailed Tokbox integration of WebRTCExtrApp</div>
 	<p>Please clone the <a href="https://github.com/ObserveRTC/integrations">integrations</a> repository for this tutorial.</p>
 <p>Currently we do not have a method for configuring <code>observer.js</code> outside of a custom build.
@@ -291,41 +283,7 @@ You will need to build the package yourself.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-eab2c4a019bc86daf8647b103493e9b2">2 - WebRTC-Observer Docker Deployments</h1>
-    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
-	
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-72ade4fbea8cb557127b2cf4be946772">3 - WebRTC-Observer Helm Deployment</h1>
-    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
-	
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-a94a3b6f1d977ec6af8365c079e94342">4 - Another Tutorial</h1>
+	<h1 id="pg-5f6dc4cb761d9ae1b5ed3e6f014abdc2">2 - WebExtrApp Jitsi Integration</h1>
     <div class="lead">A detailed description of the jitsi integration for WebExtrApp</div>
 	<p>Please clone the <a href="https://github.com/ObserveRTC/integrations">integrations</a> repository for this tutorial.</p>
 <h4 id="build-library-with-proper-configuration-parameter--optional-">Build library with proper configuration parameter ( optional )</h4>
@@ -415,6 +373,74 @@ This is usually located under <code>/etc/jitsi/meet</code> in the Debian install
 &lt;/html&gt;
 
 </code></pre><p>Reload the Jitsi Meet page from browser to apply changes. Jitsi Meet now integrated.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-eab2c4a019bc86daf8647b103493e9b2">3 - WebRTC-Observer Docker Deployments</h1>
+    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-72ade4fbea8cb557127b2cf4be946772">4 - WebRTC-Observer Helm Deployment</h1>
+    <div class="lead">A detailed description of the docker deployments for the WebRTC-Observer service.</div>
+	<p>Deploying ObserveRTC applications as Helm Charts is
+the easiest way to get started with our applications on Kubernetes.
+Our application containers and charts are continuously
+updated when new versions are made available.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<p>To install observer through helm you need to make sure you
+have <a href="https://helm.sh">helm</a> installed, and the kubectl is
+configured into the right context.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Add the observertc helm repository to your local repos.</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  helm repo add observertc https://observertc.github.io/helm/
+</code></pre></div><ol start="2">
+<li>Verify that observertc is added by typing <code>helm search repo observertc</code>.
+You should see something like this:</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NAME                            CHART VERSION   APP VERSION     DESCRIPTION                                       
+observertc/webrtc-observer      0.6.2           0.6-alpha       A microservice to
+</code></pre></div><p>You probably need to configure the observer, so take a chance
+and define your own <code>values.yaml</code> based on the <a href="https://github.com/ObserveRTC/helm/blob/main/webrtc-observer/values.yaml">default one</a>.</p>
+<ol start="3">
+<li>Install</li>
+</ol>
+<p>If you saved your configuration into <code>values.yaml</code>, then:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  helm install my-release -f values.yaml observertc/webrtc-observer
+</code></pre></div><h2 id="uninstall">Uninstall</h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm delete --purge my-release
+</code></pre></div><h2 id="referneces">Referneces</h2>
+<ul>
+<li><a href="https://helm.sh">Helm</a></li>
+<li><a href="https://github.com/ObserveRTC/helm">ObserveRTC Helm repository</a></li>
+</ul>
 
 </div>
 

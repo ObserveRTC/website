@@ -28,8 +28,13 @@
   </url>
   
   <url>
-    <loc>/docs/tutorials/tokbox-integration/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <loc>/docs/tutorials/webextrapp-tokbox-integration/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/tutorials/webextrapp-jitsi-integration/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,23 +48,18 @@
   </url>
   
   <url>
-    <loc>/docs/tutorials/jitsi-integration/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/docs/tutorials/</loc>
     <lastmod>2019-04-15T16:07:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/releases/</loc>
-    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
+    <loc>/docs/references/</loc>
+    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/references/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <loc>/docs/releases/</loc>
+    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
   </url>
   
   <url>
@@ -74,12 +74,12 @@
   
   <url>
     <loc>/docs/releases/release-webextrapp/</loc>
-    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/releases/release-webrtc-observer/</loc>
-    <lastmod>2020-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
   </url>
   
   <url>
