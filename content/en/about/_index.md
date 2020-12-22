@@ -1,7 +1,14 @@
+
 ---
 title: "Intro to ObserveRTC"
 linkTitle: "Intro to ObserveRTC"
-weight: 20
+
+cascade:
+- type: "docs"
+  _target:
+  path: "/**"
+
+weight: 1
 menu:
   main:
     weight: 2
