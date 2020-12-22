@@ -434,6 +434,8 @@
 
 
 
+
+
           </div>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             
@@ -469,6 +471,33 @@
         <div class="lead">ObserveRTC is an open source initiative aimed to provide tools to collect, intrepret, and visualize RTC metrics in real-time.</div>
 	
 	
+
+
+
+
+
+
+<div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 583px">
+	<img class="card-img-top" src="/docs/overview/observertc-overview_hube34b2f4c3c47d1deb70507405e551e7_89619_640x480_fit_catmullrom_2.png" width="573" height="480">
+	
+	<div class="card-body px-0 pt-2 pb-0">
+		<p class="card-text">
+A schematical overview showing our integration and observer to monitor WebRTC applications. 
+</p>
+	</div>
+	
+</div>
+<p><em>All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.</em></p>
+<h3 id="components">Components</h3>
+<p>Monitoring RTC applications is separated into three parts: Collection, Intrepretation, and Visualization.</p>
+<h4 id="stats-collection">Stats Collection</h4>
+<p><strong>WebExtrApp</strong> is a client-side development toolkit for WebRTC Monitoring integrations. The core functionality is to extract stats related to every peer connection in a webrtc call, unify the extracted stats and send it as a sample (PeerConnectionSample) for the WebRTC-Observer.</p>
+<h4 id="stats-intrepretation">Stats Intrepretation</h4>
+<p><strong>WebRTC-Observer</strong> is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the <a href="https://www.micronaut.io/">Micronaut</a>framework. We use <a href="https://hazelcast.org">Hazelcast</a> as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use <a href="https://kafka.apache.org/">Kafka</a> to forward.</p>
+<h4 id="schemas">Schemas</h4>
+<p><strong>PeerConnectionSample</strong> describes and holds each stats from a peer connection to describe the state. All integration of WebExtrApp reports the same unified PeerConnectionSample schema to the observer.</p>
+<p><strong>Report</strong> is an observation from the WebRTC-Observer based on the received sample. There are different types of reports that can be created and forwarded to a kafka broker.</p>
+
         <div class="section-index">
     
     
