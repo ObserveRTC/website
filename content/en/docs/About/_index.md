@@ -7,32 +7,21 @@ description: >
     About ObserveRTC
 ---
 
-Making analytical tools for Real Time Communication is fun!
-However it is challenging. You need to consider strict time 
-limitations to avoid influencing the stream, and
-you need to integrate as many services as you can to report to 
-one monitor. 
-Here is, how ObserveRTC comes into the picture.
-In ObserveRTC, we develop open-source tools for everyone 
-in order to make development for RTC fun and easy. 
+Making analytical tools for Real Time Communication (RTC) is fun! However it is challenging. You need to consider strict time limitations of real-time streams, and tightly integrate services that can report to your monitoring solutions with micro second accuracy. 
 
-## Actual Projects
+Here is how ObserveRTC comes into the picture. We make RTC development fun and easy using open-source tools. ObserveRTC aims to provide client side integrations, infrastructure and monitoring tools to observe and analyse WebRTC applications.
 
-### WebRTC
+### What is WebRTC?
 
-Web Real-time communication (WebRTC) 
-has been emerged over the last couple of years, and the 
-wide-scale deployment of real-time multimedia communications 
-on the Internet encouraged the industry to massively use 
-WebRTC application as part of their infrastructure. 
-However, monitoring these solutions becomes critical. 
+"With WebRTC, you can add real-time communication capabilities to your application that works on top of an open standard. It supports video, voice, and generic data to be sent between peers, allowing developers to build powerful voice- and video-communication solutions. The technology is available on all modern browsers as well as on native clients for all major platforms" - quote from https://webrtc.org/
 
-ObserveRTC is aim to provide integrations and monitoring tools 
-to observe and analyse WebRTC applications.
+### ObserveRTC for WebRTC
 
 For WebRTC we are working on the following services:
 
- * [WebRTC-Observer](https://github.com/ObserveRTC/webrtc-observer) Observer for WebRTC peer connections
- * [WebExtrApp](https://github.com/ObserveRTC/webextrapp) A client library makes WebRTC platform provided stats observable
- * [WebExtrApp-Integrations](https://github.com/ObserveRTC/integrations) Various integrations for different video platforms providing [WebRTCStats](https://www.w3.org/TR/webrtc-stats/).
+ * [WebExtrApp](https://github.com/ObserveRTC/webextrapp) A client library that collects WebRTC platform provided stats.
+
+ * [WebRTC-Observer](https://github.com/ObserveRTC/webrtc-observer) An infrastrcutre for observing your WebRTC deployments. 
+ 
+ * [WebExtrApp-Integrations](https://github.com/ObserveRTC/integrations) Various platform integrations for different video platforms providing [WebRTCStats](https://www.w3.org/TR/webrtc-stats/).
 
