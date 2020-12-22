@@ -18,68 +18,118 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PeerConnectionSampleV20200114'
+                $ref: '#/components/schemas/PeerConnectionSample'
 components:
   schemas:
+    PeerConnectionSampleV20200114.ICEState:
+      type: string
+      description: Map the value of https://tools.ietf.org/html/rfc8445#section-6.1.2.6.
+      enum:
+        - FAILED
+        - FROZEN
+        - IN_PROGRESS
+        - SUCCEEDED
+        - WAITING
+        - UNKNOWN
     PeerConnectionSampleV20200114.ICECandidatePair:
       type: object
       properties:
         availableOutgoingBitrate:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate
           format: int32
         bytesReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived
           format: int64
         bytesSent:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent
           format: int64
         consentRequestsSent:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent
           format: int32
         currentRoundTripTime:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime
           format: double
         id:
+          required:
+            - "true"
           type: string
+          description: Identifying the candidate pair in a map
         localCandidateId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid
         nominated:
           type: boolean
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated
         priority:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid
           format: int64
         remoteCandidateId:
           type: string
+          description: The priority of the candidate pair
         requestsReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived
           format: int32
         requestsSent:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent
           format: int32
         responsesReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived
           format: int32
         responsesSent:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent
           format: int32
         state:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.ICEState'
         totalRoundTripTime:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId
           format: double
         transportId:
           type: string
+          description: The identifier of the transport stats belongs to this ICE candidate
+            pair
         writable:
           type: boolean
-    PeerConnectionSampleV20200114.ICEState:
+      description: Represents the https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair
+    PeerConnectionSampleV20200114.CandidateType:
       type: string
+      description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype
       enum:
-      - FAILED
-      - FROZEN
-      - IN_PROGRESS
-      - SUCCEEDED
-      - WAITING
-      - UNKNOWN
+        - HOST
+        - PRFLX
+        - RELAY
+        - SRFLX
+        - UNKNOWN
+    PeerConnectionSampleV20200114.NetworkType:
+      type: string
+      description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype
+      enum:
+        - BLUETOOTH
+        - CELLULAR
+        - ETHERNET
+        - UNKNOWN
+        - VPN
+        - WIFI
+        - WIMAX
+    PeerConnectionSampleV20200114.InternetProtocol:
+      type: string
+      description: "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol\
+        \ and extended by the value of UNKNOWN, for unrecognized or null values from\
+        \ client side"
+      enum:
+        - TCP
+        - UDP
+        - UNKNOWN
     PeerConnectionSampleV20200114.ICELocalCandidate:
       type: object
       properties:
@@ -87,48 +137,34 @@ components:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.CandidateType'
         deleted:
           type: boolean
+          description: Indicates if the candidate has been deleted locally or not
         id:
+          required:
+            - "true"
           type: string
+          description: The id of the candidate used inside of the client
         ip:
           type: string
+          description: The IP address of the candidate
         isRemote:
           type: boolean
+          description: Indicates if the candidate is a remote candidate or not
         networkType:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.NetworkType'
         port:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port
           format: int32
         priority:
           type: integer
+          description: The Priority of the candidate
           format: int64
         protocol:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.InternetProtocol'
         transportId:
           type: string
-    PeerConnectionSampleV20200114.CandidateType:
-      type: string
-      enum:
-      - HOST
-      - PRFLX
-      - RELAY
-      - SRFLX
-      - UNKNOWN
-    PeerConnectionSampleV20200114.NetworkType:
-      type: string
-      enum:
-      - BLUETOOTH
-      - CELLULAR
-      - ETHERNET
-      - UNKNOWN
-      - VPN
-      - WIFI
-      - WIMAX
-    PeerConnectionSampleV20200114.InternetProtocol:
-      type: string
-      enum:
-      - TCP
-      - UDP
-      - UNKNOWN
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid
+      description: Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate
     PeerConnectionSampleV20200114.ICERemoteCandidate:
       type: object
       properties:
@@ -137,154 +173,210 @@ components:
         deleted:
           type: boolean
         id:
+          required:
+            - "true"
           type: string
+          description: The id of the candidate used inside of the client
         ip:
           type: string
+          description: The IP address of the candidate
         isRemote:
           type: boolean
+          description: Indicates if the candidate is a remote candidate or not
         port:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port
           format: int32
         priority:
           type: integer
+          description: The priority of the candidate
           format: int64
         protocol:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.InternetProtocol'
         transportId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid
+      description: Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate
     PeerConnectionSampleV20200114.ICEStats:
       type: object
       properties:
         candidatePairs:
           type: array
+          description: An array of ICE candidate pairs
           items:
             $ref: '#/components/schemas/PeerConnectionSampleV20200114.ICECandidatePair'
         localCandidates:
           type: array
+          description: An array of Local ICE candidates
           items:
             $ref: '#/components/schemas/PeerConnectionSampleV20200114.ICELocalCandidate'
         remoteCandidates:
           type: array
+          description: An array of remote ICE candidates
           items:
             $ref: '#/components/schemas/PeerConnectionSampleV20200114.ICERemoteCandidate'
       description: Measurement to describe the state of the Interactive Connectivity
         Establishment (ICE)
+    PeerConnectionSampleV20200114.RTCStreamMediaType:
+      type: string
+      description: "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind\
+        \ and extended by the value of UNKNOWN, for unrecognized or null values from\
+        \ client side"
+      enum:
+        - AUDIO
+        - VIDEO
+        - UNKNOWN
     PeerConnectionSampleV20200114.InboundRTPStreamStats:
       type: object
       properties:
         bytesReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived
           format: int64
         codecId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid
         decoderImplementation:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
         estimatedPlayoutTimestamp:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp
           format: double
         fecPacketsDiscarded:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded
           format: int32
         fecPacketsReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived
           format: int32
         firCount:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount
           format: int32
         framesDecoded:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded
           format: int32
         headerBytesReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived
           format: int64
         id:
+          required:
+            - "true"
           type: string
+          description: The id of the InboundRTP the client use in its dictionary
         isRemote:
           type: boolean
+          description: Indicates if the report belongs to a remote participant
         jitter:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter
           format: double
         keyFramesDecoded:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded
           format: int32
         lastPacketReceivedTimestamp:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp
           format: double
         mediaType:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.RTCStreamMediaType'
         nackCount:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount
           format: int32
         packetsLost:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost
           format: int32
         packetsReceived:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived
           format: int32
         pliCount:
           type: integer
+          description: Map the value of  https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount
           format: int32
         qpSum:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum
           format: double
         ssrc:
+          required:
+            - "true"
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc
           format: int64
         totalDecodeTime:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime
           format: double
         totalInterFrameDelay:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay
           format: double
         totalSquaredInterFrameDelay:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay
           format: double
         trackId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier
         transportId:
           type: string
-    PeerConnectionSampleV20200114.RTCStreamMediaType:
-      type: string
-      enum:
-      - AUDIO
-      - VIDEO
-      - UNKNOWN
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid
+      description: Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats
     PeerConnectionSampleV20200114.MediaSourceStats:
       type: object
       properties:
         audioLevel:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel
           format: float
         framesPerSecond:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond
           format: double
         height:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height
           format: double
         id:
+          required:
+            - "true"
           type: string
+          description: The id of the media source used in the dictionary
         mediaType:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.RTCStreamMediaType'
         totalAudioEnergy:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy
           format: float
         totalSamplesDuration:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration
           format: double
         trackId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier
         width:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width
           format: double
+      description: Represent the class described at https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source
     PeerConnectionSampleV20200114.RTCQualityLimitationReason:
       type: string
       description: Indicates the reason of the limitation
       enum:
-      - BANDWIDTH
-      - CPU
-      - NONE
-      - OTHER
-      - UNKNOWN
+        - BANDWIDTH
+        - CPU
+        - NONE
+        - OTHER
+        - UNKNOWN
     PeerConnectionSampleV20200114.OutboundRTPStreamStats:
       type: object
       properties:
@@ -310,6 +402,8 @@ components:
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-headerbytessent
           format: int64
         id:
+          required:
+            - "true"
           type: string
           description: Indicates if the report belongs to a remote participant
         isRemote:
@@ -355,23 +449,32 @@ components:
           format: int64
         retransmittedPacketsSent:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent
           format: int32
         ssrc:
+          required:
+            - "true"
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc
           format: int64
         totalEncodedBytesTarget:
           type: integer
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget
           format: int64
         totalEncodeTime:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime
           format: double
         totalPacketSendDelay:
           type: number
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay
           format: double
         trackId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier
         transportId:
           type: string
+          description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid
       description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats
     PeerConnectionSampleV20200114.RemoteInboundRTPStreamStats:
       type: object
@@ -380,6 +483,8 @@ components:
           type: string
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid
         id:
+          required:
+            - "true"
           type: string
           description: The id of the InboundRTP the client use in its dictionary
         jitter:
@@ -400,6 +505,8 @@ components:
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteinboundrtpstreamstats-roundtriptime
           format: double
         ssrc:
+          required:
+            - "true"
           type: integer
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc
           format: int64
@@ -440,6 +547,8 @@ components:
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-hugeframessent
           format: int32
         id:
+          required:
+            - "true"
           type: string
           description: Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier
         insertedSamplesForDeceleration:
@@ -502,14 +611,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PeerConnectionSampleV20200114.RTCTrackStats'
-      description: Measurement to describe the receiver side for the peer connection.
+      description: "Describe a Real Time Communication endpoint. A direct mapping\
+        \ of: https://www.w3.org/TR/webrtc/#dom-rtcstats"
     PeerConnectionSampleV20200114.ExtensionStat:
       type: object
       properties:
         extensionType:
           type: string
         payload:
+          required:
+            - "true"
           type: string
+          description: The payload of the customized stat
       description: A custom defined extension for the sample
     PeerConnectionSampleV20200114.UserMediaError:
       type: object
@@ -518,16 +631,20 @@ components:
           type: string
       description: "The reported user media error messages appeared to the user. (If\
         \ this is not null, then peer connection uuid can be null.)"
-    PeerConnectionSampleV20200114:
+    PeerConnectionSample:
       type: object
       properties:
         browserId:
+          required:
+            - "true"
           type: string
           description: fingerprint of the browser the sample is originated from. Use
             to identify unique number of browsers in a call.
         iceStats:
           $ref: '#/components/schemas/PeerConnectionSampleV20200114.ICEStats'
         peerConnectionId:
+          required:
+            - "true"
           type: string
           description: The UUID of the peer connection the sample belongs to
         receiverStats:
@@ -539,7 +656,10 @@ components:
           description: The offset in minutes from GMT the browser reports the sample
             may have.
           format: int64
+          nullable: true
         timestamp:
+          required:
+            - "true"
           type: integer
           description: The timestamp in epoch of the browser reports the sample
           format: int64
@@ -559,6 +679,7 @@ components:
           items:
             $ref: '#/components/schemas/PeerConnectionSampleV20200114.ExtensionStat'
         userMediaErrors:
+          title: User Media Errors
           type: array
           description: Custom defined measurements attached to peer connection sample
           nullable: true

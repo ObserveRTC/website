@@ -1,6 +1,7 @@
 {
   "definitions" : {
     "record:org.observertc.webrtc.schemas.reports.Report" : {
+      "description" : "A Report object",
       "type" : "object",
       "required" : [ "serviceUUID", "serviceName", "marker", "timestamp", "payload", "type" ],
       "additionalProperties" : false,
@@ -70,6 +71,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.InitiatedCall" : {
+      "description" : "Initial Call Report payload. Contains information about a call initiated by a client",
       "type" : "object",
       "required" : [ "callUUID", "callName" ],
       "additionalProperties" : false,
@@ -88,6 +90,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.FinishedCall" : {
+      "description" : "Finished Call Report payload. Contains information about a call finished by a client",
       "type" : "object",
       "required" : [ "callUUID", "callName" ],
       "additionalProperties" : false,
@@ -106,6 +109,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection" : {
+      "description" : "Joined Peer Connection payload. Contains information about a peer connection joined to a call",
       "type" : "object",
       "required" : [ "mediaUnitId", "callUUID", "callName", "userId", "browserId", "peerConnectionUUID" ],
       "additionalProperties" : false,
@@ -151,6 +155,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection" : {
+      "description" : "Detached Peer Connection payload. Contains information about a peer connection detached from a call",
       "type" : "object",
       "required" : [ "mediaUnitId", "callUUID", "callName", "userId", "browserId", "peerConnectionUUID" ],
       "additionalProperties" : false,
@@ -196,6 +201,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.InboundRTP" : {
+      "description" : "Inbound RTP payloadContains information about the RTP streams received by the peer connection",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "bytesReceived", "codecId", "decoderImplementation", "estimatedPlayoutTimestamp", "fecPacketsDiscarded", "fecPacketsReceived", "firCount", "framesDecoded", "headerBytesReceived", "id", "isRemote", "jitter", "keyFramesDecoded", "lastPacketReceivedTimestamp", "mediaType", "nackCount", "packetsLost", "packetsReceived", "pliCount", "qpSum", "totalDecodeTime", "totalInterFrameDelay", "totalSquaredInterFrameDelay", "trackId", "transportId" ],
       "additionalProperties" : false,
@@ -461,9 +467,11 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.MediaType" : {
+      "description" : "State of the Media",
       "enum" : [ "AUDIO", "VIDEO", "UNKNOWN", "NULL" ]
     },
     "record:org.observertc.webrtc.schemas.reports.OutboundRTP" : {
+      "description" : "Outbound RTP payloadContains information about the RTP streams sent by the peer connection",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "bytesSent", "codecID", "encoderImplementation", "firCount", "framesEncoded", "headerBytesSent", "id", "isRemote", "keyFramesEncoded", "mediaSourceID", "mediaType", "nackCount", "packetsSent", "pliCount", "qpSum", "qualityLimitationReason", "qualityLimitationResolutionChanges", "remoteID", "retransmittedBytesSent", "retransmittedPacketsSent", "totalEncodedBytesTarget", "totalEncodeTime", "totalPacketSendDelay", "trackID", "transportID" ],
       "additionalProperties" : false,
@@ -727,9 +735,11 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason" : {
+      "description" : "Type of the quality limitation",
       "enum" : [ "BANDWIDTH", "CPU", "NONE", "OTHER", "UNKNOWN", "NULL" ]
     },
     "record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP" : {
+      "description" : "Remote Inbound RTP payloadContains information about the remote inbound rtp stream the peer connection is connected to",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "ssrc", "codecID", "id", "jitter", "localID", "mediaType", "packetsLost", "roundTripTime", "transportID" ],
       "additionalProperties" : false,
@@ -839,6 +849,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.ICECandidatePair" : {
+      "description" : "ICE Candidate Pair payloadContains information about the ICE candidate pair the peer connections are nominated to use to connect.",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidatePairId", "availableOutgoingBitrate", "bytesReceived", "bytesSent", "consentRequestsSent", "currentRoundTripTime", "localCandidateID", "nominated", "priority", "remoteCandidateID", "requestsReceived", "requestsSent", "responsesReceived", "responsesSent", "state", "totalRoundTripTime", "transportID", "writable" ],
       "additionalProperties" : false,
@@ -1034,9 +1045,11 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.ICEState" : {
+      "description" : "State of the ICE",
       "enum" : [ "FAILED", "FROZEN", "IN_PROGRESS", "SUCCEEDED", "WAITING", "UNKNOWN", "NULL" ]
     },
     "record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate" : {
+      "description" : "Remote ICE Candidate SchemaContains information about the Remote ICE Candidate",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidateId", "candidateType", "deleted", "ipLSH", "isRemote", "port", "priority", "protocol", "transportID" ],
       "additionalProperties" : false,
@@ -1141,12 +1154,15 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.CandidateType" : {
+      "description" : "Type of the ICE candidate",
       "enum" : [ "HOST", "PRFLX", "RELAY", "SRFLX", "UNKNOWN", "NULL" ]
     },
     "enum:org.observertc.webrtc.schemas.reports.TransportProtocol" : {
+      "description" : "Type of the protocol",
       "enum" : [ "UDP", "TCP", "UNKNOWN", "NULL" ]
     },
     "record:org.observertc.webrtc.schemas.reports.ICELocalCandidate" : {
+      "description" : "Local ICE Candidate SchemaContains information about the Local ICE Candidate",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "candidateId", "candidateType", "deleted", "ipLSH", "isRemote", "networkType", "port", "protocol", "priority", "transportID" ],
       "additionalProperties" : false,
@@ -1255,9 +1271,11 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.NetworkType" : {
+      "description" : "Type of the network",
       "enum" : [ "BLUETOOTH", "CELLULAR", "ETHERNET", "UNKNOWN", "VPN", "WIFI", "WIMAX", "NULL" ]
     },
     "record:org.observertc.webrtc.schemas.reports.Track" : {
+      "description" : "Track payloadContains information about the Track the Peer Connection uses",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "trackId", "concealedSamples", "concealmentEvents", "detached", "ended", "framesDecoded", "framesDropped", "framesSent", "framesReceived", "hugeFramesSent", "insertedSamplesForDeceleration", "jitterBufferDelay", "jitterBufferEmittedCount", "mediaSourceID", "mediaType", "remoteSource", "removedSamplesForAcceleration", "samplesDuration", "silentConcealedSamples", "totalSamplesReceived" ],
       "additionalProperties" : false,
@@ -1480,6 +1498,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.MediaSource" : {
+      "description" : "Media Source payloadContains information about a Media Source the Peer Connection uses",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "mediaSourceId", "audioLevel", "framesPerSecond", "height", "width", "mediaType", "totalAudioEnergy", "totalSamplesDuration", "trackId" ],
       "additionalProperties" : false,
@@ -1585,6 +1604,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.UserMediaError" : {
+      "description" : "User Media Error Report. Report error messages occured to the users",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "message" ],
       "additionalProperties" : false,
@@ -1635,6 +1655,7 @@
       }
     },
     "record:org.observertc.webrtc.schemas.reports.ExtensionReport" : {
+      "description" : "Extended Report payload. Contains customer added report information",
       "type" : "object",
       "required" : [ "mediaUnitId", "callName", "userId", "browserId", "peerConnectionUUID", "extensionType", "payload" ],
       "additionalProperties" : false,
@@ -1688,6 +1709,7 @@
       }
     },
     "enum:org.observertc.webrtc.schemas.reports.ReportType" : {
+      "description" : "The type of the report",
       "enum" : [ "UNKNOWN", "INITIATED_CALL", "FINISHED_CALL", "JOINED_PEER_CONNECTION", "DETACHED_PEER_CONNECTION", "INBOUND_RTP", "REMOTE_INBOUND_RTP", "OUTBOUND_RTP", "MEDIA_SOURCE", "TRACK", "ICE_CANDIDATE_PAIR", "ICE_REMOTE_CANDIDATE", "ICE_LOCAL_CANDIDATE", "USER_MEDIA_ERROR", "EXTENSION" ]
     }
   },

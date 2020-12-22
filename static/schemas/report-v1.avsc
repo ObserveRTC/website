@@ -1,8 +1,8 @@
-
 {
   "type" : "record",
   "name" : "Report",
   "namespace" : "org.observertc.webrtc.schemas.reports",
+  "doc" : "A Report object",
   "fields" : [ {
     "name" : "serviceUUID",
     "type" : "string"
@@ -22,6 +22,7 @@
     "type" : [ "null", {
       "type" : "record",
       "name" : "InitiatedCall",
+      "doc" : "Initial Call Report payload. Contains information about a call initiated by a client",
       "fields" : [ {
         "name" : "callUUID",
         "type" : "string"
@@ -33,6 +34,7 @@
     }, {
       "type" : "record",
       "name" : "FinishedCall",
+      "doc" : "Finished Call Report payload. Contains information about a call finished by a client",
       "fields" : [ {
         "name" : "callUUID",
         "type" : "string"
@@ -44,6 +46,7 @@
     }, {
       "type" : "record",
       "name" : "JoinedPeerConnection",
+      "doc" : "Joined Peer Connection payload. Contains information about a peer connection joined to a call",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -70,6 +73,7 @@
     }, {
       "type" : "record",
       "name" : "DetachedPeerConnection",
+      "doc" : "Detached Peer Connection payload. Contains information about a peer connection detached from a call",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -96,6 +100,7 @@
     }, {
       "type" : "record",
       "name" : "InboundRTP",
+      "doc" : "Inbound RTP payloadContains information about the RTP streams received by the peer connection",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -179,6 +184,7 @@
         "type" : {
           "type" : "enum",
           "name" : "MediaType",
+          "doc" : "State of the Media",
           "symbols" : [ "AUDIO", "VIDEO", "UNKNOWN", "NULL" ]
         },
         "default" : "UNKNOWN"
@@ -226,6 +232,7 @@
     }, {
       "type" : "record",
       "name" : "OutboundRTP",
+      "doc" : "Outbound RTP payloadContains information about the RTP streams sent by the peer connection",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -313,6 +320,7 @@
         "type" : {
           "type" : "enum",
           "name" : "RTCQualityLimitationReason",
+          "doc" : "Type of the quality limitation",
           "symbols" : [ "BANDWIDTH", "CPU", "NONE", "OTHER", "UNKNOWN", "NULL" ]
         },
         "default" : "unknown"
@@ -356,6 +364,7 @@
     }, {
       "type" : "record",
       "name" : "RemoteInboundRTP",
+      "doc" : "Remote Inbound RTP payloadContains information about the remote inbound rtp stream the peer connection is connected to",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -414,6 +423,7 @@
     }, {
       "type" : "record",
       "name" : "ICECandidatePair",
+      "doc" : "ICE Candidate Pair payloadContains information about the ICE candidate pair the peer connections are nominated to use to connect.",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -493,6 +503,7 @@
         "type" : {
           "type" : "enum",
           "name" : "ICEState",
+          "doc" : "State of the ICE",
           "symbols" : [ "FAILED", "FROZEN", "IN_PROGRESS", "SUCCEEDED", "WAITING", "UNKNOWN", "NULL" ]
         },
         "default" : "UNKNOWN"
@@ -512,6 +523,7 @@
     }, {
       "type" : "record",
       "name" : "ICERemoteCandidate",
+      "doc" : "Remote ICE Candidate SchemaContains information about the Remote ICE Candidate",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -539,6 +551,7 @@
         "type" : {
           "type" : "enum",
           "name" : "CandidateType",
+          "doc" : "Type of the ICE candidate",
           "symbols" : [ "HOST", "PRFLX", "RELAY", "SRFLX", "UNKNOWN", "NULL" ]
         }
       }, {
@@ -566,6 +579,7 @@
         "type" : {
           "type" : "enum",
           "name" : "TransportProtocol",
+          "doc" : "Type of the protocol",
           "symbols" : [ "UDP", "TCP", "UNKNOWN", "NULL" ]
         },
         "default" : "UNKNOWN"
@@ -577,6 +591,7 @@
     }, {
       "type" : "record",
       "name" : "ICELocalCandidate",
+      "doc" : "Local ICE Candidate SchemaContains information about the Local ICE Candidate",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -619,6 +634,7 @@
         "type" : {
           "type" : "enum",
           "name" : "NetworkType",
+          "doc" : "Type of the network",
           "symbols" : [ "BLUETOOTH", "CELLULAR", "ETHERNET", "UNKNOWN", "VPN", "WIFI", "WIMAX", "NULL" ]
         },
         "default" : "UNKNOWN"
@@ -642,6 +658,7 @@
     }, {
       "type" : "record",
       "name" : "Track",
+      "doc" : "Track payloadContains information about the Track the Peer Connection uses",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -745,6 +762,7 @@
     }, {
       "type" : "record",
       "name" : "MediaSource",
+      "doc" : "Media Source payloadContains information about a Media Source the Peer Connection uses",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -803,6 +821,7 @@
     }, {
       "type" : "record",
       "name" : "UserMediaError",
+      "doc" : "User Media Error Report. Report error messages occured to the users",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -830,6 +849,7 @@
     }, {
       "type" : "record",
       "name" : "ExtensionReport",
+      "doc" : "Extended Report payload. Contains customer added report information",
       "fields" : [ {
         "name" : "mediaUnitId",
         "type" : [ "null", "string" ],
@@ -864,6 +884,7 @@
     "type" : {
       "type" : "enum",
       "name" : "ReportType",
+      "doc" : "The type of the report",
       "symbols" : [ "UNKNOWN", "INITIATED_CALL", "FINISHED_CALL", "JOINED_PEER_CONNECTION", "DETACHED_PEER_CONNECTION", "INBOUND_RTP", "REMOTE_INBOUND_RTP", "OUTBOUND_RTP", "MEDIA_SOURCE", "TRACK", "ICE_CANDIDATE_PAIR", "ICE_REMOTE_CANDIDATE", "ICE_LOCAL_CANDIDATE", "USER_MEDIA_ERROR", "EXTENSION" ]
     },
     "default" : "UNKNOWN"

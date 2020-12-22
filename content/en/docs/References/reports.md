@@ -6,13 +6,12 @@ weight: 2
 description: Describe the Report schema
 ---
 
+Reports are created and forwarded by the [WebRTC-Observer](https://github.com/ObserveRTC/webrtc-observer)
+in an [Avro](https://avro.apache.org/) format. 
 
-<i id="#">path: #</i>
+### You can download the Avro schema for Reports [here](/schemas/report-v1.avsc)
 
-&#36;ref: [#/definitions/record:org.observertc.webrtc.schemas.reports.Report](#/definitions/record:org.observertc.webrtc.schemas.reports.Report)
-
-# definitions
-
+- _A Report object_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Report">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Report</i>
 - This schema <u>does not</u> accept additional properties.
@@ -34,6 +33,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Report/properties/type">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Report/properties/type</i>
         - &#36;ref: [#/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType](#/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType)
         - Default: _"UNKNOWN"_
+- _Initial Call Report payload. Contains information about a call initiated by a client_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall</i>
 - This schema <u>does not</u> accept additional properties.
@@ -43,6 +43,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall/properties/callUUID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall/properties/callUUID</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall/properties/callName">callName</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall/properties/callName">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall/properties/callName</i>
+- _Finished Call Report payload. Contains information about a call finished by a client_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall">path: #/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall</i>
 - This schema <u>does not</u> accept additional properties.
@@ -52,6 +53,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall/properties/callUUID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall/properties/callUUID</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall/properties/callName">callName</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall/properties/callName">path: #/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall/properties/callName</i>
+- _Joined Peer Connection payload. Contains information about a peer connection joined to a call_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection">path: #/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection</i>
 - This schema <u>does not</u> accept additional properties.
@@ -70,6 +72,7 @@ description: Describe the Report schema
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection/properties/peerConnectionUUID">peerConnectionUUID</b> `required`
         - Type: `string`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection/properties/peerConnectionUUID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection/properties/peerConnectionUUID</i>
+- _Detached Peer Connection payload. Contains information about a peer connection detached from a call_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection">path: #/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection</i>
 - This schema <u>does not</u> accept additional properties.
@@ -88,6 +91,7 @@ description: Describe the Report schema
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection/properties/peerConnectionUUID">peerConnectionUUID</b> `required`
         - Type: `string`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection/properties/peerConnectionUUID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection/properties/peerConnectionUUID</i>
+- _Inbound RTP payloadContains information about the RTP streams received by the peer connection_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP</i>
 - This schema <u>does not</u> accept additional properties.
@@ -159,12 +163,14 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP/properties/trackId">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP/properties/trackId</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP/properties/transportId">transportId</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP/properties/transportId">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP/properties/transportId</i>
+- _State of the Media_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType</i>
 - The value is restricted to the following:
     1. _"AUDIO"_
     2. _"VIDEO"_
     3. _"UNKNOWN"_
     4. _"NULL"_
+- _Outbound RTP payloadContains information about the RTP streams sent by the peer connection_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP</i>
 - This schema <u>does not</u> accept additional properties.
@@ -238,6 +244,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP/properties/trackID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP/properties/trackID</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP/properties/transportID">transportID</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP/properties/transportID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP/properties/transportID</i>
+- _Type of the quality limitation_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason</i>
 - The value is restricted to the following:
     1. _"BANDWIDTH"_
@@ -246,6 +253,7 @@ description: Describe the Report schema
     4. _"OTHER"_
     5. _"UNKNOWN"_
     6. _"NULL"_
+- _Remote Inbound RTP payloadContains information about the remote inbound rtp stream the peer connection is connected to_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP</i>
 - This schema <u>does not</u> accept additional properties.
@@ -283,6 +291,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP/properties/roundTripTime">path: #/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP/properties/roundTripTime</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP/properties/transportID">transportID</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP/properties/transportID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP/properties/transportID</i>
+- _ICE Candidate Pair payloadContains information about the ICE candidate pair the peer connections are nominated to use to connect._
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair</i>
 - This schema <u>does not</u> accept additional properties.
@@ -337,6 +346,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair/properties/transportID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair/properties/transportID</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair/properties/writable">writable</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair/properties/writable">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair/properties/writable</i>
+- _State of the ICE_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.ICEState">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.ICEState</i>
 - The value is restricted to the following:
     1. _"FAILED"_
@@ -346,6 +356,7 @@ description: Describe the Report schema
     5. _"WAITING"_
     6. _"UNKNOWN"_
     7. _"NULL"_
+- _Remote ICE Candidate SchemaContains information about the Remote ICE Candidate_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate</i>
 - This schema <u>does not</u> accept additional properties.
@@ -383,6 +394,7 @@ description: Describe the Report schema
         - Default: _"UNKNOWN"_
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate/properties/transportID">transportID</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate/properties/transportID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate/properties/transportID</i>
+- _Type of the ICE candidate_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType</i>
 - The value is restricted to the following:
     1. _"HOST"_
@@ -391,12 +403,14 @@ description: Describe the Report schema
     4. _"SRFLX"_
     5. _"UNKNOWN"_
     6. _"NULL"_
+- _Type of the protocol_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol</i>
 - The value is restricted to the following:
     1. _"UDP"_
     2. _"TCP"_
     3. _"UNKNOWN"_
     4. _"NULL"_
+- _Local ICE Candidate SchemaContains information about the Local ICE Candidate_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate</i>
 - This schema <u>does not</u> accept additional properties.
@@ -438,6 +452,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate/properties/priority">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate/properties/priority</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate/properties/transportID">transportID</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate/properties/transportID">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate/properties/transportID</i>
+- _Type of the network_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.NetworkType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.NetworkType</i>
 - The value is restricted to the following:
     1. _"BLUETOOTH"_
@@ -448,6 +463,7 @@ description: Describe the Report schema
     6. _"WIFI"_
     7. _"WIMAX"_
     8. _"NULL"_
+- _Track payloadContains information about the Track the Peer Connection uses_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Track">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Track</i>
 - This schema <u>does not</u> accept additional properties.
@@ -505,6 +521,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Track/properties/silentConcealedSamples">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Track/properties/silentConcealedSamples</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.Track/properties/totalSamplesReceived">totalSamplesReceived</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Track/properties/totalSamplesReceived">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Track/properties/totalSamplesReceived</i>
+- _Media Source payloadContains information about a Media Source the Peer Connection uses_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource">path: #/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource</i>
 - This schema <u>does not</u> accept additional properties.
@@ -541,6 +558,7 @@ description: Describe the Report schema
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource/properties/totalSamplesDuration">path: #/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource/properties/totalSamplesDuration</i>
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource/properties/trackId">trackId</b> `required`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource/properties/trackId">path: #/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource/properties/trackId</i>
+- _User Media Error Report. Report error messages occured to the users_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError">path: #/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError</i>
 - This schema <u>does not</u> accept additional properties.
@@ -558,6 +576,7 @@ description: Describe the Report schema
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError/properties/message">message</b> `required`
         - Type: `string`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError/properties/message">path: #/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError/properties/message</i>
+- _Extended Report payload. Contains customer added report information_
 - Type: `object`
 - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport</i>
 - This schema <u>does not</u> accept additional properties.
@@ -578,6 +597,7 @@ description: Describe the Report schema
     - <b id="#/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport/properties/payload">payload</b> `required`
         - Type: `string`
         - <i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport/properties/payload">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport/properties/payload</i>
+- _The type of the report_
 - <i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType</i>
 - The value is restricted to the following:
     1. _"UNKNOWN"_
@@ -595,5 +615,4 @@ description: Describe the Report schema
     13. _"ICE_LOCAL_CANDIDATE"_
     14. _"USER_MEDIA_ERROR"_
     15. _"EXTENSION"_
-
-_Generated with [json-schema-md-doc](https://brianwendt.github.io/json-schema-md-doc/)_
+    
