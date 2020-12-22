@@ -4,102 +4,116 @@
   
   <url>
     <loc>/docs/about/</loc>
-    <lastmod>2020-12-21T17:47:31+02:00</lastmod>
+    <lastmod>2020-12-22T08:01:52+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/intro-to-observertc/about/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/peer-connection-sample/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/reports/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/overview/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-22T08:01:52+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/intro-to-observertc/overview/</loc>
   </url>
   
   <url>
     <loc>/docs/getting-started/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-22T08:01:52+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/webextrapp-tokbox-integration/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <loc>/docs/integrate-and-deploy/webextrapp-tokbox-integration/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/webextrapp-jitsi-integration/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <loc>/docs/integrate-and-deploy/webextrapp-jitsi-integration/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/webrtc-observer-docker/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <loc>/docs/integrate-and-deploy/webrtc-observer-docker/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/webrtc-observer-helm/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <loc>/docs/integrate-and-deploy/webrtc-observer-helm/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/tutorials/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <loc>/docs/integrate-and-deploy/</loc>
+    <lastmod>2017-01-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/</loc>
-    <lastmod>2020-12-20T13:09:55+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/releases/</loc>
-    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/intro-to-observertc/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/contribution-guidelines/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/releases/release-webextrapp/</loc>
-    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/releases/release-webrtc-observer/</loc>
-    <lastmod>2020-12-20T15:22:55+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/community/</loc>
-    <lastmod>2018-10-05T14:41:45+01:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-12-21T17:06:27+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/search/</loc>
-    <lastmod>2018-09-04T11:36:40+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/references/webrtc-evaluator-reference/</loc>
-    <lastmod>2020-12-20T14:56:57+02:00</lastmod>
+    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
   </url>
   
 </urlset>
