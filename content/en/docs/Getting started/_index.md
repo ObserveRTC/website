@@ -3,7 +3,7 @@ title: "Getting Started"
 linkTitle: "Getting Started"
 weight: 3
 description: >
-  Let's get start monitoring your WebRTC applications!
+  Shows you the prerequisites and instructions for running the servoce locally. 
 ---
 ## Prerequisites
 

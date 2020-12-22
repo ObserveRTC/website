@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.79.0" /><link rel="canonical" type="text/html" href="/docs/about/">
+<meta name="generator" content="Hugo 0.79.1" /><link rel="canonical" type="text/html" href="/docs/about/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -23,7 +23,7 @@
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/docs/about/" />
-<meta property="og:updated_time" content="2020-12-21T17:47:31+02:00" /><meta property="og:site_name" content="ObserveRTC" />
+<meta property="og:updated_time" content="2020-12-22T08:01:52+02:00" /><meta property="og:site_name" content="ObserveRTC" />
 <meta itemprop="name" content="About">
 <meta itemprop="description" content="About ObserveRTC
 ">
@@ -68,6 +68,16 @@
 				
 				
 				<a  class="nav-link active" href="/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/intro-to-observertc/" ><span>Intro to ObserveRTC</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -133,29 +143,22 @@ This the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>Making analytical tools for Real Time Communication is fun!
-However it is challenging. You need to consider strict time
-limitations to avoid influencing the stream, and
-you need to integrate as many services as you can to report to
-one monitor.
-Here is, how ObserveRTC comes into the picture.
-In ObserveRTC, we develop open-source tools for everyone
-in order to make development for RTC fun and easy.</p>
-<h2 id="actual-projects">Actual Projects</h2>
-<h3 id="webrtc">WebRTC</h3>
-<p>Web Real-time communication (WebRTC)
-has been emerged over the last couple of years, and the
-wide-scale deployment of real-time multimedia communications
-on the Internet encouraged the industry to massively use
-WebRTC application as part of their infrastructure.
-However, monitoring these solutions becomes critical.</p>
-<p>ObserveRTC is aim to provide integrations and monitoring tools
-to observe and analyse WebRTC applications.</p>
+      <p>Making analytical tools for Real Time Communication (RTC) is fun! However it is challenging. You need to consider strict time limitations of real-time streams, and tightly integrate services that can report to your monitoring solutions with micro second accuracy.</p>
+<p>Here is how ObserveRTC comes into the picture. We make RTC development fun and easy using open-source tools. ObserveRTC aims to provide client side integrations, infrastructure and monitoring tools to observe and analyse WebRTC applications.</p>
+<h3 id="what-is-webrtc">What is WebRTC?</h3>
+<p>&ldquo;With WebRTC, you can add real-time communication capabilities to your application that works on top of an open standard. It supports video, voice, and generic data to be sent between peers, allowing developers to build powerful voice- and video-communication solutions. The technology is available on all modern browsers as well as on native clients for all major platforms&rdquo; - quote from <a href="https://webrtc.org/">https://webrtc.org/</a></p>
+<h3 id="observertc-for-webrtc">ObserveRTC for WebRTC</h3>
 <p>For WebRTC we are working on the following services:</p>
 <ul>
-<li><a href="https://github.com/ObserveRTC/webrtc-observer">WebRTC-Observer</a> Observer for WebRTC peer connections</li>
-<li><a href="https://github.com/ObserveRTC/webextrapp">WebExtrApp</a> A client library makes WebRTC platform provided stats observable</li>
-<li><a href="https://github.com/ObserveRTC/integrations">WebExtrApp-Integrations</a> Various integrations for different video platforms providing <a href="https://www.w3.org/TR/webrtc-stats/">WebRTCStats</a>.</li>
+<li>
+<p><a href="https://github.com/ObserveRTC/webextrapp">WebExtrApp</a> A client library that collects WebRTC platform provided stats.</p>
+</li>
+<li>
+<p><a href="https://github.com/ObserveRTC/webrtc-observer">WebRTC-Observer</a> An infrastrcutre for observing your WebRTC deployments.</p>
+</li>
+<li>
+<p><a href="https://github.com/ObserveRTC/integrations">WebExtrApp-Integrations</a> Various platform integrations for different video platforms providing <a href="https://www.w3.org/TR/webrtc-stats/">WebRTCStats</a>.</p>
+</li>
 </ul>
 
 </div>

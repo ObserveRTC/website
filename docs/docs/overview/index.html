@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.79.0" /><link rel="alternate" type="text/html" href="/docs/overview/_print/">
+<meta name="generator" content="Hugo 0.79.1" /><link rel="alternate" type="text/html" href="/docs/overview/_print/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -19,17 +19,17 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Overview | ObserveRTC</title><meta property="og:title" content="Overview" />
-<meta property="og:description" content="ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications for real-time communication.
+<meta property="og:description" content="ObserveRTC is an open source initiative aimed to provide tools to collect, intrepret, and visualize RTC metrics in real-time.
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/docs/overview/" />
 <meta property="og:site_name" content="ObserveRTC" />
 <meta itemprop="name" content="Overview">
-<meta itemprop="description" content="ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications for real-time communication.
+<meta itemprop="description" content="ObserveRTC is an open source initiative aimed to provide tools to collect, intrepret, and visualize RTC metrics in real-time.
 ">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Overview"/>
-<meta name="twitter:description" content="ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications for real-time communication.
+<meta name="twitter:description" content="ObserveRTC is an open source initiative aimed to provide tools to collect, intrepret, and visualize RTC metrics in real-time.
 "/>
 
 
@@ -68,6 +68,16 @@
 				
 				
 				<a  class="nav-link active" href="/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/intro-to-observertc/" ><span>Intro to ObserveRTC</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -212,10 +222,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tutorials/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tutorials</a>
+    <a  href="/docs/integrate-and-deploy/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Integrate and Deploy</a>
   </li>
   <ul>
-    <li class="collapse " id="docstutorials">
+    <li class="collapse " id="docsintegrate-and-deploy">
       
       
       
@@ -223,7 +233,7 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebextrapp-tokbox-integration" href="/docs/tutorials/webextrapp-tokbox-integration/">WebExtrApp TokBox Integration</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintegrate-and-deploywebextrapp-tokbox-integration" href="/docs/integrate-and-deploy/webextrapp-tokbox-integration/">TokBox Integration</a>
         
       
       
@@ -231,7 +241,7 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebextrapp-jitsi-integration" href="/docs/tutorials/webextrapp-jitsi-integration/">WebExtrApp Jitsi Integration</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintegrate-and-deploywebextrapp-jitsi-integration" href="/docs/integrate-and-deploy/webextrapp-jitsi-integration/">Jitsi Integration</a>
         
       
       
@@ -239,7 +249,7 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebrtc-observer-docker" href="/docs/tutorials/webrtc-observer-docker/">WebRTC-Observer Docker Deployments</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintegrate-and-deploywebrtc-observer-docker" href="/docs/integrate-and-deploy/webrtc-observer-docker/">Option 1: Docker Deployments</a>
         
       
       
@@ -247,7 +257,7 @@
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstutorialswebrtc-observer-helm" href="/docs/tutorials/webrtc-observer-helm/">WebRTC-Observer Helm Deployment</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintegrate-and-deploywebrtc-observer-helm" href="/docs/integrate-and-deploy/webrtc-observer-helm/">Option 2: Helm Deployment</a>
         
       
       
@@ -458,7 +468,7 @@
             
 <div class="td-content">
 	<h1>Overview</h1>
-        <div class="lead">ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications for real-time communication.</div>
+        <div class="lead">ObserveRTC is an open source initiative aimed to provide tools to collect, intrepret, and visualize RTC metrics in real-time.</div>
 	
 	
 
@@ -468,47 +478,25 @@
 
 
 <div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 583px">
-	<img class="card-img-top" src="/docs/overview/webrtc-schema_hud6ea4ca5e4008bfb8437c80b15116fd4_23549_640x480_fit_catmullrom_2.png" width="573" height="227">
+	<img class="card-img-top" src="/docs/overview/observertc-overview_hube34b2f4c3c47d1deb70507405e551e7_89619_640x480_fit_catmullrom_2.png" width="573" height="480">
 	
 	<div class="card-body px-0 pt-2 pb-0">
 		<p class="card-text">
-A schematical overview of using our integration and observer to 
-monitor WebRTC applications. There are two components communicate to each other: 
-WebExtrApp, and the Observer. WebExtrApp uses the PeerConnectionSample schema to 
-report statistical measurements to the Observer. The Observer component making 
-Report schemas based on the samples it receives from the WebExtrApp and the observation 
-it makes by analyzing the streams.
+A schematical overview showing our integration and observer to monitor WebRTC applications. 
 </p>
 	</div>
 	
 </div>
-<p>Monitoring RTC applications is separated into two parts: Sampling, and Analyzing.
-Sampling a WebRTC Calls we collect information from client side provided
-by the browser or integrated video platforms</p>
+<p><em>All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.</em></p>
 <h3 id="components">Components</h3>
-<p><strong>WebExtrApp</strong> is a development toolkit for WebRTC Monitoring integrations.
-The core concept is to extract measurements related to every peer
-connection a webrtc call has, unify the extracted measurements
-and send it as a sample (PeerConnectionSample) for the WebRTC-Observer.</p>
-<p><strong>WebRTC-Observer</strong> is a microservice developed to accept samples
-from WebExtrApp client integrations, monitor your WebRTC calls
-and it makes Reports (Report) out of it.
-The main purpose of this service is to make Reports about the Samples.
-WebRTC-Observer is a simple microservice written by using
-the <a href="https://www.micronaut.io/">Micronaut</a>
-framework. We use <a href="https://hazelcast.org">Hazelcast</a> as a
-distributed in-memory database in order to store information
-related to the observed calls. The service creates Reports from
-the observed PeerConnection, for which we use
-<a href="https://kafka.apache.org/">Kafka</a> to forward.</p>
-<h3 id="schemas">Schemas</h3>
-<p><strong>PeerConnectionSample</strong> describes and holds every measurement
-a peer connection may have to describe the state. All integration
-of WebExtrApp reports the same unified PeerConnectionSample schema
-to the observer.</p>
-<p><strong>Report</strong> is an observation the WebRTC-Observer reports based on
-the received sample. There are different types of report it can
-make and forward to a kafka broker.</p>
+<p>Monitoring RTC applications is separated into three parts: Collection, Intrepretation, and Visualization.</p>
+<h4 id="stats-collection">Stats Collection</h4>
+<p><strong>WebExtrApp</strong> is a client-side development toolkit for WebRTC Monitoring integrations. The core functionality is to extract stats related to every peer connection in a webrtc call, unify the extracted stats and send it as a sample (PeerConnectionSample) for the WebRTC-Observer.</p>
+<h4 id="stats-intrepretation">Stats Intrepretation</h4>
+<p><strong>WebRTC-Observer</strong> is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the <a href="https://www.micronaut.io/">Micronaut</a>framework. We use <a href="https://hazelcast.org">Hazelcast</a> as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use <a href="https://kafka.apache.org/">Kafka</a> to forward.</p>
+<h4 id="schemas">Schemas</h4>
+<p><strong>PeerConnectionSample</strong> describes and holds each stats from a peer connection to describe the state. All integration of WebExtrApp reports the same unified PeerConnectionSample schema to the observer.</p>
+<p><strong>Report</strong> is an observation from the WebRTC-Observer based on the received sample. There are different types of reports that can be created and forwarded to a kafka broker.</p>
 
         <div class="section-index">
     
@@ -557,7 +545,7 @@ make and forward to a kafka broker.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 20, 2020: <a  href="https://github.com/ObserveRTC/website/commit/2612084e7dc0dc43bd7128028bce61aa02b5da28">add tutorials and docs (2612084)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified December 22, 2020: <a  href="https://github.com/ObserveRTC/website/commit/bf37da6c8371d71d5f681152f22f5b183a51cbae">restructuring (bf37da6)</a>
 </div>
 </div>
 
