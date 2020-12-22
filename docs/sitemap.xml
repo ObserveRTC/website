@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/docs/about/</loc>
-    <lastmod>2020-12-22T08:01:52+02:00</lastmod>
+    <loc>/about/about/</loc>
+    <lastmod>2020-12-22T20:26:47+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/intro-to-observertc/about/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <loc>/about/</loc>
+    <lastmod>2020-12-22T20:26:47+02:00</lastmod>
   </url>
   
   <url>
@@ -18,17 +18,13 @@
   </url>
   
   <url>
+    <loc>/about/overview/</loc>
+    <lastmod>2020-12-22T20:26:47+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/references/reports/</loc>
     <lastmod>2020-12-21T22:07:54+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/overview/</loc>
-    <lastmod>2020-12-22T08:01:52+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/intro-to-observertc/overview/</loc>
   </url>
   
   <url>
@@ -38,27 +34,27 @@
   
   <url>
     <loc>/docs/integrate-and-deploy/webextrapp-tokbox-integration/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-22T20:09:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/integrate-and-deploy/webextrapp-jitsi-integration/</loc>
-    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-22T20:09:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/integrate-and-deploy/webrtc-observer-docker/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-22T20:09:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/integrate-and-deploy/webrtc-observer-helm/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-22T20:09:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/integrate-and-deploy/</loc>
-    <lastmod>2017-01-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-22T20:09:57+02:00</lastmod>
   </url>
   
   <url>
@@ -69,11 +65,6 @@
   <url>
     <loc>/docs/releases/</loc>
     <lastmod>2020-12-21T22:07:54+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/intro-to-observertc/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -103,7 +94,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-12-21T22:07:54+02:00</lastmod>
+    <lastmod>2020-12-22T14:48:25+02:00</lastmod>
   </url>
   
   <url>
