@@ -1,41 +1,35 @@
----
-title: "Peer Connection Sample Schema"
-type: swagger
-weight: 1
-description: Describe the Peer Connection Sample schema
----
+# Schema Provider for ObserveRTC
+This service is to provide descriptions for schemas microservices in ObserveRTC uses.
 
-### You can download the Json schema for Peer Connection Sample [here](/schemas/pc-sample-v20200114.json)
+## Version: 0.1
 
-#### PeerConnectionSample
+**License:** [Apache 2.0](https://schemas.observertc.org)
 
-The Peer Connection Sample provided by the WebExtrApp, version 20200114
+### /peerconnectionsamples/v20200114
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| browserId | string | fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call. | No |
-| iceStats | object | Measurement to describe the state of the Interactive Connectivity Establishment (ICE) | No |
-| peerConnectionId | string | The UUID of the peer connection the sample belongs to | No |
-| receiverStats | object | Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w3.org/TR/webrtc/#dom-rtcstats> | No |
-| senderStats | object | Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w3.org/TR/webrtc/#dom-rtcstats> | No |
-| timeZoneOffsetInMinute | long | The offset in minutes from GMT the browser reports the sample may have. | No |
-| timestamp | long | The timestamp in epoch of the browser reports the sample | No |
-| callId | string | The application provided identifier of the call the peer connection joined to | No |
-| userId | string | The application provided Id of the user joined to the call | No |
-| extensions | [ object ] | Custom defined measurements attached to peer connection sample | No |
-| userMediaErrors | [ object ] | Custom defined measurements attached to peer connection sample | No |
-| marker | string | A custom defined string all report will be marked with. | No |
+#### GET
+##### Parameters
 
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
 
-#### PeerConnectionSample.ICEState
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | getPcSample20200114 200 response |
+
+### Models
+
+#### PeerConnectionSampleV20200114.ICEState
 
 Map the value of <https://tools.ietf.org/html/rfc8445#section-6.1.2.6>.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.ICEState | string | Map the value of <https://tools.ietf.org/html/rfc8445#section-6.1.2.6>. |  |
+| PeerConnectionSampleV20200114.ICEState | string | Map the value of <https://tools.ietf.org/html/rfc8445#section-6.1.2.6>. |  |
 
-#### PeerConnectionSample.ICECandidatePair
+#### PeerConnectionSampleV20200114.ICECandidatePair
 
 Represents the <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair>
 
@@ -60,31 +54,31 @@ Represents the <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-p
 | transportId | string | The identifier of the transport stats belongs to this ICE candidate pair | No |
 | writable | boolean |  | No |
 
-#### PeerConnectionSample.CandidateType
+#### PeerConnectionSampleV20200114.CandidateType
 
 Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype>
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.CandidateType | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype> |  |
+| PeerConnectionSampleV20200114.CandidateType | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype> |  |
 
-#### PeerConnectionSample.NetworkType
+#### PeerConnectionSampleV20200114.NetworkType
 
 Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype>
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.NetworkType | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype> |  |
+| PeerConnectionSampleV20200114.NetworkType | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype> |  |
 
-#### PeerConnectionSample.InternetProtocol
+#### PeerConnectionSampleV20200114.InternetProtocol
 
 Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol> and extended by the value of UNKNOWN, for unrecognized or null values from client side
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.InternetProtocol | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol> and extended by the value of UNKNOWN, for unrecognized or null values from client side |  |
+| PeerConnectionSampleV20200114.InternetProtocol | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol> and extended by the value of UNKNOWN, for unrecognized or null values from client side |  |
 
-#### PeerConnectionSample.ICELocalCandidate
+#### PeerConnectionSampleV20200114.ICELocalCandidate
 
 Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate>
 
@@ -101,7 +95,7 @@ Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-c
 | protocol | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br>_Enum:_ `"TCP"`, `"UDP"`, `"UNKNOWN"` | No |
 | transportId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid> | No |
 
-#### PeerConnectionSample.ICERemoteCandidate
+#### PeerConnectionSampleV20200114.ICERemoteCandidate
 
 Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate>
 
@@ -117,7 +111,7 @@ Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-c
 | protocol | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br>_Enum:_ `"TCP"`, `"UDP"`, `"UNKNOWN"` | No |
 | transportId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid> | No |
 
-#### PeerConnectionSample.ICEStats
+#### PeerConnectionSampleV20200114.ICEStats
 
 Measurement to describe the state of the Interactive Connectivity Establishment (ICE)
 
@@ -127,15 +121,15 @@ Measurement to describe the state of the Interactive Connectivity Establishment 
 | localCandidates | [ object ] | An array of Local ICE candidates | No |
 | remoteCandidates | [ object ] | An array of remote ICE candidates | No |
 
-#### PeerConnectionSample.RTCStreamMediaType
+#### PeerConnectionSampleV20200114.RTCStreamMediaType
 
 Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind> and extended by the value of UNKNOWN, for unrecognized or null values from client side
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.RTCStreamMediaType | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind> and extended by the value of UNKNOWN, for unrecognized or null values from client side |  |
+| PeerConnectionSampleV20200114.RTCStreamMediaType | string | Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind> and extended by the value of UNKNOWN, for unrecognized or null values from client side |  |
 
-#### PeerConnectionSample.InboundRTPStreamStats
+#### PeerConnectionSampleV20200114.InboundRTPStreamStats
 
 Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats>
 
@@ -168,7 +162,7 @@ Map the object of <https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamst
 | trackId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier> | No |
 | transportId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid> | No |
 
-#### PeerConnectionSample.MediaSourceStats
+#### PeerConnectionSampleV20200114.MediaSourceStats
 
 Represent the class described at <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source>
 
@@ -184,15 +178,15 @@ Represent the class described at <https://www.w3.org/TR/webrtc-stats/#dom-rtcsta
 | trackId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier> | No |
 | width | double | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width> | No |
 
-#### PeerConnectionSample.RTCQualityLimitationReason
+#### PeerConnectionSampleV20200114.RTCQualityLimitationReason
 
 Indicates the reason of the limitation
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PeerConnectionSample.RTCQualityLimitationReason | string | Indicates the reason of the limitation |  |
+| PeerConnectionSampleV20200114.RTCQualityLimitationReason | string | Indicates the reason of the limitation |  |
 
-#### PeerConnectionSample.OutboundRTPStreamStats
+#### PeerConnectionSampleV20200114.OutboundRTPStreamStats
 
 Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats>
 
@@ -225,7 +219,7 @@ Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpst
 | trackId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier> | No |
 | transportId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid> | No |
 
-#### PeerConnectionSample.RemoteInboundRTPStreamStats
+#### PeerConnectionSampleV20200114.RemoteInboundRTPStreamStats
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -239,7 +233,7 @@ Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpst
 | ssrc | long | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc> | No |
 | transportId | string | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid> | No |
 
-#### PeerConnectionSample.RTCTrackStats
+#### PeerConnectionSampleV20200114.RTCTrackStats
 
 A direct mapping of the <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track>
 
@@ -265,7 +259,7 @@ A direct mapping of the <https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-tr
 | silentConcealedSamples | integer | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-silentconcealedsamples> | No |
 | totalSamplesReceived | integer | Map the value of <https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsamplesreceived> | No |
 
-#### PeerConnectionSample.RTCStats
+#### PeerConnectionSampleV20200114.RTCStats
 
 Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w3.org/TR/webrtc/#dom-rtcstats>
 
@@ -277,19 +271,38 @@ Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w
 | remoteInboundRTPStats | [ object ] |  | No |
 | tracks | [ object ] |  | No |
 
-#### PeerConnectionSample.ExtensionStat
+#### PeerConnectionSampleV20200114.ExtensionStat
 
 A custom defined extension for the sample
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | extensionType | string |  | No |
-| payload | string |  | No |
+| payload | string | The payload of the customized stat | No |
 
-#### PeerConnectionSample.UserMediaError
+#### PeerConnectionSampleV20200114.UserMediaError
 
 The reported user media error messages appeared to the user. (If this is not null, then peer connection uuid can be null.)
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | message | string |  | No |
+
+#### PeerConnectionSample
+
+The Peer Connection Sample provided by the WebExtrApp, version 20200114
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| browserId | string | fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call. | No |
+| iceStats | object | Measurement to describe the state of the Interactive Connectivity Establishment (ICE) | No |
+| peerConnectionId | string | The UUID of the peer connection the sample belongs to | No |
+| receiverStats | object | Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w3.org/TR/webrtc/#dom-rtcstats> | No |
+| senderStats | object | Describe a Real Time Communication endpoint. A direct mapping of: <https://www.w3.org/TR/webrtc/#dom-rtcstats> | No |
+| timeZoneOffsetInMinute | long | The offset in minutes from GMT the browser reports the sample may have. | No |
+| timestamp | long | The timestamp in epoch of the browser reports the sample | No |
+| callId | string | The application provided identifier of the call the peer connection joined to | No |
+| userId | string | The application provided Id of the user joined to the call | No |
+| extensions | [ object ] | Custom defined measurements attached to peer connection sample | No |
+| userMediaErrors | [ object ] | Custom defined measurements attached to peer connection sample | No |
+| marker | string | A custom defined string all report will be marked with. | No |

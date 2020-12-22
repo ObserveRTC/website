@@ -19,5 +19,8 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss-cli": "^7.1.2"
+  },
+  "dependencies": {
+    "@openapi-contrib/json-schema-to-openapi-schema": "^1.2.0"
   }
 }
