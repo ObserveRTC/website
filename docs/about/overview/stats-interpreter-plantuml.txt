@@ -1,0 +1,32 @@
+@startuml
+skinparam handwritten true
+skinparam roundcorner 20
+skinparam monochrome true
+skinparam arrowThickness 4
+skinparam BoxPadding 60
+
+!include <cloudinsight/kafka>
+
+autonumber
+
+
+
+
+box Observer #transparent
+	control Observer
+
+end box
+
+box Kafka #transparent
+	queue "<$kafka>" as kafka
+end box
+
+box Visualizer #transparent
+	control StatsVisualizer
+end box
+
+
+Observer -> kafka : Report
+kafka -> StatsVisualizer
+
+@enduml

@@ -21,11 +21,11 @@
 <meta property="og:description" content="Describe the Peer Connection Sample schema" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/references/peer-connection-sample/" />
-<meta property="article:modified_time" content="2020-12-21T22:07:54+02:00" /><meta property="og:site_name" content="ObserveRTC" />
+<meta property="article:modified_time" content="2020-12-22T12:01:20+02:00" /><meta property="og:site_name" content="ObserveRTC" />
 <meta itemprop="name" content="Peer Connection Sample Schema">
 <meta itemprop="description" content="Describe the Peer Connection Sample schema">
-<meta itemprop="dateModified" content="2020-12-21T22:07:54+02:00" />
-<meta itemprop="wordCount" content="1100">
+<meta itemprop="dateModified" content="2020-12-22T12:01:20+02:00" />
+<meta itemprop="wordCount" content="1823">
 
 
 
@@ -389,6 +389,16 @@
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#you-can-download-the-json-schema-for-peer-connection-sample-hereschemaspc-sample-v20200114json">You can download the Json schema for Peer Connection Sample <a href="/schemas/pc-sample-v20200114.json">here</a></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -434,7 +444,115 @@
 	<h1>Peer Connection Sample Schema</h1>
     <div class="lead">Describe the Peer Connection Sample schema</div>
 	       
-	<h4 id="peerconnectionsamplev20200114icecandidatepair">PeerConnectionSampleV20200114.ICECandidatePair</h4>
+	<h3 id="you-can-download-the-json-schema-for-peer-connection-sample-hereschemaspc-sample-v20200114json">You can download the Json schema for Peer Connection Sample <a href="/schemas/pc-sample-v20200114.json">here</a></h3>
+<h4 id="peerconnectionsample">PeerConnectionSample</h4>
+<p>The Peer Connection Sample provided by the WebExtrApp, version 20200114</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>browserId</td>
+<td>string</td>
+<td>fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>iceStats</td>
+<td>object</td>
+<td>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>peerConnectionId</td>
+<td>string</td>
+<td>The UUID of the peer connection the sample belongs to</td>
+<td>No</td>
+</tr>
+<tr>
+<td>receiverStats</td>
+<td>object</td>
+<td>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td>senderStats</td>
+<td>object</td>
+<td>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td>timeZoneOffsetInMinute</td>
+<td>long</td>
+<td>The offset in minutes from GMT the browser reports the sample may have.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>long</td>
+<td>The timestamp in epoch of the browser reports the sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>The application provided identifier of the call the peer connection joined to</td>
+<td>No</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td>The application provided Id of the user joined to the call</td>
+<td>No</td>
+</tr>
+<tr>
+<td>extensions</td>
+<td>[ object ]</td>
+<td>Custom defined measurements attached to peer connection sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>userMediaErrors</td>
+<td>[ object ]</td>
+<td>Custom defined measurements attached to peer connection sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>string</td>
+<td>A custom defined string all report will be marked with.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicestate">PeerConnectionSample.ICEState</h4>
+<p>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.ICEState</td>
+<td>string</td>
+<td>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicecandidatepair">PeerConnectionSample.ICECandidatePair</h4>
+<p>Represents the <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair</a></p>
 <table>
 <thead>
 <tr>
@@ -448,103 +566,103 @@
 <tr>
 <td>availableOutgoingBitrate</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>bytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>bytesSent</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>consentRequestsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>currentRoundTripTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>Identifying the candidate pair in a map</td>
 <td>No</td>
 </tr>
 <tr>
 <td>localCandidateId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>nominated</td>
 <td>boolean</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>remoteCandidateId</td>
 <td>string</td>
-<td></td>
+<td>The priority of the candidate pair</td>
 <td>No</td>
 </tr>
 <tr>
 <td>requestsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>requestsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>responsesReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>responsesSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;FAILED&quot;</code>, <code>&quot;FROZEN&quot;</code>, <code>&quot;IN_PROGRESS&quot;</code>, <code>&quot;SUCCEEDED&quot;</code>, <code>&quot;WAITING&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.<br><em>Enum:</em> <code>&quot;FAILED&quot;</code>, <code>&quot;FROZEN&quot;</code>, <code>&quot;IN_PROGRESS&quot;</code>, <code>&quot;SUCCEEDED&quot;</code>, <code>&quot;WAITING&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalRoundTripTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>The identifier of the transport stats belongs to this ICE candidate pair</td>
 <td>No</td>
 </tr>
 <tr>
@@ -555,7 +673,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icestate">PeerConnectionSampleV20200114.ICEState</h4>
+<h4 id="peerconnectionsamplecandidatetype">PeerConnectionSample.CandidateType</h4>
+<p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></p>
 <table>
 <thead>
 <tr>
@@ -567,14 +686,55 @@
 </thead>
 <tbody>
 <tr>
-<td>PeerConnectionSampleV20200114.ICEState</td>
+<td>PeerConnectionSample.CandidateType</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icelocalcandidate">PeerConnectionSampleV20200114.ICELocalCandidate</h4>
+<h4 id="peerconnectionsamplenetworktype">PeerConnectionSample.NetworkType</h4>
+<p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.NetworkType</td>
+<td>string</td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleinternetprotocol">PeerConnectionSample.InternetProtocol</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.InternetProtocol</td>
+<td>string</td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicelocalcandidate">PeerConnectionSample.ICELocalCandidate</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate</a></p>
 <table>
 <thead>
 <tr>
@@ -588,123 +748,67 @@
 <tr>
 <td>candidateType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>deleted</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate has been deleted locally or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the candidate used inside of the client</td>
 <td>No</td>
 </tr>
 <tr>
 <td>ip</td>
 <td>string</td>
-<td></td>
+<td>The IP address of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate is a remote candidate or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>networkType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;BLUETOOTH&quot;</code>, <code>&quot;CELLULAR&quot;</code>, <code>&quot;ETHERNET&quot;</code>, <code>&quot;UNKNOWN&quot;</code>, <code>&quot;VPN&quot;</code>, <code>&quot;WIFI&quot;</code>, <code>&quot;WIMAX&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;BLUETOOTH&quot;</code>, <code>&quot;CELLULAR&quot;</code>, <code>&quot;ETHERNET&quot;</code>, <code>&quot;UNKNOWN&quot;</code>, <code>&quot;VPN&quot;</code>, <code>&quot;WIFI&quot;</code>, <code>&quot;WIMAX&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>port</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>The Priority of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>protocol</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114candidatetype">PeerConnectionSampleV20200114.CandidateType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.CandidateType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114networktype">PeerConnectionSampleV20200114.NetworkType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.NetworkType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114internetprotocol">PeerConnectionSampleV20200114.InternetProtocol</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.InternetProtocol</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114iceremotecandidate">PeerConnectionSampleV20200114.ICERemoteCandidate</h4>
+<h4 id="peerconnectionsampleiceremotecandidate">PeerConnectionSample.ICERemoteCandidate</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate</a></p>
 <table>
 <thead>
 <tr>
@@ -718,7 +822,7 @@
 <tr>
 <td>candidateType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -730,48 +834,48 @@
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the candidate used inside of the client</td>
 <td>No</td>
 </tr>
 <tr>
 <td>ip</td>
 <td>string</td>
-<td></td>
+<td>The IP address of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate is a remote candidate or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>port</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>The priority of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>protocol</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icestats">PeerConnectionSampleV20200114.ICEStats</h4>
+<h4 id="peerconnectionsampleicestats">PeerConnectionSample.ICEStats</h4>
 <p>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</p>
 <table>
 <thead>
@@ -786,24 +890,45 @@
 <tr>
 <td>candidatePairs</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of ICE candidate pairs</td>
 <td>No</td>
 </tr>
 <tr>
 <td>localCandidates</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of Local ICE candidates</td>
 <td>No</td>
 </tr>
 <tr>
 <td>remoteCandidates</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of remote ICE candidates</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114inboundrtpstreamstats">PeerConnectionSampleV20200114.InboundRTPStreamStats</h4>
+<h4 id="peerconnectionsamplertcstreammediatype">PeerConnectionSample.RTCStreamMediaType</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.RTCStreamMediaType</td>
+<td>string</td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleinboundrtpstreamstats">PeerConnectionSample.InboundRTPStreamStats</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats</a></p>
 <table>
 <thead>
 <tr>
@@ -817,181 +942,163 @@
 <tr>
 <td>bytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>codecId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>decoderImplementation</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>estimatedPlayoutTimestamp</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>fecPacketsDiscarded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>fecPacketsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>firCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>framesDecoded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>headerBytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the InboundRTP the client use in its dictionary</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the report belongs to a remote participant</td>
 <td>No</td>
 </tr>
 <tr>
 <td>jitter</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>keyFramesDecoded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>lastPacketReceivedTimestamp</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>nackCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>packetsLost</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>packetsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>pliCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of  <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>qpSum</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>ssrc</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalDecodeTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalInterFrameDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalSquaredInterFrameDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcstreammediatype">PeerConnectionSampleV20200114.RTCStreamMediaType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.RTCStreamMediaType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114mediasourcestats">PeerConnectionSampleV20200114.MediaSourceStats</h4>
+<h4 id="peerconnectionsamplemediasourcestats">PeerConnectionSample.MediaSourceStats</h4>
+<p>Represent the class described at <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source</a></p>
 <table>
 <thead>
 <tr>
@@ -1005,60 +1112,60 @@
 <tr>
 <td>audioLevel</td>
 <td>float</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>framesPerSecond</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>height</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the media source used in the dictionary</td>
 <td>No</td>
 </tr>
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalAudioEnergy</td>
 <td>float</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalSamplesDuration</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>width</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcqualitylimitationreason">PeerConnectionSampleV20200114.RTCQualityLimitationReason</h4>
+<h4 id="peerconnectionsamplertcqualitylimitationreason">PeerConnectionSample.RTCQualityLimitationReason</h4>
 <p>Indicates the reason of the limitation</p>
 <table>
 <thead>
@@ -1071,14 +1178,14 @@
 </thead>
 <tbody>
 <tr>
-<td>PeerConnectionSampleV20200114.RTCQualityLimitationReason</td>
+<td>PeerConnectionSample.RTCQualityLimitationReason</td>
 <td>string</td>
 <td>Indicates the reason of the limitation</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114outboundrtpstreamstats">PeerConnectionSampleV20200114.OutboundRTPStreamStats</h4>
+<h4 id="peerconnectionsampleoutboundrtpstreamstats">PeerConnectionSample.OutboundRTPStreamStats</h4>
 <p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats">https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats</a></p>
 <table>
 <thead>
@@ -1153,7 +1260,7 @@
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1207,48 +1314,48 @@
 <tr>
 <td>retransmittedPacketsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>ssrc</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalEncodedBytesTarget</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalEncodeTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalPacketSendDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114remoteinboundrtpstreamstats">PeerConnectionSampleV20200114.RemoteInboundRTPStreamStats</h4>
+<h4 id="peerconnectionsampleremoteinboundrtpstreamstats">PeerConnectionSample.RemoteInboundRTPStreamStats</h4>
 <table>
 <thead>
 <tr>
@@ -1286,7 +1393,7 @@
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1315,7 +1422,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtctrackstats">PeerConnectionSampleV20200114.RTCTrackStats</h4>
+<h4 id="peerconnectionsamplertctrackstats">PeerConnectionSample.RTCTrackStats</h4>
 <p>A direct mapping of the <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track</a></p>
 <table>
 <thead>
@@ -1408,7 +1515,7 @@
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1443,8 +1550,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcstats">PeerConnectionSampleV20200114.RTCStats</h4>
-<p>Measurement to describe the receiver side for the peer connection.</p>
+<h4 id="peerconnectionsamplertcstats">PeerConnectionSample.RTCStats</h4>
+<p>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></p>
 <table>
 <thead>
 <tr>
@@ -1487,7 +1594,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114extensionstat">PeerConnectionSampleV20200114.ExtensionStat</h4>
+<h4 id="peerconnectionsampleextensionstat">PeerConnectionSample.ExtensionStat</h4>
 <p>A custom defined extension for the sample</p>
 <table>
 <thead>
@@ -1513,7 +1620,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114usermediaerror">PeerConnectionSampleV20200114.UserMediaError</h4>
+<h4 id="peerconnectionsampleusermediaerror">PeerConnectionSample.UserMediaError</h4>
 <p>The reported user media error messages appeared to the user. (If this is not null, then peer connection uuid can be null.)</p>
 <table>
 <thead>
@@ -1533,96 +1640,10 @@
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114">PeerConnectionSampleV20200114</h4>
-<p>The Peer Connection Sample provided by the WebExtrApp, version 20200114</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>browserId</td>
-<td>string</td>
-<td>fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>iceStats</td>
-<td>object</td>
-<td>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</td>
-<td>No</td>
-</tr>
-<tr>
-<td>peerConnectionId</td>
-<td>string</td>
-<td>The UUID of the peer connection the sample belongs to</td>
-<td>No</td>
-</tr>
-<tr>
-<td>receiverStats</td>
-<td>object</td>
-<td>Measurement to describe the receiver side for the peer connection.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>senderStats</td>
-<td>object</td>
-<td>Measurement to describe the receiver side for the peer connection.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>timeZoneOffsetInMinute</td>
-<td>long</td>
-<td>The offset in minutes from GMT the browser reports the sample may have.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>long</td>
-<td>The timestamp in epoch of the browser reports the sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>callId</td>
-<td>string</td>
-<td>The application provided identifier of the call the peer connection joined to</td>
-<td>No</td>
-</tr>
-<tr>
-<td>userId</td>
-<td>string</td>
-<td>The application provided Id of the user joined to the call</td>
-<td>No</td>
-</tr>
-<tr>
-<td>extensions</td>
-<td>[ object ]</td>
-<td>Custom defined measurements attached to peer connection sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>userMediaErrors</td>
-<td>[ object ]</td>
-<td>Custom defined measurements attached to peer connection sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>marker</td>
-<td>string</td>
-<td>A custom defined string all report will be marked with.</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified December 21, 2020: <a  href="https://github.com/ObserveRTC/website/commit/c9eaf7efb8bc363b432c6716b4e0af22fc1854d4">updated readme, and contents (c9eaf7e)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified December 22, 2020: <a  href="https://github.com/ObserveRTC/website/commit/3e66e726f76ce871ada57115053bc20730ffb5f1">change content of the references and add static resources to download schemas (3e66e72)</a>
 </div>
 </div>
 

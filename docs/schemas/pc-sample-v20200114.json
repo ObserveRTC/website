@@ -1,0 +1,771 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$defs": {
+    "CandidateType": {
+      "type": "string",
+      "enum": [
+        "HOST",
+        "PRFLX",
+        "RELAY",
+        "SRFLX",
+        "UNKNOWN"
+      ],
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "ExtensionStat": {
+      "type": "object",
+      "properties": {
+        "extensionType": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        }
+      },
+      "description": "A custom defined extension for the sample"
+    },
+    "ICECandidatePair": {
+      "type": "object",
+      "properties": {
+        "availableOutgoingBitrate": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate"
+        },
+        "bytesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived"
+        },
+        "bytesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent"
+        },
+        "consentRequestsSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent"
+        },
+        "currentRoundTripTime": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifying the candidate pair in a map"
+        },
+        "localCandidateId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid"
+        },
+        "nominated": {
+          "type": "boolean",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated"
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid"
+        },
+        "remoteCandidateId": {
+          "type": "string",
+          "description": "The priority of the candidate pair"
+        },
+        "requestsReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived"
+        },
+        "requestsSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent"
+        },
+        "responsesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived"
+        },
+        "responsesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent"
+        },
+        "state": {
+          "$ref": "#/$defs/ICEState",
+          "description": "Map the value of https://tools.ietf.org/html/rfc8445#section-6.1.2.6."
+        },
+        "totalRoundTripTime": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "The identifier of the transport stats belongs to this ICE candidate pair"
+        },
+        "writable": {
+          "type": "boolean"
+        }
+      },
+      "description": "Represents the https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair"
+    },
+    "ICELocalCandidate": {
+      "type": "object",
+      "properties": {
+        "candidateType": {
+          "$ref": "#/$defs/CandidateType",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype"
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Indicates if the candidate has been deleted locally or not"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the candidate used inside of the client"
+        },
+        "ip": {
+          "type": "string",
+          "description": "The IP address of the candidate"
+        },
+        "isRemote": {
+          "type": "boolean",
+          "description": "Indicates if the candidate is a remote candidate or not"
+        },
+        "networkType": {
+          "$ref": "#/$defs/NetworkType",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype"
+        },
+        "port": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port"
+        },
+        "priority": {
+          "type": "integer",
+          "description": "The Priority of the candidate"
+        },
+        "protocol": {
+          "$ref": "#/$defs/InternetProtocol"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid"
+        }
+      },
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate"
+    },
+    "ICERemoteCandidate": {
+      "type": "object",
+      "properties": {
+        "candidateType": {
+          "$ref": "#/$defs/CandidateType",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the candidate used inside of the client"
+        },
+        "ip": {
+          "type": "string",
+          "description": "The IP address of the candidate"
+        },
+        "isRemote": {
+          "type": "boolean",
+          "description": "Indicates if the candidate is a remote candidate or not"
+        },
+        "port": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port"
+        },
+        "priority": {
+          "type": "integer",
+          "description": "The priority of the candidate"
+        },
+        "protocol": {
+          "$ref": "#/$defs/InternetProtocol"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid"
+        }
+      },
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate"
+    },
+    "ICEState": {
+      "type": "string",
+      "enum": [
+        "FAILED",
+        "FROZEN",
+        "IN_PROGRESS",
+        "SUCCEEDED",
+        "WAITING",
+        "UNKNOWN"
+      ],
+      "description": "Map the object of https://tools.ietf.org/html/rfc8445#section-6.1.2.6. and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "ICEStats": {
+      "type": "object",
+      "properties": {
+        "candidatePairs": {
+          "description": "An array of ICE candidate pairs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ICECandidatePair"
+          }
+        },
+        "localCandidates": {
+          "description": "An array of Local ICE candidates",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ICELocalCandidate"
+          }
+        },
+        "remoteCandidates": {
+          "description": "An array of remote ICE candidates",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ICERemoteCandidate"
+          }
+        }
+      },
+      "description": "Measurements regarding to Internet Connectivity Establishments"
+    },
+    "InboundRTPStreamStats": {
+      "type": "object",
+      "properties": {
+        "bytesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived"
+        },
+        "codecId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid"
+        },
+        "decoderImplementation": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation"
+        },
+        "estimatedPlayoutTimestamp": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp"
+        },
+        "fecPacketsDiscarded": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded"
+        },
+        "fecPacketsReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived"
+        },
+        "firCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount"
+        },
+        "framesDecoded": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded"
+        },
+        "headerBytesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the InboundRTP the client use in its dictionary"
+        },
+        "isRemote": {
+          "type": "boolean",
+          "description": "Indicates if the report belongs to a remote participant"
+        },
+        "jitter": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter"
+        },
+        "keyFramesDecoded": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded"
+        },
+        "lastPacketReceivedTimestamp": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/RTCStreamMediaType"
+        },
+        "nackCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount"
+        },
+        "packetsLost": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost"
+        },
+        "packetsReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived"
+        },
+        "pliCount": {
+          "type": "integer",
+          "description": "Map the value of  https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount"
+        },
+        "qpSum": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum"
+        },
+        "ssrc": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc"
+        },
+        "totalDecodeTime": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime"
+        },
+        "totalInterFrameDelay": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay"
+        },
+        "totalSquaredInterFrameDelay": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay"
+        },
+        "trackId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid"
+        }
+      },
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats"
+    },
+    "InternetProtocol": {
+      "type": "string",
+      "enum": [
+        "TCP",
+        "UDP",
+        "UNKNOWN"
+      ],
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "MediaSourceStats": {
+      "type": "object",
+      "properties": {
+        "audioLevel": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel"
+        },
+        "framesPerSecond": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond"
+        },
+        "height": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the media source used in the dictionary"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/RTCStreamMediaType",
+          "description": "The type of the media the sample is belong to."
+        },
+        "totalAudioEnergy": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy"
+        },
+        "totalSamplesDuration": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration"
+        },
+        "trackId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier"
+        },
+        "width": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width"
+        }
+      },
+      "description": "Represent the class described at https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source"
+    },
+    "NetworkType": {
+      "type": "string",
+      "enum": [
+        "BLUETOOTH",
+        "CELLULAR",
+        "ETHERNET",
+        "UNKNOWN",
+        "VPN",
+        "WIFI",
+        "WIMAX"
+      ],
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "OutboundRTPStreamStats": {
+      "type": "object",
+      "properties": {
+        "bytesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtctransportstats-bytessent"
+        },
+        "codecId": {
+          "type": "string"
+        },
+        "encoderImplementation": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation"
+        },
+        "firCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount"
+        },
+        "framesEncoded": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-framesencoded"
+        },
+        "headerBytesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-headerbytessent"
+        },
+        "id": {
+          "type": "string",
+          "description": "Indicates if the report belongs to a remote participant"
+        },
+        "isRemote": {
+          "type": "boolean",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-keyframesencoded"
+        },
+        "keyFramesEncoded": {
+          "type": "integer",
+          "description": "The number of keyframes encoded"
+        },
+        "mediaSourceId": {
+          "type": "string",
+          "description": "The id of the media source"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/RTCStreamMediaType",
+          "description": "The type of the media the sample belongs to"
+        },
+        "nackCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-nackcount"
+        },
+        "packetsSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtctransportstats-packetssent"
+        },
+        "pliCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-plicount"
+        },
+        "qpSum": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-qpsum"
+        },
+        "qualityLimitationReason": {
+          "$ref": "#/$defs/RTCQualityLimitationReason",
+          "description": "Indicates the reason of the limitation"
+        },
+        "qualityLimitationResolutionChanges": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-qualitylimitationresolutionchanges"
+        },
+        "remoteId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-remoteid"
+        },
+        "retransmittedBytesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedbytessent"
+        },
+        "retransmittedPacketsSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent"
+        },
+        "ssrc": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc"
+        },
+        "totalEncodeTime": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime"
+        },
+        "totalEncodedBytesTarget": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget"
+        },
+        "totalPacketSendDelay": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay"
+        },
+        "trackId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid"
+        }
+      },
+      "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats"
+    },
+    "RTCQualityLimitationReason": {
+      "type": "string",
+      "enum": [
+        "BANDWIDTH",
+        "CPU",
+        "NONE",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcqualitylimitationreason and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "RTCStats": {
+      "type": "object",
+      "properties": {
+        "inboundRTPStats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InboundRTPStreamStats"
+          }
+        },
+        "mediaSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MediaSourceStats"
+          }
+        },
+        "outboundRTPStats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OutboundRTPStreamStats"
+          }
+        },
+        "remoteInboundRTPStats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RemoteInboundRTPStreamStats"
+          }
+        },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RTCTrackStats"
+          }
+        }
+      },
+      "description": "Describe a Real Time Communication endpoint. A direct mapping of: https://www.w3.org/TR/webrtc/#dom-rtcstats"
+    },
+    "RTCStreamMediaType": {
+      "type": "string",
+      "enum": [
+        "AUDIO",
+        "VIDEO",
+        "UNKNOWN"
+      ],
+      "description": "Map the object of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind and extended by the value of UNKNOWN, for unrecognized or null values from client side"
+    },
+    "RTCTrackStats": {
+      "type": "object",
+      "properties": {
+        "concealedSamples": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-concealedsamples"
+        },
+        "concealmentEvents": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-concealmentevents"
+        },
+        "detached": {
+          "type": "boolean",
+          "description": "Indicates if the track is detached from the source or not"
+        },
+        "ended": {
+          "type": "boolean",
+          "description": "Indicates if the source ended the transmission for this track"
+        },
+        "framesDecoded": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded"
+        },
+        "framesDropped": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-framesdropped"
+        },
+        "framesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesreceived"
+        },
+        "hugeFramesSent": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-hugeframessent"
+        },
+        "id": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier"
+        },
+        "insertedSamplesForDeceleration": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-insertedsamplesfordeceleration"
+        },
+        "jitterBufferDelay": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideoreceiverstats-jitterbufferdelay"
+        },
+        "jitterBufferEmittedCount": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcvideoreceiverstats-jitterbufferemittedcount"
+        },
+        "mediaSourceId": {
+          "type": "string",
+          "description": "The id of the media source the track is attached to"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/RTCStreamMediaType",
+          "description": "The type of the media"
+        },
+        "remoteSource": {
+          "type": "boolean",
+          "description": "Indicates if the track attached to a remote source or not"
+        },
+        "removedSamplesForAcceleration": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-removedsamplesforacceleration"
+        },
+        "samplesDuration": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-totalsamplesduration"
+        },
+        "silentConcealedSamples": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcaudioreceiverstats-silentconcealedsamples"
+        },
+        "totalSamplesReceived": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsamplesreceived"
+        }
+      },
+      "description": "A direct mapping of the https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track"
+    },
+    "RemoteInboundRTPStreamStats": {
+      "type": "object",
+      "properties": {
+        "codecId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid"
+        },
+        "id": {
+          "type": "string",
+          "description": "The id of the InboundRTP the client use in its dictionary"
+        },
+        "jitter": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter"
+        },
+        "localId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteinboundrtpstreamstats-localid"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/RTCStreamMediaType",
+          "description": "The type of the media the sample belongs to"
+        },
+        "packetsLost": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost"
+        },
+        "roundTripTime": {
+          "type": "number",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteinboundrtpstreamstats-roundtriptime"
+        },
+        "ssrc": {
+          "type": "integer",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc"
+        },
+        "transportId": {
+          "type": "string",
+          "description": "Map the value of https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid"
+        }
+      }
+    },
+    "UserMediaError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "description": "The reported user media error messages appeared to the user. (If this is not null, then peer connection uuid can be null.)"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "browserId": {
+      "type": "string",
+      "description": "fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call."
+    },
+    "callId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The application provided identifier of the call the peer connection joined to"
+    },
+    "extensionStats": {
+      "description": "Custom defined measurements attached to peer connection sample",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ExtensionStat"
+      }
+    },
+    "iceStats": {
+      "$ref": "#/$defs/ICEStats",
+      "description": "Measurement to describe the state of the Interactive Connectivity Establishment (ICE)"
+    },
+    "marker": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A custom defined string all report will be marked with."
+    },
+    "peerConnectionId": {
+      "type": "string",
+      "description": "The UUID of the peer connection the sample belongs to"
+    },
+    "receiverStats": {
+      "$ref": "#/$defs/RTCStats"
+    },
+    "senderStats": {
+      "$ref": "#/$defs/RTCStats"
+    },
+    "timeZoneOffsetInMinute": {
+      "type": "integer",
+      "description": "The offset in minutes from GMT the browser reports the sample may have."
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "The timestamp in epoch of the browser reports the sample"
+    },
+    "userId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The application provided Id of the user joined to the call"
+    },
+    "userMediaErrors": {
+      "title": "User Media Errors",
+      "description": "Custom defined measurements attached to peer connection sample",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/UserMediaError"
+      }
+    }
+  },
+  "description": "The Peer Connection Sample provided by the WebExtrApp, version 20200114"
+}

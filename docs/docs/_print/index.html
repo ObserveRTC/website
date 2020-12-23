@@ -754,7 +754,115 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
     
 	<h1 id="pg-5dd46e981cb724b5ace4deb653ee8a57">3.1 - Peer Connection Sample Schema</h1>
     <div class="lead">Describe the Peer Connection Sample schema</div>
-	<h4 id="peerconnectionsamplev20200114icecandidatepair">PeerConnectionSampleV20200114.ICECandidatePair</h4>
+	<h3 id="you-can-download-the-json-schema-for-peer-connection-sample-hereschemaspc-sample-v20200114json">You can download the Json schema for Peer Connection Sample <a href="/schemas/pc-sample-v20200114.json">here</a></h3>
+<h4 id="peerconnectionsample">PeerConnectionSample</h4>
+<p>The Peer Connection Sample provided by the WebExtrApp, version 20200114</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>browserId</td>
+<td>string</td>
+<td>fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>iceStats</td>
+<td>object</td>
+<td>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>peerConnectionId</td>
+<td>string</td>
+<td>The UUID of the peer connection the sample belongs to</td>
+<td>No</td>
+</tr>
+<tr>
+<td>receiverStats</td>
+<td>object</td>
+<td>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td>senderStats</td>
+<td>object</td>
+<td>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td>timeZoneOffsetInMinute</td>
+<td>long</td>
+<td>The offset in minutes from GMT the browser reports the sample may have.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>long</td>
+<td>The timestamp in epoch of the browser reports the sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>The application provided identifier of the call the peer connection joined to</td>
+<td>No</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td>The application provided Id of the user joined to the call</td>
+<td>No</td>
+</tr>
+<tr>
+<td>extensions</td>
+<td>[ object ]</td>
+<td>Custom defined measurements attached to peer connection sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>userMediaErrors</td>
+<td>[ object ]</td>
+<td>Custom defined measurements attached to peer connection sample</td>
+<td>No</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>string</td>
+<td>A custom defined string all report will be marked with.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicestate">PeerConnectionSample.ICEState</h4>
+<p>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.ICEState</td>
+<td>string</td>
+<td>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicecandidatepair">PeerConnectionSample.ICECandidatePair</h4>
+<p>Represents the <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-candidate-pair</a></p>
 <table>
 <thead>
 <tr>
@@ -768,103 +876,103 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>availableOutgoingBitrate</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-availableoutgoingbitrate</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>bytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>bytesSent</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-bytessent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>consentRequestsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-consentrequestssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>currentRoundTripTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-currentroundtriptime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>Identifying the candidate pair in a map</td>
 <td>No</td>
 </tr>
 <tr>
 <td>localCandidateId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-localcandidateid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>nominated</td>
 <td>boolean</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-nominated</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-remotecandidateid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>remoteCandidateId</td>
 <td>string</td>
-<td></td>
+<td>The priority of the candidate pair</td>
 <td>No</td>
 </tr>
 <tr>
 <td>requestsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>requestsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-requestssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>responsesReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>responsesSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-responsessent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;FAILED&quot;</code>, <code>&quot;FROZEN&quot;</code>, <code>&quot;IN_PROGRESS&quot;</code>, <code>&quot;SUCCEEDED&quot;</code>, <code>&quot;WAITING&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://tools.ietf.org/html/rfc8445#section-6.1.2.6">https://tools.ietf.org/html/rfc8445#section-6.1.2.6</a>.<br><em>Enum:</em> <code>&quot;FAILED&quot;</code>, <code>&quot;FROZEN&quot;</code>, <code>&quot;IN_PROGRESS&quot;</code>, <code>&quot;SUCCEEDED&quot;</code>, <code>&quot;WAITING&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalRoundTripTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatepairstats-transportId</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>The identifier of the transport stats belongs to this ICE candidate pair</td>
 <td>No</td>
 </tr>
 <tr>
@@ -875,7 +983,8 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icestate">PeerConnectionSampleV20200114.ICEState</h4>
+<h4 id="peerconnectionsamplecandidatetype">PeerConnectionSample.CandidateType</h4>
+<p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></p>
 <table>
 <thead>
 <tr>
@@ -887,14 +996,55 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </thead>
 <tbody>
 <tr>
-<td>PeerConnectionSampleV20200114.ICEState</td>
+<td>PeerConnectionSample.CandidateType</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icelocalcandidate">PeerConnectionSampleV20200114.ICELocalCandidate</h4>
+<h4 id="peerconnectionsamplenetworktype">PeerConnectionSample.NetworkType</h4>
+<p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.NetworkType</td>
+<td>string</td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleinternetprotocol">PeerConnectionSample.InternetProtocol</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.InternetProtocol</td>
+<td>string</td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleicelocalcandidate">PeerConnectionSample.ICELocalCandidate</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate</a></p>
 <table>
 <thead>
 <tr>
@@ -908,123 +1058,67 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>candidateType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>deleted</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate has been deleted locally or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the candidate used inside of the client</td>
 <td>No</td>
 </tr>
 <tr>
 <td>ip</td>
 <td>string</td>
-<td></td>
+<td>The IP address of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate is a remote candidate or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>networkType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;BLUETOOTH&quot;</code>, <code>&quot;CELLULAR&quot;</code>, <code>&quot;ETHERNET&quot;</code>, <code>&quot;UNKNOWN&quot;</code>, <code>&quot;VPN&quot;</code>, <code>&quot;WIFI&quot;</code>, <code>&quot;WIMAX&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;BLUETOOTH&quot;</code>, <code>&quot;CELLULAR&quot;</code>, <code>&quot;ETHERNET&quot;</code>, <code>&quot;UNKNOWN&quot;</code>, <code>&quot;VPN&quot;</code>, <code>&quot;WIFI&quot;</code>, <code>&quot;WIMAX&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>port</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>The Priority of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>protocol</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114candidatetype">PeerConnectionSampleV20200114.CandidateType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.CandidateType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114networktype">PeerConnectionSampleV20200114.NetworkType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.NetworkType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114internetprotocol">PeerConnectionSampleV20200114.InternetProtocol</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.InternetProtocol</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114iceremotecandidate">PeerConnectionSampleV20200114.ICERemoteCandidate</h4>
+<h4 id="peerconnectionsampleiceremotecandidate">PeerConnectionSample.ICERemoteCandidate</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-remote-candidate</a></p>
 <table>
 <thead>
 <tr>
@@ -1038,7 +1132,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>candidateType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-candidatetype</a><br><em>Enum:</em> <code>&quot;HOST&quot;</code>, <code>&quot;PRFLX&quot;</code>, <code>&quot;RELAY&quot;</code>, <code>&quot;SRFLX&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1050,48 +1144,48 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the candidate used inside of the client</td>
 <td>No</td>
 </tr>
 <tr>
 <td>ip</td>
 <td>string</td>
-<td></td>
+<td>The IP address of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the candidate is a remote candidate or not</td>
 <td>No</td>
 </tr>
 <tr>
 <td>port</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-port</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>long</td>
-<td></td>
+<td>The priority of the candidate</td>
 <td>No</td>
 </tr>
 <tr>
 <td>protocol</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-protocol</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;TCP&quot;</code>, <code>&quot;UDP&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114icestats">PeerConnectionSampleV20200114.ICEStats</h4>
+<h4 id="peerconnectionsampleicestats">PeerConnectionSample.ICEStats</h4>
 <p>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</p>
 <table>
 <thead>
@@ -1106,24 +1200,45 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>candidatePairs</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of ICE candidate pairs</td>
 <td>No</td>
 </tr>
 <tr>
 <td>localCandidates</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of Local ICE candidates</td>
 <td>No</td>
 </tr>
 <tr>
 <td>remoteCandidates</td>
 <td>[ object ]</td>
-<td></td>
+<td>An array of remote ICE candidates</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114inboundrtpstreamstats">PeerConnectionSampleV20200114.InboundRTPStreamStats</h4>
+<h4 id="peerconnectionsamplertcstreammediatype">PeerConnectionSample.RTCStreamMediaType</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PeerConnectionSample.RTCStreamMediaType</td>
+<td>string</td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="peerconnectionsampleinboundrtpstreamstats">PeerConnectionSample.InboundRTPStreamStats</h4>
+<p>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats</a></p>
 <table>
 <thead>
 <tr>
@@ -1137,181 +1252,163 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>bytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-bytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>codecId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-codecid</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>decoderImplementation</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>estimatedPlayoutTimestamp</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-estimatedplayouttimestamp</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>fecPacketsDiscarded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsdiscarded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>fecPacketsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-fecpacketsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>firCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-fircount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>framesDecoded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>headerBytesReceived</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-headerbytesreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the InboundRTP the client use in its dictionary</td>
 <td>No</td>
 </tr>
 <tr>
 <td>isRemote</td>
 <td>boolean</td>
-<td></td>
+<td>Indicates if the report belongs to a remote participant</td>
 <td>No</td>
 </tr>
 <tr>
 <td>jitter</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-jitter</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>keyFramesDecoded</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-framesdecoded</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>lastPacketReceivedTimestamp</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-lastpacketreceivedtimestamp</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>nackCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-nackcount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>packetsLost</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetslost</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>packetsReceived</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived">https://www.w3.org/TR/webrtc-stats/#dom-rtcreceivedrtpstreamstats-packetsreceived</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>pliCount</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of  <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-plicount</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>qpSum</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-qpsum</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>ssrc</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalDecodeTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalInterFrameDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalinterframedelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalSquaredInterFrameDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalsquaredinterframedelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcstreammediatype">PeerConnectionSampleV20200114.RTCStreamMediaType</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PeerConnectionSampleV20200114.RTCStreamMediaType</td>
-<td>string</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114mediasourcestats">PeerConnectionSampleV20200114.MediaSourceStats</h4>
+<h4 id="peerconnectionsamplemediasourcestats">PeerConnectionSample.MediaSourceStats</h4>
+<p>Represent the class described at <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-media-source</a></p>
 <table>
 <thead>
 <tr>
@@ -1325,60 +1422,60 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>audioLevel</td>
 <td>float</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-audiolevel</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>framesPerSecond</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-framespersecond</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>height</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-height</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>id</td>
 <td>string</td>
-<td></td>
+<td>The id of the media source used in the dictionary</td>
 <td>No</td>
 </tr>
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalAudioEnergy</td>
 <td>float</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalaudioenergy</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalSamplesDuration</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration">https://www.w3.org/TR/webrtc-stats/#dom-rtcaudiosourcestats-totalsamplesduration</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>width</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width">https://www.w3.org/TR/webrtc-stats/#dom-rtcvideosourcestats-width</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcqualitylimitationreason">PeerConnectionSampleV20200114.RTCQualityLimitationReason</h4>
+<h4 id="peerconnectionsamplertcqualitylimitationreason">PeerConnectionSample.RTCQualityLimitationReason</h4>
 <p>Indicates the reason of the limitation</p>
 <table>
 <thead>
@@ -1391,14 +1488,14 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </thead>
 <tbody>
 <tr>
-<td>PeerConnectionSampleV20200114.RTCQualityLimitationReason</td>
+<td>PeerConnectionSample.RTCQualityLimitationReason</td>
 <td>string</td>
 <td>Indicates the reason of the limitation</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114outboundrtpstreamstats">PeerConnectionSampleV20200114.OutboundRTPStreamStats</h4>
+<h4 id="peerconnectionsampleoutboundrtpstreamstats">PeerConnectionSample.OutboundRTPStreamStats</h4>
 <p>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats">https://www.w3.org/TR/webrtc-stats/#dom-rtcremoteoutboundrtpstreamstats</a></p>
 <table>
 <thead>
@@ -1473,7 +1570,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1527,48 +1624,48 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>retransmittedPacketsSent</td>
 <td>integer</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-retransmittedpacketssent</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>ssrc</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc">https://www.w3.org/TR/webrtc-stats/#dom-rtcrtpstreamstats-ssrc</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalEncodedBytesTarget</td>
 <td>long</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodedbytestarget</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalEncodeTime</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>totalPacketSendDelay</td>
 <td>double</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay">https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalpacketsenddelay</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>trackId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-trackidentifier</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td>transportId</td>
 <td>string</td>
-<td></td>
+<td>Map the value of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid">https://www.w3.org/TR/webrtc-stats/#dom-rtcicecandidatestats-transportid</a></td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114remoteinboundrtpstreamstats">PeerConnectionSampleV20200114.RemoteInboundRTPStreamStats</h4>
+<h4 id="peerconnectionsampleremoteinboundrtpstreamstats">PeerConnectionSample.RemoteInboundRTPStreamStats</h4>
 <table>
 <thead>
 <tr>
@@ -1606,7 +1703,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1635,7 +1732,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtctrackstats">PeerConnectionSampleV20200114.RTCTrackStats</h4>
+<h4 id="peerconnectionsamplertctrackstats">PeerConnectionSample.RTCTrackStats</h4>
 <p>A direct mapping of the <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track">https://www.w3.org/TR/webrtc-stats/#dom-rtcstatstype-track</a></p>
 <table>
 <thead>
@@ -1728,7 +1825,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <tr>
 <td>mediaType</td>
 <td>string</td>
-<td><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
+<td>Map the object of <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind">https://www.w3.org/TR/webrtc-stats/#dom-rtcmediasourcestats-kind</a> and extended by the value of UNKNOWN, for unrecognized or null values from client side<br><em>Enum:</em> <code>&quot;AUDIO&quot;</code>, <code>&quot;VIDEO&quot;</code>, <code>&quot;UNKNOWN&quot;</code></td>
 <td>No</td>
 </tr>
 <tr>
@@ -1763,8 +1860,8 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114rtcstats">PeerConnectionSampleV20200114.RTCStats</h4>
-<p>Measurement to describe the receiver side for the peer connection.</p>
+<h4 id="peerconnectionsamplertcstats">PeerConnectionSample.RTCStats</h4>
+<p>Describe a Real Time Communication endpoint. A direct mapping of: <a href="https://www.w3.org/TR/webrtc/#dom-rtcstats">https://www.w3.org/TR/webrtc/#dom-rtcstats</a></p>
 <table>
 <thead>
 <tr>
@@ -1807,7 +1904,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114extensionstat">PeerConnectionSampleV20200114.ExtensionStat</h4>
+<h4 id="peerconnectionsampleextensionstat">PeerConnectionSample.ExtensionStat</h4>
 <p>A custom defined extension for the sample</p>
 <table>
 <thead>
@@ -1833,7 +1930,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </tr>
 </tbody>
 </table>
-<h4 id="peerconnectionsamplev20200114usermediaerror">PeerConnectionSampleV20200114.UserMediaError</h4>
+<h4 id="peerconnectionsampleusermediaerror">PeerConnectionSample.UserMediaError</h4>
 <p>The reported user media error messages appeared to the user. (If this is not null, then peer connection uuid can be null.)</p>
 <table>
 <thead>
@@ -1849,92 +1946,6 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <td>message</td>
 <td>string</td>
 <td></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<h4 id="peerconnectionsamplev20200114">PeerConnectionSampleV20200114</h4>
-<p>The Peer Connection Sample provided by the WebExtrApp, version 20200114</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>browserId</td>
-<td>string</td>
-<td>fingerprint of the browser the sample is originated from. Use to identify unique number of browsers in a call.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>iceStats</td>
-<td>object</td>
-<td>Measurement to describe the state of the Interactive Connectivity Establishment (ICE)</td>
-<td>No</td>
-</tr>
-<tr>
-<td>peerConnectionId</td>
-<td>string</td>
-<td>The UUID of the peer connection the sample belongs to</td>
-<td>No</td>
-</tr>
-<tr>
-<td>receiverStats</td>
-<td>object</td>
-<td>Measurement to describe the receiver side for the peer connection.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>senderStats</td>
-<td>object</td>
-<td>Measurement to describe the receiver side for the peer connection.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>timeZoneOffsetInMinute</td>
-<td>long</td>
-<td>The offset in minutes from GMT the browser reports the sample may have.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>long</td>
-<td>The timestamp in epoch of the browser reports the sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>callId</td>
-<td>string</td>
-<td>The application provided identifier of the call the peer connection joined to</td>
-<td>No</td>
-</tr>
-<tr>
-<td>userId</td>
-<td>string</td>
-<td>The application provided Id of the user joined to the call</td>
-<td>No</td>
-</tr>
-<tr>
-<td>extensions</td>
-<td>[ object ]</td>
-<td>Custom defined measurements attached to peer connection sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>userMediaErrors</td>
-<td>[ object ]</td>
-<td>Custom defined measurements attached to peer connection sample</td>
-<td>No</td>
-</tr>
-<tr>
-<td>marker</td>
-<td>string</td>
-<td>A custom defined string all report will be marked with.</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -1956,10 +1967,11 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
     
 	<h1 id="pg-30b0e23cd373de5650de0282ba18d659">3.2 - Reports Schema</h1>
     <div class="lead">Describe the Report schema</div>
-	<p><i id="#">path: #</i></p>
-<p>$ref: <a href="#/definitions/record:org.observertc.webrtc.schemas.reports.Report">#/definitions/record:org.observertc.webrtc.schemas.reports.Report</a></p>
-<h1 id="definitions">definitions</h1>
+	<p>Reports are created and forwarded by the <a href="https://github.com/ObserveRTC/webrtc-observer">WebRTC-Observer</a>
+in an <a href="https://avro.apache.org/">Avro</a> format.</p>
+<h3 id="you-can-download-the-avro-schema-for-reports-hereschemasreport-v1avsc">You can download the Avro schema for Reports <a href="/schemas/report-v1.avsc">here</a></h3>
 <ul>
+<li><em>A Report object</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Report">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Report</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2002,6 +2014,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Initial Call Report payload. Contains information about a call initiated by a client</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InitiatedCall</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2020,6 +2033,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Finished Call Report payload. Contains information about a call finished by a client</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall">path: #/definitions/record:org.observertc.webrtc.schemas.reports.FinishedCall</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2038,6 +2052,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Joined Peer Connection payload. Contains information about a peer connection joined to a call</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection">path: #/definitions/record:org.observertc.webrtc.schemas.reports.JoinedPeerConnection</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2077,6 +2092,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Detached Peer Connection payload. Contains information about a peer connection detached from a call</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection">path: #/definitions/record:org.observertc.webrtc.schemas.reports.DetachedPeerConnection</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2116,6 +2132,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Inbound RTP payloadContains information about the RTP streams received by the peer connection</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.InboundRTP</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2283,6 +2300,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>State of the Media</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.MediaType</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2292,6 +2310,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Outbound RTP payloadContains information about the RTP streams sent by the peer connection</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.OutboundRTP</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2461,6 +2480,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Type of the quality limitation</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.RTCQualityLimitationReason</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2472,6 +2492,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Remote Inbound RTP payloadContains information about the remote inbound rtp stream the peer connection is connected to</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP">path: #/definitions/record:org.observertc.webrtc.schemas.reports.RemoteInboundRTP</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2554,6 +2575,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>ICE Candidate Pair payloadContains information about the ICE candidate pair the peer connections are nominated to use to connect.</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICECandidatePair</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2680,6 +2702,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>State of the ICE</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.ICEState">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.ICEState</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2692,6 +2715,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Remote ICE Candidate SchemaContains information about the Remote ICE Candidate</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICERemoteCandidate</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2774,6 +2798,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Type of the ICE candidate</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.CandidateType</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2785,6 +2810,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Type of the protocol</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.TransportProtocol</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2794,6 +2820,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Local ICE Candidate SchemaContains information about the Local ICE Candidate</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ICELocalCandidate</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -2883,6 +2910,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Type of the network</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.NetworkType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.NetworkType</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -2896,6 +2924,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 <li><em>&ldquo;NULL&rdquo;</em></li>
 </ol>
 </li>
+<li><em>Track payloadContains information about the Track the Peer Connection uses</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.Track">path: #/definitions/record:org.observertc.webrtc.schemas.reports.Track</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -3031,6 +3060,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Media Source payloadContains information about a Media Source the Peer Connection uses</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource">path: #/definitions/record:org.observertc.webrtc.schemas.reports.MediaSource</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -3112,6 +3142,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>User Media Error Report. Report error messages occured to the users</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError">path: #/definitions/record:org.observertc.webrtc.schemas.reports.UserMediaError</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -3150,6 +3181,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>Extended Report payload. Contains customer added report information</em></li>
 <li>Type: <code>object</code></li>
 <li><i id="#/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport">path: #/definitions/record:org.observertc.webrtc.schemas.reports.ExtensionReport</i></li>
 <li>This schema <u>does not</u> accept additional properties.</li>
@@ -3194,6 +3226,7 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </li>
 </ul>
 </li>
+<li><em>The type of the report</em></li>
 <li><i id="#/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType">path: #/definitions/enum:org.observertc.webrtc.schemas.reports.ReportType</i></li>
 <li>The value is restricted to the following:
 <ol>
@@ -3215,7 +3248,6 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
 </ol>
 </li>
 </ul>
-<p><em>Generated with <a href="https://brianwendt.github.io/json-schema-md-doc/">json-schema-md-doc</a></em></p>
 
 </div>
 
@@ -3233,8 +3265,90 @@ Javadoc, or other doc generation tools by putting them in your <code>static/</co
     
 	<h1 id="pg-30c6c91bfaabe3ec1e6c9293bb6c29a3">3.3 - WebRTC-Observer Evaluators Configurations</h1>
     <div class="lead">Description of WebRTC-Observer Evaluator configurations</div>
-	<p>TODO: make a description of the configuration parameters for the evalutors parameters in the application yaml</p>
-
+	<p>WebRTC-Observer uses a so called evaluators to analyze the peer connection samples.
+The configuration of the evaluators can be done via the changing the configuration
+properties for a micronaut application.
+Every configuration property is under the <code>observer</code> property.
+Here we give reference configuration for each version we released:</p>
+<h2 id="sample-configurations">Sample Configurations</h2>
+<h3 id="v06x">v0.6.x</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">observer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Static mapping between serviceUUID and serviceName for the reports.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># the config key is the service name you want to see in the reports</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># and the uuid property points to the UUID, which is mapped to the name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">#  serviceMapping:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">#    desredServiceName:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">#      uuid: &#34;VALID UUID&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Configuration related to use of the hazelcast in the observer</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">hazelcast</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The path for the config file.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># if it starts with classpath:, then resolver tries to find it</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># in the built esources, otherwise it looks for a path</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">configFile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${HAZELCAST_CONFIG_FILE:`classpath:hazelcast.yaml`}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Configurations regarding to the evaluators of the observer</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">#</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">evaluators</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Configurations related to the evaluator evaluates the peer connections</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pcObserver</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Defines the maximum time a peer connection can be idle,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># If a peer connection does not send any update in this period</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># then it is considered to be expired.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">peerConnectionMaxIdleTimeInS</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">300</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Defines the flush period in seconds for the buffer collecting</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># samples from peer connections.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Higher number decreases the load, but delays the updates</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mediaStreamUpdatesFlushInS</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># The number of parallel buffers the samples from</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># peer connections are collected. This is</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># slightly important for performance reason, as</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># each buffer uses a mutex when it receives sample updates.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># if the value is 0, then the number of parallel buffers are equal</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># to the number of available processors.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mediaStreamsBufferNums</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Configurations for kafka topics</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># WARNING: If this is enabled, then the observer must have admin</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># privilege to check and create topics</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">kafkaTopics</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">runAdminClient</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">False</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">createIfNotExists</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">False</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">topicName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">reports</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">onCreatePartitionNums</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">onCreateReplicateFactor</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">retentionTimeInMs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">86400000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Configures the Reports forwarded to kafka.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># In default all reports are forwarded, and it is not recommended</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># to turn this off, but if you know what you do and want to save some</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># throughput, than go ahead</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">outboundReports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportOutboundRTPs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportInboundRTPs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportRemoteInboundRTPs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportTracks</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportMediaSources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportCandidatePairs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportLocalCandidates</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportRemoteCandidates</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">reportUserMediaErrors</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># By default we do not need a database at all, however</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># for backup purposes or configuration fetches purposes</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># it is remained here.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">False</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">root</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">password</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">minIdleInMs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">timeout</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">jdbcURL</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">jdbc:mysql://localhost:3306/WebRTCObserver?serverTimezone=EET&amp;useLegacyDatetimeCode=false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">jdbcDriver</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;com.mysql.cj.jdbc.Driver&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">maxPoolSize</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">poolname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">webrtc_observer</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">dialect</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MySQL</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div>
 </div>
 
 
