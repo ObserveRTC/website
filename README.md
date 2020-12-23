@@ -48,4 +48,5 @@ docker run --publish 1313:1313 --detach --mount src="$(pwd)",target=/home/docsy/
 ```
 
 ## Copyright
-This site is made by using [Docsy](https://github.com/google/docsy).
+The original template for this site is made by using [Docsy](https://github.com/google/docsy), 
+and this site is made by ObserveRTC Team, All rights reserved.
