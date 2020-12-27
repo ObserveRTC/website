@@ -9,9 +9,13 @@ description: >
 The actual version we are working on right now is `0.6`.
 The expected release day of this version is 2020-12.
 
-## Version 0.6-alpha
+## Version 0.6
 
- * Uses Hazelcast instead of MySQL
+ * Use new schema for outgoing reports described at observertc.org
+ * Use new schema for incoming peer connection samples described at observertc.org
+ * Make the used repository independent from the evaluators as it uses the so-called tasks package
+ * Use [Hazelcast](https://hazelcast.org) (4.1) as IMDG to store and share information in the cluster between observers
+ * Use [Micronaut](https://micronaut.io) 2.2.1 as a base framework
  * Added Prometheus management endpoint
  * Added health- and error indicator for monitoring purposes
 

@@ -201,9 +201,13 @@ This the multi-page printable view of this section.
     <div class="lead">New releases of WebRTC-Observer will be announced here</div>
 	<p>The actual version we are working on right now is <code>0.6</code>.
 The expected release day of this version is 2020-12.</p>
-<h2 id="version-06-alpha">Version 0.6-alpha</h2>
+<h2 id="version-06">Version 0.6</h2>
 <ul>
-<li>Uses Hazelcast instead of MySQL</li>
+<li>Use new schema for outgoing reports described at observertc.org</li>
+<li>Use new schema for incoming peer connection samples described at observertc.org</li>
+<li>Make the used repository independent from the evaluators as it uses the so-called tasks package</li>
+<li>Use <a href="https://hazelcast.org">Hazelcast</a> (4.1) as IMDG to store and share information in the cluster between observers</li>
+<li>Use <a href="https://micronaut.io">Micronaut</a> 2.2.1 as a base framework</li>
 <li>Added Prometheus management endpoint</li>
 <li>Added health- and error indicator for monitoring purposes</li>
 </ul>
