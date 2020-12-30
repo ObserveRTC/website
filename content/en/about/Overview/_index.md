@@ -23,17 +23,16 @@ for real-time communication.
 
 ## Value
 
-**Simple** One of the requirement when you create a real-time service is to make it highly scalable and available. We use open-source technologies designed for distributed applications. Our main principle is to not reinvent the wheel,  
-making things as simple as possoble, but not simpler.
+**Simple and Scalable** One of the requirement when you create a real-time service is to make it highly scalable and available. We use open-source technologies designed for distributed applications. Our main principle is to not reinvent the wheel, making things as simple as possoble, but not simpler.
 
 **Control over the data** You have full control of data you extract from your WebRTC applications and you can deploy our solutions in any cloud provider supporting kubernetes/docker. For flexibility we use helm to deploy our solution in kubernetes.
 
 ### Why to choose ObserveRTC
 
-* Open source.
-* Designed to be integrated with other open-source solutions.
-* Designed for the cloud. When the size of your memory and compute requirements increase, new resources can be dynamically added to your cluster to scale elastically.
-* Designed to use [hazelcast](https://hazelcast.org) as an in-memory distributed databse, therefore Data is resilient to member failure. 
+* Open source and designed to be integrated with other open-source solutions.
+* Own the data from your applications and run further analysis. 
+* Designed for the cloud. When the size of your memory and compute requirements increase, new resources can be dynamically added to your cluster to scale elastically. e.g. [hazelcast](https://hazelcast.org) as an in-memory distributed databse for resiliance. 
+
 
 ### Architecture
 
@@ -61,28 +60,16 @@ Schematical overview of communication between a Stats Interpreter (WebRTC-Observ
 
 #### Report Analyzation and Visualization
 
-This part is up to you! As the Observer forwards [Reports]({{< ref "reports.md" >}}) 
-to Kafka, and from that point you can use your favorite tool 
-(i.e.: [Kafka Connect](https://docs.confluent.io/platform/current/connect/index.html), 
-[Kakfka streams](https://kafka.apache.org/documentation/streams/)) to analyse your WebRTC applications.
+This part is up to you! As the Observer forwards [Reports]({{< ref "reports.md" >}}) to Kafka, and from that point you can use your favorite tool (i.e.: [Kafka Connect](https://docs.confluent.io/platform/current/connect/index.html), [Kakfka streams](https://kafka.apache.org/documentation/streams/)) to analyse your WebRTC applications.
 
 #### Schemas
 
-We use predefined [Data Transfer Objects](https://en.wikipedia.org/wiki/Data_transfer_object)) (DTO) to communicate one service to another. 
-These DTOs are documented in the [Reference](/docs/references/) sections. 
-The following DTOs we are corrently using:
+We use predefined [Data Transfer Objects](https://en.wikipedia.org/wiki/Data_transfer_object)) (DTO) to communicate one service to another. These DTOs are documented in the [Reference](/docs/references/) sections. The following DTOs we are corrently using:
 
 [**PeerConnectionSample**]({{< ref "peer-connection-sample.md" >}}) describes and holds each stats from a peer connection to describe the state. All integration of WebExtrApp reports the same unified PeerConnectionSample schema to the observer. 
 
 [**Report**]({{< ref "reports.md" >}}) is an observation from the WebRTC-Observer based on the received sample. There are different types of reports that can be created and forwarded to a kafka broker.
 
-### Use Cases
-
-ObserveRTC can be used:
-
- * To monitor your WebRTC applications
- * To have full ownership of data you extract from your solution
- * To have a highly scalable and flexible WebRTC monitoring solution
 
 ### Resources
 
