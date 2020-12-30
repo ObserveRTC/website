@@ -56,7 +56,7 @@ Schematical overview of communication between a Stats Collector (WebExtrApp), an
 Schematical overview of communication between a Stats Interpreter (WebRTC-Observer),and a Data visualization (Data Studio).
 {{< /imgproc >}}
 
-**WebRTC-Observer** is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the [Micronaut](https://www.micronaut.io/)framework. We use [Hazelcast](https://hazelcast.org) as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use [Kafka](https://kafka.apache.org/) to forward.
+**WebRTC-Observer** is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the [Micronaut](https://www.micronaut.io/) framework. We use [Hazelcast](https://hazelcast.org) as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use [Kafka](https://kafka.apache.org/) to forward.
 
 #### Report Analyzation and Visualization
 
