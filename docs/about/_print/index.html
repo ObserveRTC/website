@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.79.0" /><link rel="canonical" type="text/html" href="/about/">
+<meta name="generator" content="Hugo 0.79.1" /><link rel="canonical" type="text/html" href="/about/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -251,44 +251,19 @@ This the multi-page printable view of this section.
 	<p>This section gives you an introduction of the ObserveRTC solutions,
 describes ObserveRTC’s architecture along with its components, use cases and topology.</p>
 <h2 id="what-is-observertc">What is ObserveRTC?</h2>
-<p>ObserveRTC is an open source initiative aimed to
-provide tools to monitor and analyze applications
+<p>ObserveRTC is an open source initiative aimed to provide tools to monitor and analyze applications
 for real-time communication.</p>
-<p><strong>As an application developer</strong> you can use our solutions of<br>
-ObserveRTC to verify your feature
-and debug your WebRTC applications.</p>
-<p><strong>As a project owner</strong> you can use our solutions to
-measure and monitor the performance of your application.</p>
-<p><strong>As a project contributor</strong> you can be part of a community
-appreciate your effort to make developers life easier
-and ensures taht your solution and contribution is meaningful.</p>
-<p>We are creating solutions for monitoring WebRTC
-platforms. One of the requirement when we create a service
-is to make it highly scalable and available.
-We use open-source technologies designed for distributed<br>
-applications. Our main principle is to not reinvent the wheel,<br>
-making things as simple as possoble, but not simpler.</p>
-<p>You have full control of data you extract from
-your WebRTC platform regarding to monitoring your application, and
-you can deploy our solutions in any cloud provider supporting
-kubernetes easily. For flexibility we use helm to deploy our solution in kubernetes.</p>
-<p>Our flagship is the WebRTC-Observer microservice make it possible
-to collect and analyze your WebRTC applications.
-WebRTC-Observer is designed to be lightweight and easy to use.
-Since it is delivered as a docker container,
-it easily deploy into your infrastructure.</p>
-<h3 id="webrtc-observer-strengths">WebRTC-Observer Strengths</h3>
+<p><strong>As an application developer</strong> you can use ObserveRTC to debug your WebRTC applications.</p>
+<p><strong>As a product owner</strong> you can use ObserveRTC to measure and monitor the performance of your application.</p>
+<p><strong>As an operations team member</strong> you can monitor the health and get critical alerts about your application.</p>
+<h2 id="value">Value</h2>
+<p><strong>Simple and Scalable</strong> One of the requirement when you create a real-time service is to make it highly scalable and available. We use open-source technologies designed for distributed applications. Our main principle is to not reinvent the wheel, making things as simple as possoble, but not simpler.</p>
+<p><strong>Control over the data</strong> You have full control of data you extract from your WebRTC applications and you can deploy our solutions in any cloud provider supporting kubernetes/docker. For flexibility we use helm to deploy our solution in kubernetes.</p>
+<h3 id="why-to-choose-observertc">Why to choose ObserveRTC</h3>
 <ul>
-<li>It is open source.</li>
-<li>It is designed to be integrated other open-source solutions.</li>
-<li>It is designed for the cloud. When the size of your memory and compute requirements increase, new members can be dynamically added to your cluster to scale elastically.</li>
-<li>It is designed to use <a href="https://hazelcast.org">hazelcast</a> as an in-memory distributed databse, therefore Data is resilient to member failure.</li>
-</ul>
-<p><strong>WebRTC-Observer is a fit when you need</strong>:</p>
-<ul>
-<li>QoS analytical tools to monitor your WebRTC application.</li>
-<li>You want to own the data you extract</li>
-<li>You want to easily extend and develop the capabilities of analyzing WebRTC applications further.</li>
+<li>Open source and designed to be integrated with other open-source solutions.</li>
+<li>Own the data from your applications and run further analysis.</li>
+<li>Designed for the cloud. When the size of your memory and compute requirements increase, new resources can be dynamically added to your cluster to scale elastically. e.g. <a href="https://hazelcast.org">hazelcast</a> as an in-memory distributed databse for resiliance.</li>
 </ul>
 <h3 id="architecture">Architecture</h3>
 
@@ -322,8 +297,7 @@ Monitoring RTC applications is separated into three parts: Collection, Intrepret
 	
 	<div class="card-body px-0 pt-2 pb-0">
 		<p class="card-text">
-Schematical overview of communication between a Stats Collector (WebExtrApp), 
-and a samples interpreter (Observer).
+Schematical overview of communication between a Stats Collector (WebExtrApp), and a samples interpreter (Observer).
 </p>
 	</div>
 	
@@ -342,31 +316,18 @@ and a samples interpreter (Observer).
 	
 	<div class="card-body px-0 pt-2 pb-0">
 		<p class="card-text">
-Schematical overview of communication between a Stats Interpreter (WebRTC-Observer),
-and a Data visualization (Data Studio).
+Schematical overview of communication between a Stats Interpreter (WebRTC-Observer),and a Data visualization (Data Studio).
 </p>
 	</div>
 	
 </div>
-<p><strong>WebRTC-Observer</strong> is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the <a href="https://www.micronaut.io/">Micronaut</a>framework. We use <a href="https://hazelcast.org">Hazelcast</a> as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use <a href="https://kafka.apache.org/">Kafka</a> to forward.</p>
+<p><strong>WebRTC-Observer</strong> is a microservice developed to accept WebRTC stats from WebExtrApp client integrations, monitor the WebRTC calls and it creates Reports. It is a simple microservice written by using the <a href="https://www.micronaut.io/">Micronaut</a> framework. We use <a href="https://hazelcast.org">Hazelcast</a> as a distributed in-memory database in order to store information related to the observed WebRTC calls. The service creates Reports from the observed PeerConnection, for which we use <a href="https://kafka.apache.org/">Kafka</a> to forward.</p>
 <h4 id="report-analyzation-and-visualization">Report Analyzation and Visualization</h4>
-<p>This part is up to you! As the Observer forwards <a href="/docs/references/reports/">Reports</a>
-to Kafka, and from that point you can use your favorite tool
-(i.e.: <a href="https://docs.confluent.io/platform/current/connect/index.html">Kafka Connect</a>,
-<a href="https://kafka.apache.org/documentation/streams/">Kakfka streams</a>) to analyse your WebRTC applications.</p>
+<p>This part is up to you! As the Observer forwards <a href="/docs/references/reports/">Reports</a> to Kafka, and from that point you can use your favorite tool (i.e.: <a href="https://docs.confluent.io/platform/current/connect/index.html">Kafka Connect</a>, <a href="https://kafka.apache.org/documentation/streams/">Kakfka streams</a>) to analyse your WebRTC applications.</p>
 <h4 id="schemas">Schemas</h4>
-<p>We use predefined <a href="https://en.wikipedia.org/wiki/Data_transfer_object">Data Transfer Objects</a>) (DTO) to communicate one service to another.
-These DTOs are documented in the <a href="/docs/references/">Reference</a> sections.
-The following DTOs we are corrently using:</p>
+<p>We use predefined <a href="https://en.wikipedia.org/wiki/Data_transfer_object">Data Transfer Objects</a>) (DTO) to communicate one service to another. These DTOs are documented in the <a href="/docs/references/">Reference</a> sections. The following DTOs we are corrently using:</p>
 <p><a href="/docs/references/peer-connection-sample/"><strong>PeerConnectionSample</strong></a> describes and holds each stats from a peer connection to describe the state. All integration of WebExtrApp reports the same unified PeerConnectionSample schema to the observer.</p>
 <p><a href="/docs/references/reports/"><strong>Report</strong></a> is an observation from the WebRTC-Observer based on the received sample. There are different types of reports that can be created and forwarded to a kafka broker.</p>
-<h3 id="use-cases">Use Cases</h3>
-<p>ObserveRTC can be used:</p>
-<ul>
-<li>To monitor your WebRTC applications</li>
-<li>To have full ownership of data you extract from your solution</li>
-<li>To have a highly scalable and flexible WebRTC monitoring solution</li>
-</ul>
 <h3 id="resources">Resources</h3>
 <p>ObserveRTC source code can be found at <a href="https://github.com/ObserveRTC/">GitHub/ObserveRTC</a>.
 This is also where you can contribute and report issues.</p>
