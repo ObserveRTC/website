@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.79.1" /><link rel="canonical" type="text/html" href="/docs/">
+<meta name="generator" content="Hugo 0.79.0" /><link rel="canonical" type="text/html" href="/docs/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -286,7 +286,42 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
+<li>5: <a href="#pg-8dbd4e302cd86a4d0f71f71ce3b300de">Tutorials</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>5.1: <a href="#pg-af3bb00779e7acf2067286d76ab420fe">Observer</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5.2: <a href="#pg-031c1fdc85a2add41144a9afafe309b2">WebExtrApp</a></li>
+
+
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">Contribution Guidelines</a></li>
 
 
     
@@ -3455,7 +3490,185 @@ for WebRTC calls</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">5 - Contribution Guidelines</h1>
+	<h1 id="pg-8dbd4e302cd86a4d0f71f71ce3b300de">5 - Tutorials</h1>
+    <div class="lead">Tutorials for different components</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-af3bb00779e7acf2067286d76ab420fe">5.1 - Observer</h1>
+    <div class="lead">Basic tutorial to get start develop the Observer</div>
+	<h2 id="clone-and-run">Clone and Run</h2>
+<p>Let&rsquo;s clone from <a href="https://github.com/ObserveRTC/observer">here</a></p>
+<pre><code>git clone https://github.com/ObserveRTC/observer
+</code></pre>
+<p>Open the code with an IDE (IntelliJ perhaps).
+To run it, you need to run kafka currently. In
+the clones repository, you can run <code>docker-compose up kafka</code>, which
+runs a kafka for you setup everything.
+If you now run the <code>observer</code>, and it should stand up and run.</p>
+<p>The <code>observer</code> is a <a href="https://micronaut.io">micronaut</a> application,
+and heavily using the convept of <a href="https://docs.micronaut.io/latest/guide/index.html#ioc">Inversion of Control</a> through java bean creations.
+All the main component of the application is marked with
+Singletone annotation and injected to the place it is used.
+You might see Provider object (i.e.: RepositoryProvider), which
+is a proxy object to make easier to provide several singletone
+object belongs to the same package.</p>
+<p>Let&rsquo;s look at the <code>src/main/java/org/observertc/webrtc/observer</code>.
+packages are the application features.
+The WebSocketPCSampleV20200114 class is the entry point of the
+PCSample coming from the <code>observer-js</code>, and after
+validation it sends to the <code>Pipeline</code></p>
+<h3 id="pipelines">Pipelines</h3>
+<p>The main logic is under <code>evaluators</code> packages, and the
+<code>Pipeline</code> class is the one, assemble the pipeline
+for the application. (<code>setup</code> method, it is automtacilly called
+after the Pipeline is constructed by the micronaut IoC manager).
+The evaluators are using the <a href="https://github.com/ReactiveX/RxJava">RXJava3</a>
+library to make a connectable component based pipeline.</p>
+<p>Let&rsquo;s say we want to count how many report goes through
+as InbounrRTP in one minute and report as an <code>ExtensionReport</code>.</p>
+<p>First create a new class implements <code>ObservableOperator</code>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MyCounter</span> <span style="color:#204a87;font-weight:bold">implements</span> <span style="color:#000">ObservableOperator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+
+        <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">extensionType</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MyCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">extensionType</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">extensionType</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">extensionType</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+
+        <span style="color:#5c35cc;font-weight:bold">@Override</span>
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#5c35cc;font-weight:bold">@NonNull</span> <span style="color:#000">Observer</span><span style="color:#ce5c00;font-weight:bold">&lt;?</span> <span style="color:#204a87;font-weight:bold">super</span> <span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">apply</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@NonNull</span> <span style="color:#000">Observer</span><span style="color:#ce5c00;font-weight:bold">&lt;?</span> <span style="color:#204a87;font-weight:bold">super</span> <span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">Throwable</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">UUID</span> <span style="color:#000">serviceUUID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">randomUUID</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">serviceName</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;serviceName&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">UUID</span> <span style="color:#000">pcUUID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">randomUUID</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Observer</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">&gt;()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                <span style="color:#000">Disposable</span> <span style="color:#000">upstream</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                <span style="color:#000">Integer</span> <span style="color:#000">count</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                <span style="color:#000">Instant</span> <span style="color:#000">lastReported</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Instant</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">now</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                <span style="color:#5c35cc;font-weight:bold">@Override</span>
+                <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onSubscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@NonNull</span> <span style="color:#000">Disposable</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">upstream</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                <span style="color:#ce5c00;font-weight:bold">}</span>
+
+                <span style="color:#5c35cc;font-weight:bold">@Override</span>
+                <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onNext</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@NonNull</span> <span style="color:#000">ReportRecord</span> <span style="color:#000">reportRecord</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                    <span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000">count</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                    <span style="color:#000">Instant</span> <span style="color:#000">now</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Instant</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">now</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">minusSeconds</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">60</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">compareTo</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastReported</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">return</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                    <span style="color:#ce5c00;font-weight:bold">}</span>
+                    <span style="color:#000">Report</span> <span style="color:#000">report</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">reportRecord</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">value</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                    <span style="color:#000">ExtensionReport</span> <span style="color:#000">myExtensionReport</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ExtensionReport</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">newBuilder</span><span style="color:#ce5c00;font-weight:bold">()</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setExtensionType</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">extensionType</span><span style="color:#ce5c00;font-weight:bold">)</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPeerConnectionUUID</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">pcUUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPayload</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">count</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">build</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+                    <span style="color:#000">Report</span> <span style="color:#000">myReport</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">newBuilder</span><span style="color:#ce5c00;font-weight:bold">()</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setMarker</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getMarker</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setServiceName</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">serviceName</span><span style="color:#ce5c00;font-weight:bold">)</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setServiceUUID</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVersion</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getVersion</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setType</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ReportType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">EXTENSION</span><span style="color:#ce5c00;font-weight:bold">)</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setTimestamp</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toEpochMilli</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPayload</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">myExtensionReport</span><span style="color:#ce5c00;font-weight:bold">)</span>
+                            <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">build</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                    <span style="color:#000">count</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastReported</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">now</span><span style="color:#ce5c00;font-weight:bold">;</span>
+                    <span style="color:#000">ReportRecord</span> <span style="color:#000">newReportRecord</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ReportRecord</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">pcUUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">myReport</span><span style="color:#ce5c00;font-weight:bold">);</span>
+                    <span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onNext</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">newReportRecord</span><span style="color:#ce5c00;font-weight:bold">);</span>
+                <span style="color:#ce5c00;font-weight:bold">}</span>
+
+                <span style="color:#5c35cc;font-weight:bold">@Override</span>
+                <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onError</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#5c35cc;font-weight:bold">@NonNull</span> <span style="color:#000">Throwable</span> <span style="color:#000">e</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">upstream</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(!</span><span style="color:#000">upstream</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isDisposed</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">upstream</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">dispose</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                        <span style="color:#ce5c00;font-weight:bold">}</span>
+                    <span style="color:#ce5c00;font-weight:bold">}</span>
+                    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                        <span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onError</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">e</span><span style="color:#ce5c00;font-weight:bold">);</span>
+                    <span style="color:#ce5c00;font-weight:bold">}</span>
+                <span style="color:#ce5c00;font-weight:bold">}</span>
+
+                <span style="color:#5c35cc;font-weight:bold">@Override</span>
+                <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onComplete</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                        <span style="color:#000">observer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onComplete</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                    <span style="color:#ce5c00;font-weight:bold">}</span>
+                <span style="color:#ce5c00;font-weight:bold">}</span>
+            <span style="color:#ce5c00;font-weight:bold">};</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>The main logic is implemeted in the <code>onNext</code> method.</p>
+<p>Next we add it in our pipeline. Let&rsquo;s go to the Pipeline class, and
+add the following snippet in the <code>setup</code> method.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">observedPCSEvaluator</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getInboundRTPReports</span><span style="color:#ce5c00;font-weight:bold">()</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lift</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MyCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;MyICELocalCandidateCounts&#34;</span><span style="color:#ce5c00;font-weight:bold">))</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">subscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reportSink</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>this snippet make a new <code>MyCounter</code> and subscribe it to the
+InboundRTPReports, and count how many of it goes through in
+60s.</p>
+<p>This is how we can add a new operator to the observer.
+Basically the RXJava3 is the limitation.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-031c1fdc85a2add41144a9afafe309b2">5.2 - WebExtrApp</h1>
+    <div class="lead">New releases of WebExtrApp will be announced here</div>
+	
+</div>
+
+
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8efbf7499fe9c7bde8d2c1bb7ff6ee3c">6 - Contribution Guidelines</h1>
     <div class="lead">How to contribute in ObserveRTC</div>
 	<h2 id="developing-services">Developing Services</h2>
 <p>Our services are open-source, hence you are
@@ -3550,7 +3763,7 @@ here is what you can do:</p>
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2020 ObserveRTC Team All Rights Reserved</small>
+        <small class="text-white">&copy; 2021 ObserveRTC Team All Rights Reserved</small>
         
 	
       </div>
