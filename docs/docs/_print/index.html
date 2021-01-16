@@ -301,7 +301,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5.1: <a href="#pg-af3bb00779e7acf2067286d76ab420fe">Observer</a></li>
+<li>5.1: <a href="#pg-73f0ed6c674f4e6f9097f57d6d5403ea">Observer</a></li>
 
 
     
@@ -309,7 +309,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5.2: <a href="#pg-031c1fdc85a2add41144a9afafe309b2">WebExtrApp</a></li>
+<li>5.2: <a href="#pg-af3bb00779e7acf2067286d76ab420fe">Observer</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5.3: <a href="#pg-031c1fdc85a2add41144a9afafe309b2">WebExtrApp</a></li>
 
 
     
@@ -3515,9 +3523,468 @@ for WebRTC calls</li>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-af3bb00779e7acf2067286d76ab420fe">5.1 - Observer</h1>
+	<h1 id="pg-73f0ed6c674f4e6f9097f57d6d5403ea">5.1 - Observer</h1>
     <div class="lead">Basic tutorial to get start develop the Observer</div>
-	<h2 id="clone-and-run">Clone and Run</h2>
+	<p>In this tutorial we add a monitor to the observer providing metrics about
+the amount of user media error occured in one instance during a configurable
+amount of time.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Getting started with <a href="https://micronaut.io">Micronaut</a></li>
+<li>Getting Started with <a href="https://github.com/ReactiveX/RxJava/wiki/Getting-Started">RXJava3</a></li>
+<li>Getting Started with <a href="https://micrometer.io/">Micrometer</a></li>
+<li>Getting Started with <a href="http://hazelcast.org">Hazelcast</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>The <a href="https://github.com//ObserveRTC/observer">observer</a> receives
+<a href="https://github.com/ObserveRTC/observer-js/blob/master/src/schema/v20200114/index.ts">PeerConnectionSamples</a>
+from the <a href="https://github.com/ObserveRTC/observer-js/">observer-js</a>.
+The samples are observed, and reports are generated for further processing.
+Additionally metrics are exposed by the observer instances' monitor
+to provide health status about the observed media units and services.</p>
+<p>In order to accomplish this tutorial, we need to listen user media reports
+from the ObservedPCSEvaluator, and tracks the occurrances of such events
+in a distributed database provided us by the hazelcast.</p>
+<p>Then we need to setup a monitor insode the monitor package periodically
+reporting the number of occurred events and expose it through micrometer.</p>
+<p>After this we need to make parameters for such feature to be configurable, and
+add it to the observer configuration.</p>
+<p>Finally we need to add tests.</p>
+<h2 id="clone-and-run-observer">Clone and Run Observer</h2>
+<p>Let&rsquo;s clone from <a href="https://github.com/ObserveRTC/observer">here</a></p>
+<pre><code>git clone https://github.com/ObserveRTC/observer
+</code></pre>
+<p>Open the code with an IDE (IntelliJ perhaps). Then run.
+THe observer is up and running, listening websocket connections
+on port <code>7080</code>. When PeerConnectionSample is received it turns into a report and
+(in a defauolt configuration) it sinks out to the console as a log message.
+Additionally you can see the management endpoint on <code>localhost:7081/prometheus</code>
+exposing metrics from the observer.</p>
+<p>The configuration for the observer is in a resource folder: <code>resources/application.yaml</code>.</p>
+<h3 id="add-usermediaerrorsrepository">Add UserMediaErrorsRepository</h3>
+<p>We need to store the number of tracked user media errors, in order
+to expose metrics periodically.
+Let&rsquo;s add a new hazelcast repository under the <code>repository/hazelcast</code> package.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Singleton</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMediaErrorsRepository</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">MapRepositoryAbstract</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">KEY_DELIMITER</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;#!#&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">String</span> <span style="color:#000">getKey</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">UUID</span> <span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span> <span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">requireNonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">requireNonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">format</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s%s%s&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">KEY_DELIMITER</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">Pair</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">splitKey</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">parts</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">DELIMITER</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">UUID</span> <span style="color:#000">serviceUUID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fromString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">parts</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]);</span>
+      <span style="color:#000">String</span> <span style="color:#000">mediaUnitId</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">parts</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">];</span>
+      <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Pair</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;(</span><span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    
+	<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">Logger</span> <span style="color:#000">logger</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LoggerFactory</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLogger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">UserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
+
+	<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">HAZELCAST_MAP_KEY</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;WebRTCObserverUserMediaErrors&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+	<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ObserverHazelcast</span> <span style="color:#000">observerHazelcast</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">observerHazelcast</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">HAZELCAST_MAP_KEY</span><span style="color:#ce5c00;font-weight:bold">);</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+
+</code></pre></div><p>This is a simple map repository where the key is a string and a
+value is an integer. The key for the repository will be a combination
+of a serviceUUID, and the mediaUnitId. To generate the key a helper method is added here.</p>
+<p>As key, and value are primitive types, there is no need to implement
+explicit serialization to any of this type. If you add type of objects, that
+are not primitives, then you need to implement their serialization.
+For that example take a look in the <code>models</code> package to see how it is done.</p>
+<p>We make the class singletone, so micronaut dependency manager can pick it up
+and inject it wherever we need it. To make the<br>
+access to this repository a bit more convenient let&rsquo;s
+inject this new repository to the <code>RepositoryProvider</code> object,
+so all other object already have the <code>RepositoryProvider</code> can access
+to our new repository without any additional injection to them.
+We add the new <code>UserMediaErrorsRepository</code> to <code>RepositoryProvider</code>
+like adding the following snippet:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+	<span style="color:#000">Provider</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">UserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">userMediaErrorsRepositoryProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+	<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMediaErrorsRepository</span> <span style="color:#000">getUserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">userMediaErrorsRepositoryProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h3 id="add-usermediaerrorupdatertask">Add UserMediaErrorUpdaterTask</h3>
+<p>We need to save the amount of user media error the instance sensed into the repository.
+As in this architecture we do not recommend to use the repositories directly from
+the evaluator, we added an additional abstraction between the evaluator and the repository,
+and so all queries and statements are done by the so called Tasks.</p>
+<p>Tasks are under the <code>tasks</code> package, and designed to execute a
+set of statements on the reopsitory and provide the expected results.
+In general we create tasks by extending the <code>TaskAbstract</code> abstract class.
+An inherited <code>TaskAbstract</code> contains all the logic of executing, providing results,
+and execute actions in case of error happened, so the task operation
+can be formed to be idempotent. An extended <code>TaskAbstract</code> can be executed only
+once. Let&rsquo;s add our first task under the <code>tasks</code> package.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Prototype</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMediaErrorsUpdaterTask</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">TaskAbstract</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Void</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">trackedErrors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashMap</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;();</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">RepositoryProvider</span> <span style="color:#000">repositoryProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMediaErrorsUpdaterTask</span> <span style="color:#000">withTrackedErrors</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">accumulate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#000">Void</span> <span style="color:#000">perform</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">Throwable</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">UserMediaErrorsRepository</span> <span style="color:#000">userMediaErrorsRepository</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">repositoryProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">keys</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">keySet</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">stored</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">userMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAll</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">keys</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#000">userMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">saveAll</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">accumulate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">stored</span><span style="color:#ce5c00;font-weight:bold">));</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">rollback</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Throwable</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#8f5902;font-style:italic">// no need to rollback any operation here
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">accumulate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">source</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">Iterator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Entry</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">source</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">entrySet</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">iterator</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">it</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">hasNext</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Entry</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">entry</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">it</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">next</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#000">Integer</span> <span style="color:#000">tracked</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getOrDefault</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">entry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getKey</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+            <span style="color:#000">tracked</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">entry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">entry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getKey</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">tracked</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>This is a <code>@Prototype</code> means we will have a new instance every type we inject it
+or request it from a Provider. Let&rsquo;s add this task to the <code>TasksProvider</code> object
+as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Inject</span>
+<span style="color:#000">Provider</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">UserMediaErrorsUpdaterTask</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">userMediaErrorsUpdaterTaskProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMediaErrorsUpdaterTask</span> <span style="color:#000">getUserMediaErrorUpdaterTask</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">userMediaErrorsUpdaterTaskProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h3 id="add-usermediaerrorevaluator">Add UserMediaErrorEvaluator</h3>
+<p>observer-js provided samples are evaluated in the <code>evaluator</code> package.
+Every evaluator uses RXJava3 framework to be connectable with other evaluators.
+For getting familiar how we use RXJava3 as interconnectable black-boxes,
+take a look the appendixes of this tutorial.</p>
+<p>Let&rsquo;s add our UserMediaEvaluator, which has one input for
+Reports contain UserMediaErrors, and it refreshes the repository periodically.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#5c35cc;font-weight:bold">@Singleton</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMediaReportsEvaluator</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">Logger</span> <span style="color:#000">logger</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LoggerFactory</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLogger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">UserMediaReportsEvaluator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
+
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Subject</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Report</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">userMediaErrorReports</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">PublishSubject</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">TasksProvider</span> <span style="color:#000">tasksProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@PostConstruct</span>
+    <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setup</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">userMediaErrorReports</span>
+                <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">buffer</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">TimeUnit</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">SECONDS</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1000</span><span style="color:#ce5c00;font-weight:bold">)</span>
+                <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">subscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">process</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Observer</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Report</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">getInput</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">userMediaErrorReports</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">process</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Report</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">reports</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">reports</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">return</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">trackedErrors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashMap</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;();</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Report</span> <span style="color:#000">report</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">reports</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">UserMediaError</span> <span style="color:#000">userMediaError</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">UserMediaError</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getPayload</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">userMediaError</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                <span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">warn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Report {} payload is null, it cannot be tracked&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+                <span style="color:#204a87;font-weight:bold">continue</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#ce5c00;font-weight:bold">}</span>
+            <span style="color:#000">String</span> <span style="color:#000">mediaUnitId</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">userMediaError</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getMediaUnitId</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                <span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">warn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Report {} mediaunitId is null, it cannot be tracked&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+                <span style="color:#204a87;font-weight:bold">continue</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#ce5c00;font-weight:bold">}</span>
+            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getServiceUUID</span><span style="color:#ce5c00;font-weight:bold">()))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                <span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">warn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Report {} serviceUUID is null, it cannot be tracked&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+                <span style="color:#204a87;font-weight:bold">continue</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#ce5c00;font-weight:bold">}</span>
+            <span style="color:#000">UUID</span> <span style="color:#000">serviceUUID</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fromString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">report</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getServiceUUID</span><span style="color:#ce5c00;font-weight:bold">());</span>
+            <span style="color:#000">String</span> <span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getKey</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">serviceUUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">mediaUnitId</span><span style="color:#ce5c00;font-weight:bold">);</span>
+            <span style="color:#000">Integer</span> <span style="color:#000">tracked</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getOrDefault</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+            <span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">,</span>  <span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000">tracked</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+
+        <span style="color:#000">UserMediaErrorsUpdaterTask</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">tasksProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorUpdaterTask</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#000">task</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">withTrackedErrors</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">withLogger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">execute</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(!</span><span style="color:#000">task</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">succeeded</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">warn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;{} is failed&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">task</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getClass</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">getSimpleName</span><span style="color:#ce5c00;font-weight:bold">());</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>This simple evaluator exposes one input, where it expects to accept
+reports, which are have the UserMediaError payloads. This assumption
+is crucial for this evaluator as in its evaluator cast the payload for that type,
+so the input must be connected to a proper output in the pipeline.
+Other than that it buffers the input for 10s, or 100 items, and
+invokes the process method with the list of reports it received
+in order to proceed.
+The process method makes a map for tracked errors and request
+the previously defined <code>UserMediaErrorUpdaterTask</code> through the
+<code>TaskProvider</code>, and execute it after passed the expected parameter.</p>
+<p>Let&rsquo;s addthis evaluator to our pipelie in the <code>Pipeline</code> object.</p>
+<p>Let&rsquo;s inject our new evaluator</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">UserMediaReportsEvaluator</span> <span style="color:#000">userMediaReportsEvaluator</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>And then lets connect to the right pipeline in the <code>setup</code> method.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// UserMediaError -&gt; UserMediaReportEvalautor
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">observedPCSEvaluator</span>
+                <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorReports</span><span style="color:#ce5c00;font-weight:bold">()</span>
+                <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">subscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">userMediaReportsEvaluator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getInput</span><span style="color:#ce5c00;font-weight:bold">());</span>
+</code></pre></div><p>We arhalf done! The user media error reports are routed to our new evaluator,
+which calls a task to save the tracked numbers into the hazelcast repository.</p>
+<p>Next we add a monitor to extract the numbers and expose the metrics.</p>
+<h3 id="add-usermediaerrorsextractortask">Add UserMediaErrorsExtractorTask</h3>
+<p>Now we need to think about hwo to extract and expose the metrics.
+The Evaluator receives the reports and update the tracked numbers periodically.
+When we expose the metrics we need to extract all of the tracked numbers
+stored in the instance locally, so we move it out from the repository.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Prototype</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMediaErrorsExtractorTask</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">TaskAbstract</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">enum</span> <span style="color:#000">State</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">CREATED</span><span style="color:#ce5c00;font-weight:bold">,</span>
+        <span style="color:#000">COLLECTED</span><span style="color:#ce5c00;font-weight:bold">,</span>
+        <span style="color:#000">REMOVED</span><span style="color:#ce5c00;font-weight:bold">,</span>
+        <span style="color:#000">EXECUTED</span><span style="color:#ce5c00;font-weight:bold">,</span>
+        <span style="color:#000">ROLLBACK</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">State</span> <span style="color:#000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CREATED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">locallyStoredEntries</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashMap</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;();</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">RepositoryProvider</span> <span style="color:#000">repositoryProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">perform</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">Throwable</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">UserMediaErrorsRepository</span> <span style="color:#000">repository</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">repositoryProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#204a87;font-weight:bold">switch</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">default</span><span style="color:#ce5c00;font-weight:bold">:</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">CREATED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">locallyStoredEntries</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">repository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLocalEntries</span><span style="color:#ce5c00;font-weight:bold">();</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">COLLECTED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">COLLECTED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#000">repository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">removeAll</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">locallyStoredEntries</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">keySet</span><span style="color:#ce5c00;font-weight:bold">());</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">REMOVED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">REMOVED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">EXECUTED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">EXECUTED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">ROLLBACK</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">break</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">locallyStoredEntries</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">rollback</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Throwable</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">UserMediaErrorsRepository</span> <span style="color:#000">repository</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">repositoryProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#204a87;font-weight:bold">switch</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">EXECUTED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">REMOVED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">REMOVED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nonNull</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">locallyStoredEntries</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                    <span style="color:#000">repository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">saveAll</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">locallyStoredEntries</span><span style="color:#ce5c00;font-weight:bold">);</span>
+                <span style="color:#ce5c00;font-weight:bold">}</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">COLLECTED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">CREATED</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">state</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ROLLBACK</span><span style="color:#ce5c00;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">case</span> <span style="color:#000">ROLLBACK</span><span style="color:#ce5c00;font-weight:bold">:</span>
+                <span style="color:#204a87;font-weight:bold">break</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>Here we use the concept of rollback, although its a bit overshoot.
+The reason behind it is if anything happens between collection and removal,
+we will restore the state by adding back the extracted stores.
+We only removes the key,value pair owned by this exact instance.
+Although, normally we extract exactly what we collected before in an accumualted way,
+if an observer instance is crashed, its backup hazelcast map will be owned by another instance,
+which in this way can report the tracked number correctly.</p>
+<p>Add this task to the <code>TasksProvider</code> similarly as we added it before.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#5c35cc;font-weight:bold">@Inject</span>
+<span style="color:#000">Provider</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">UserMediaErrorsExtractorTask</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">userMediaErrorsExtractorTaskProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+
+</code></pre></div><h3 id="add-usermediaerrorsmonitor">Add UserMediaErrorsMonitor</h3>
+<p>Last, we add the monitor exposes the metric.
+Let&rsquo;s add our new Monitor under the <code>monitors</code> package.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#5c35cc;font-weight:bold">@Singleton</span>
+<span style="color:#5c35cc;font-weight:bold">@Requires</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">notEnv</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Environment</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TEST</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMediaErrorsMonitor</span> <span style="color:#204a87;font-weight:bold">implements</span> <span style="color:#000">ApplicationEventListener</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">HeartbeatEvent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">METRIC_NAME</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;usermediaerrors&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">MEDIA_UNIT_TAGS_NAME</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;mediaunit&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">SERVICE_UUID_TAG_NAME</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;serviceUUID&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">Logger</span> <span style="color:#000">logger</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LoggerFactory</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLogger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">UserMediaErrorsMonitor</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">MeterRegistry</span> <span style="color:#000">meterRegistry</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Inject</span>
+    <span style="color:#000">TasksProvider</span> <span style="color:#000">tasksProvider</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Instant</span> <span style="color:#000">lastExecuted</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Instant</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">now</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMediaErrorsMonitor</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onApplicationEvent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">HeartbeatEvent</span> <span style="color:#000">event</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Duration</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">between</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastExecuted</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Instant</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">now</span><span style="color:#ce5c00;font-weight:bold">()).</span><span style="color:#c4a000">getSeconds</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">300</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">return</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">try</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">execute</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">catch</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Throwable</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">logger</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">error</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Unexpected error occurred during execution&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastExecuted</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Instant</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">now</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+
+    <span style="color:#5c35cc;font-weight:bold">@Timed</span><span style="color:#ce5c00;font-weight:bold">(</span>
+            <span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;observer_calls_monitor_execution&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span>
+            <span style="color:#000">description</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Execution time of collecting and analyzing locally owned calls to provide metrics&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">execute</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">UserMediaErrorsExtractorTask</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">tasksProvider</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUserMediaErrorExtractorTask</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(!</span><span style="color:#000">task</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">execute</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">succeeded</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span> <span style="color:#8f5902;font-style:italic">// automatically rolled back
+</span><span style="color:#8f5902;font-style:italic"></span>            <span style="color:#204a87;font-weight:bold">return</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+
+        <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">locallyTrackedErrors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">task</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getResult</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">locallyTrackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">return</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">Iterator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Entry</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">locallyTrackedErrors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">entrySet</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">iterator</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">it</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">hasNext</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Entry</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">entry</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">it</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">next</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#000">Pair</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">pair</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UserMediaErrorsRepository</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">splitKey</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">entry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getKey</span><span style="color:#ce5c00;font-weight:bold">());</span>
+            <span style="color:#000">Integer</span> <span style="color:#000">trackedErrors</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">entry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">meterRegistry</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">counter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">METRIC_NAME</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#000">SERVICE_UUID_TAG_NAME</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">pair</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getKey</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(),</span>
+                    <span style="color:#000">MEDIA_UNIT_TAGS_NAME</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">pair</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">())</span>
+                    <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">increment</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">trackedErrors</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>This object is singletone, and subscribed to the application
+heartbeat event (by default it is in every 15s).
+The monitor only refreshes itself in every 5mins (300 seconds, as it is in the condition).
+After every 5 mins passed it is execute its inside process extract the stored user media errors
+and exposes it through its endpoint (in default its the prometheus).
+And we are done with exposing.</p>
+<h3 id="configurable">Configurable</h3>
+<p>With micronaut we can make the configuration through yaml easy.
+open the <code>application.yaml</code> and add the following snippet under the <code>observer:</code>
+property:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">observer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">userMediaErrorsMonitor</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">periodInS</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">300</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Then open the <code>ObserverConfig</code> class, and add the following snippet:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">UserMeidaErrorsMonitorConfig</span> <span style="color:#000">userMediaErrorsMonitor</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+	<span style="color:#5c35cc;font-weight:bold">@ConfigurationProperties</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;userMediaErrorsMonitor&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+	<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">UserMeidaErrorsMonitorConfig</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">periodInS</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">300</span><span style="color:#ce5c00;font-weight:bold">;</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>From that moment the configuration is available for you in the program if you
+inject the <code>ObserverConfig</code> in your monitor.</p>
+<p>So thats it. And I am too tired for tests.</p>
+<h2 id="appendixes-quick-recap">Appendixes: Quick Recap</h2>
+<h3 id="rxjava">RXJava</h3>
+<p>In our interpretation from RXJava <code>Observable</code> interfaces are the outputs of one evaluator,
+and <code>Observer</code> interfaces are the inputs. A subject is both at the same time,
+and <code>Subject</code> is a appropriate to expose an output or an input from an evaluator.</p>
+<p>Let&rsquo;s add our own evaluator to catch up user media error.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">IntegerProducer</span> <span style="color:#204a87;font-weight:bold">implements</span> <span style="color:#000">Runnable</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Subject</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">PublishSubject</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+		<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Observable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">getOutput</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+			<span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">output</span><span style="color:#ce5c00;font-weight:bold">;</span>
+		<span style="color:#ce5c00;font-weight:bold">}</span>
+
+		<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">run</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+			<span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">)</span>
+				<span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">output</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onNext</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">);</span>
+		<span style="color:#ce5c00;font-weight:bold">}</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+
+	<span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">IntegerConsumer</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Subject</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">input</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">PublishSubject</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+		<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Observer</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">getInput</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+			<span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">input</span><span style="color:#ce5c00;font-weight:bold">;</span>
+		<span style="color:#ce5c00;font-weight:bold">}</span>
+
+		<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">IntegerConsumer</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+			<span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">input</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">subscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+		<span style="color:#ce5c00;font-weight:bold">}</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+
+	<span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">runPipeline</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+		<span style="color:#8f5902;font-style:italic">// Component Constructions
+</span><span style="color:#8f5902;font-style:italic"></span>		<span style="color:#000">IntegerProducer</span> <span style="color:#000">producer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntegerProducer</span><span style="color:#ce5c00;font-weight:bold">();</span>
+		<span style="color:#000">IntegerConsumer</span> <span style="color:#000">consumer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntegerConsumer</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
+		<span style="color:#8f5902;font-style:italic">// Component Connections
+</span><span style="color:#8f5902;font-style:italic"></span>		<span style="color:#000">producer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getOutput</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">subscribe</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">consumer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getInput</span><span style="color:#ce5c00;font-weight:bold">());</span>
+
+		<span style="color:#8f5902;font-style:italic">// Run pipeline
+</span><span style="color:#8f5902;font-style:italic"></span>		<span style="color:#000">producer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">run</span><span style="color:#ce5c00;font-weight:bold">();</span>
+	<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>This pipeline gives an example how to use RXJava as processable and
+interconnectable black-boxes to produce and consume messages (integers).</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-af3bb00779e7acf2067286d76ab420fe">5.2 - Observer</h1>
+    <div class="lead">Basic tutorial to get start develop the Observer</div>
+	<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Getting started with <a href="https://micronaut.io">Micronaut</a></li>
+<li>Getting Started with <a href="https://github.com/ReactiveX/RxJava/wiki/Getting-Started">RXJava3</a></li>
+</ul>
+<h2 id="clone-and-run">Clone and Run</h2>
 <p>Let&rsquo;s clone from <a href="https://github.com/ObserveRTC/observer">here</a></p>
 <pre><code>git clone https://github.com/ObserveRTC/observer
 </code></pre>
@@ -3538,7 +4005,7 @@ packages are the application features.
 The WebSocketPCSampleV20200114 class is the entry point of the
 PCSample coming from the <code>observer-js</code>, and after
 validation it sends to the <code>Pipeline</code></p>
-<h3 id="pipelines">Pipelines</h3>
+<h3 id="evaluators">Evaluators</h3>
 <p>The main logic is under <code>evaluators</code> packages, and the
 <code>Pipeline</code> class is the one, assemble the pipeline
 for the application. (<code>setup</code> method, it is automtacilly called
@@ -3647,7 +4114,7 @@ Basically the RXJava3 is the limitation.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-031c1fdc85a2add41144a9afafe309b2">5.2 - WebExtrApp</h1>
+	<h1 id="pg-031c1fdc85a2add41144a9afafe309b2">5.3 - WebExtrApp</h1>
     <div class="lead">New releases of WebExtrApp will be announced here</div>
 	
 </div>
