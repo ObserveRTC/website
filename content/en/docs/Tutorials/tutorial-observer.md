@@ -5,6 +5,10 @@ date: 2021-01-09
 description: >
   Basic tutorial to get start develop the Observer
 ---
+## Prerequisites
+
+* Getting started with [Micronaut](https://micronaut.io)
+* Getting Started with [RXJava3](https://github.com/ReactiveX/RxJava/wiki/Getting-Started)
 
 ## Clone and Run
 
@@ -33,7 +37,7 @@ The WebSocketPCSampleV20200114 class is the entry point of the
 PCSample coming from the `observer-js`, and after 
 validation it sends to the `Pipeline`
 
-### Pipelines
+### Evaluators
 
 The main logic is under `evaluators` packages, and the 
 `Pipeline` class is the one, assemble the pipeline 
